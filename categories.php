@@ -1,13 +1,12 @@
 <?php
 session_start();
-
+$name = $_SESSION['name'];
 $category = $_GET['cat'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
-
-$sql = "select * from book_info where book_category = '$category'";
+$sql = "select * from book_info where book_category = '$category' order by 'up_date' ASC;";
 $rs = mysqli_query($link, $sql);
 
 ?>
@@ -56,18 +55,20 @@ $rs = mysqli_query($link, $sql);
 						while ($rslt =  mysqli_fetch_assoc($rs)) {
 						?>
 							<article>
-								<span><img src="images/<?php echo $rslt['book_image']; ?>" alt="" /></span>
+								<div style="width:30%; height:30%"><img style="width:100%; height:200%"src="images/<?php echo $rslt['book_image']; ?>" alt="" /></div>
 								<div class="content">
 									<h3><?php echo $rslt['book_name']; ?></h3>
-									<p>作者 : <?php echo $rslt['book_author']; ?></p>
-									<p>出版社 : <?php echo $rslt['public']; ?></p>
-									<p>類別：<?php echo $rslt['book_category']; ?></p>
-									<p><?php echo $rslt['book_introduction']; ?></p>
+									<p>作者 : <?php echo $rslt['book_author']; ?><br>
+									出版社 : <?php echo $rslt['public']; ?><br>
+									類別：<?php echo $rslt['book_category']; ?><br>
+									上架時間 : <?php echo $rslt['up_date']; ?><br>
+									<?php echo $rslt['book_introduction']; ?></p>
 									<ul class="actions">
 										<li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a></li>
 									</ul>
 								</div>
-
+							</article>
+							<article>
 							</article>
 
 						<?php
@@ -76,7 +77,7 @@ $rs = mysqli_query($link, $sql);
 					</div>
 				</section>
 
-				<!-- Section -->
+				<!-- Section 
 				<section>
 					<header class="major">
 						<h2>哲學類</h2>
@@ -127,65 +128,9 @@ $rs = mysqli_query($link, $sql);
 							</div>
 						</article>
 					</div>
-				</section>
+				</section>-->
 
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>Ipsum sed dolor</h2>
-					</header>
-					<div class="content">
-						<article>
-							<a href="#" class="image"><img src="images/灰階思考.jpg" alt="" /></a>
-							<h3>Interdum aenean</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/灰階思考.jpg" alt="" /></a>
-							<h3>Nulla amet dolore</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/灰階思考.jpg" alt="" /></a>
-							<h3>Tempus ullamcorper</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/灰階思考.jpg" alt="" /></a>
-							<h3>Sed etiam facilis</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/灰階思考.jpg" alt="" /></a>
-							<h3>Feugiat lorem aenean</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/灰階思考.jpg" alt="" /></a>
-							<h3>Amet varius aliquam</h3>
-							<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-					</div>
-				</section>
-
+				
 			</div>
 		</div>
 
