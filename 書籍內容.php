@@ -48,9 +48,14 @@ $rs = mysqli_query($link, $sql);
                             <header>
                                 <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
                                 <h4>編號 : <?php echo $book_id; ?></h4>
-                                <h4>作者 : <?php echo $book_info[4]; ?></h4>
                                 <h4>擁有者 : <?php echo $book_info[1]; ?></h4>
                                 <h4>借閱者 : <?php echo $book_info[2]; ?></h4>
+                                <h4>上架日期 : <?php echo $book_info[10]; ?></h4>
+                                <h4>作者 : <?php echo $book_info[4]; ?></h4>
+                                <h4>出版社 : <?php echo $book_info[5]; ?></h4>
+                                <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
+                                <h4>類別 : <?php echo $book_info[7]; ?></h4>
+                                
                             </header>
 
                             <p>介紹文 : <?php echo $book_info[9]; ?></p>
