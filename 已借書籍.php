@@ -4,7 +4,7 @@ if (!(isset($_SESSION['name']))) {
     header("location:index.php?log=no");
 } else {
     $name = $_SESSION['name'];
-    $link = mysqli_connect("localhost", "root");
+    $link = mysqli_connect("localhost", "root", "12345678");
     mysqli_query($link, "SET NAMES 'UTF8'");
 
     mysqli_select_db($link, "sa");

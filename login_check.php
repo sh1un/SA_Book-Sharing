@@ -3,7 +3,7 @@
 $account = $_POST['account'];
 $password = $_POST['password'];
 //連結
-$link = mysqli_connect("localhost", "root");
+$link = mysqli_connect("localhost", "root", "12345678");
 //mysqli_select_db(連結，database名稱)
 mysqli_select_db($link, "sa");
 //sql語法

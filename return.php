@@ -2,7 +2,7 @@
 session_start();
 $name = $_SESSION['name'];
 $book_id = $_GET['book_id'];
-$link = mysqli_connect("localhost", "root");
+$link = mysqli_connect("localhost", "root", "12345678");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
