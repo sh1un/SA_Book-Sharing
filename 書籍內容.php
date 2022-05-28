@@ -5,7 +5,7 @@
 <?php
 session_start();
 $name = $_SESSION['name'];
-$_SESSION['book_id']=$_GET['book_id'];
+$_SESSION['book_id'] = $_GET['book_id'];
 $book_id = $_SESSION['book_id'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
@@ -55,7 +55,7 @@ $rs = mysqli_query($link, $sql);
                             <p>介紹文 : <?php echo $book_info[9]; ?></p>
                             <ul class="actions">
                                 <li><?php if ($book_info[1] == $name) { ?><a href="下架書籍.php?book_id=$book_id" class="button big">下架</a>
-                                    <?php } else if($book_info['book_user'] == 'none'){ ?><a href="borr.php?br=b" class="button big">借閱</a><?php } ?>
+                                    <?php } else if ($book_info[2] == 'none') { ?><a href="borr.php?br=b" class="button big">借閱</a><?php } ?>
                                 </li>
                             </ul>
 
