@@ -12,6 +12,14 @@ if (isset($_SESSION['name'])) {
     header("location:index.php?log=no");
 }
 
+if (isset($_GET['sorf'])) {
+    if ($_GET['sorf'] == '上架成功') {
+        echo "<script>alert('上架成功')</script>";
+    } else if ($_GET['sorf'] == '上架失敗') {
+        echo "<script>alert('上架失敗')</script>";
+    }
+}
+
 ?>
 <!DOCTYPE HTML>
 

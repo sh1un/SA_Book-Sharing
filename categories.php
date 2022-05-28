@@ -1,6 +1,6 @@
 <?php
 session_start();
-$name = $_SESSION['name'];
+
 $category = $_GET['cat'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
