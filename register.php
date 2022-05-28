@@ -48,8 +48,8 @@
 							<input type="date" class="input_box" placeholder="生日" name="birth" required><br>
 							<input type="text" class="input_box" placeholder="住址" name="address" required><br>
 							性別：<br>
-							<input type="radio" name="gender" value="female" checked><label>女</label>
-							<input type="radio" name="gender" value="male"><label>男</label><br>
+							<input type="radio" name="gender" id="r1" value="female" checked><label for="r1">女</label>
+							<input type="radio" name="gender" id="r2" value="male"><label for="r2">男</label><br>
 							<input type="text" class="input_box" placeholder="帳號" name="account" required><br>
                          	<input type="password" class="input_box" placeholder="請輸入16位密碼" name="password" required><br>
 						</div>
