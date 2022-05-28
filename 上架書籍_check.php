@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Taipei');
     $book_name = $_POST['book-name'];
     $book_author = $_POST['book-author'];
     $public = $_POST['public'];
@@ -9,7 +10,7 @@ session_start();
     $book_introduction = $_POST['book-introduction'];
     $book_owner = $_SESSION['account'];
     $book_user =$_POST['book_user'];
-    $book_up_date = date("Y/m/d");
+    $book_up_date = date("Y/m/d/H/m/s");
     $link = mysqli_connect("localhost", "root");
     
     mysqli_query($link, "SET NAMES 'UTF8'");
