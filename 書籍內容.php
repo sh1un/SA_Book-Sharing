@@ -36,7 +36,7 @@ $rs = mysqli_query($link, $sql);
 
                 <!-- Header -->
                 <header id="header">
-                    <a href="index.html" class="logo"><strong>書籍資訊</strong></a>
+                    <a href="index.php" class="logo"><strong>首頁</strong></a>
 
                 </header>
 
