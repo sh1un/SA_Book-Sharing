@@ -66,17 +66,18 @@ if (isset($_GET['log'])) {
                     <div class="content">
                         <header>
                             <h1>書籍共享平台</h1>
-                            <p>共享經濟</p>
                         </header>
-                        <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam
-                            maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-                        <ul class="actions">
-                            <li><a href="#" class="button big">Learn More</a></li>
-                        </ul>
+                        <h4>想要看書又不想花錢嗎？只要捐出家裡閒置的藏書，你也可以免費看書！</h4>
+                        <p>為了解決書籍價值因書籍被閒置在書櫃中而浪費，我們希望這個網頁能夠有效最大化這些書的價值。
+                            隨著「共享經濟」逐漸普及，許多平台的出現，都是為了讓家中閒置的物品，
+                            不要浪費它的價值，讓有需要的人可以透過小小的錢甚至是免費，也能擁有「使用權」。</p>
+                        <p>本系統設有點數制，每日登入系統即可獲得點數，分享書籍者可以獲得更多的點數。
+                            若想要借閱書籍，必須消耗點數才能借閱。借書和還書的部分，
+                            我們會將會員提供的聯絡方式、居住地區顯示在網站上，因此借閱者可以和分享者聯絡，
+                            並約好在何時何地見面，也可以在面交時確認書籍完整程度，以免發生爭議。</p>
+                            
                     </div>
-                    <span class="image object">
-                        <img src="images/共享經濟.jpg" alt="" />
-                    </span>
+                        <img src="images/book.jpg" width="700" height="400" alt="" />
                 </section>
 
                 <!-- Section  -->
