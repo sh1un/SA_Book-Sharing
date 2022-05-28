@@ -57,6 +57,10 @@ if (!(isset($_SESSION['name']))) {
                     <div class="posts">
                         <?php
                         while ($rslt =  mysqli_fetch_assoc($rs)) {
+                            $bookowner_account =  $rslt['book_owner'];
+                            $sql2 = "select * from account where account = '$bookowner_account'";
+                            $reslt = mysqli_query($link, $sql2); //擁有書者的名字
+                            $rslt2 =  mysqli_fetch_assoc($reslt);
                         ?>
                             <article>
                                 <a href="書籍內容.php?book=<?php echo $rslt['book_id'] ?>" class="image"><img src='images/<?php echo $rslt['book_image']; ?>' alt="" /></a>
@@ -66,7 +70,8 @@ if (!(isset($_SESSION['name']))) {
                                         } else {
                                             echo "租借中";
                                         }
-                                        ?><br>捐借人：<?php echo $rslt['book_owner'] ?>
+                                        ?><br>捐借人：<?php echo $rslt2['name'] ?>
+                                    <br>租借人：<?php echo $name ?>
                                     <br>上架時間：<?php echo $rslt['up_date'] ?>
                                     <br>作者：<?php echo $rslt['book_author'] ?>
                                     <br>出版社：<?php echo $rslt['public'] ?>

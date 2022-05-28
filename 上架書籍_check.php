@@ -7,7 +7,7 @@ session_start();
     $book_category = $_POST['book-category'];
     $book_image = $_POST['book-image'];
     $book_introduction = $_POST['book-introduction'];
-    $book_owner = $_SESSION['name'];
+    $book_owner = $_SESSION['account'];
     $book_user =$_POST['book_user'];
     $book_up_date = date("Y/m/d");
     $link = mysqli_connect("localhost", "root");

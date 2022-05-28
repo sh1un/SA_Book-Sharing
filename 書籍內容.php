@@ -5,6 +5,7 @@
 <?php
 session_start();
 $name = $_SESSION['name'];
+$account = $_SESSION['account'];
 $_SESSION['book_id'] = $_GET['book_id'];
 $book_id = $_SESSION['book_id'];
 $link = mysqli_connect("localhost", "root");

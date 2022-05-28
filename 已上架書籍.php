@@ -2,11 +2,12 @@
 session_start();
 if (isset($_SESSION['name'])) {
     $name = $_SESSION['name'];
+    $account = $_SESSION['account'];
     $link = mysqli_connect("localhost", "root");
 
     mysqli_query($link, "SET NAMES 'UTF8'");
     mysqli_select_db($link, "sa");
-    $sql = "select * from book_info where book_owner = '$name'  order by up_date DESC";
+    $sql = "select * from book_info where book_owner = '$account'  order by up_date DESC";
     $rs = mysqli_query($link, $sql);
 } else {
     header("location:index.php?log=no");
@@ -65,24 +66,26 @@ if (isset($_GET['sorf'])) {
                     <div class="posts">
                         <?php
                         while ($rslt =  mysqli_fetch_assoc($rs)) {
+                            $bookuser_account =  $rslt['book_user'];
+                            $sql2 = "select * from account where account = '$bookuser_account'";
+                            $reslt = mysqli_query($link, $sql2); //持書者的名字
+                            $rslt2 =  mysqli_fetch_assoc($reslt);
                         ?>
                             <article>
                                 <a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="image">
                                     <img src='images/<?php echo $rslt['book_image']; ?>' alt="" /></a>
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 編號 : <?php echo $rslt['book_id'] ?>
-                                <p>租借情況：<?php if ($rslt['book_user'] == "none") {
-                                            echo "none";
-                                        } else {
-                                            echo $rslt['book_user'];
-                                        }
-                                        ?><br>租借人：<?php echo $rslt['book_user'] ?>
-                                    <br>捐借人：<?php echo $rslt['book_owner'] ?>
-                                    <br>上架時間：<?php echo $rslt['up_date'] ?>
-                                    <br>作者：<?php echo $rslt['book_author'] ?>
-                                    <br>出版社：<?php echo $rslt['public'] ?>
-                                    <br>出版日期：<?php echo $rslt['public_date'] ?>
-                                    <br>類別：<?php echo $rslt['book_category'] ?>
+                                <p><?php if ($rslt['book_user'] == "none") {
+                                    ?>租借情況：none <br> 租借人：none<?php
+                                    } else { ?>租借情況：租借中 <br> 租借人 : <?php
+                                            echo $rslt2['name'];}?>
+                                <br>捐借人：<?php echo $name ?>
+                                <br>上架時間：<?php echo $rslt['up_date'] ?>
+                                <br>作者：<?php echo $rslt['book_author'] ?>
+                                <br>出版社：<?php echo $rslt['public'] ?>
+                                <br>出版日期：<?php echo $rslt['public_date'] ?>
+                                <br>類別：<?php echo $rslt['book_category'] ?>
 
                                 </p>
 

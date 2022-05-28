@@ -3,6 +3,7 @@
 session_start();
 
 $name = $_SESSION['name'];
+$account = $_SESSION['account'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
@@ -15,7 +16,7 @@ if ($_GET['br'] == 'r') {
 	}
 } else {
 	$book_id = $_SESSION['book_id'];
-	$sql = "UPDATE `book_info` SET `book_user`='$name' WHERE book_id = $book_id";
+	$sql = "UPDATE `book_info` SET `book_user`='$account' WHERE book_id = $book_id";
 	if (mysqli_query($link, $sql)) {
 		header('location:index.php?log=b_success');
 	}

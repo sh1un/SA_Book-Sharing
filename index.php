@@ -5,12 +5,12 @@ mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
 $sql = "select * from book_info";
 $rs = mysqli_query($link, $sql);
-if(isset($_GET['log'])){
-    if($_GET['log']=='no'){
+if (isset($_GET['log'])) {
+    if ($_GET['log'] == 'no') {
         echo "<script>alert('請先登入帳號密碼')</script>";
-    }else if($_GET['log']=='r_success'){
+    } else if ($_GET['log'] == 'r_success') {
         echo "<script>alert('還書成功')</script>";
-    }else if($_GET['log']=='b_success'){
+    } else if ($_GET['log'] == 'b_success') {
         echo "<script>alert('借書成功')</script>";
     }
 }
@@ -42,7 +42,7 @@ if(isset($_GET['log'])){
                         session_start();
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
-                            
+                            $account = $_SESSION['account'];
                             echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
@@ -52,7 +52,7 @@ if(isset($_GET['log'])){
                                 </ul>";
                         }
                         ?>
-                        
+
                         <form method="post" action="search.php">
                             <input type="text" name="query" id="query" placeholder="輸入關鍵字" />
                         </form>
@@ -95,8 +95,10 @@ if(isset($_GET['log'])){
                                 <div class="content">
                                     <h3><?php echo $rslt['book_name']; ?></h3>
                                     <p><?php echo $rslt['book_introduction']; ?></p>
-                                    <ul class="actions">
-                                        <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a></li>
+                                    <ul class="actions"><?php if ($rslt['book_owner'] == $account) { ?>
+                                            <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架書籍</a>
+                                            </li><?php } else { ?><li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
+                                            </li><?php } ?>
                                     </ul>
                                 </div>
 
