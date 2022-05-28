@@ -9,14 +9,13 @@ session_start();
     $book_introduction = $_POST['book-introduction'];
     $book_owner = $_SESSION['name'];
     $book_user =$_POST['book_user'];
-    $book_id=rand(0,100000000);
     $link = mysqli_connect("localhost", "root");
     
     mysqli_query($link, "SET NAMES 'UTF8'");
 	mysqli_select_db($link, "sa");
     
     $sql="INSERT INTO `book_info`(`book_id`,`book_owner`,`book_user`,`book_name`, `book_author`, `public`, `public_date`, `book_category`, `book_image`, `book_introduction`) 
-    VALUES ('$book_id','$book_owner','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction')";
+    VALUES (null,'$book_owner','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction')";
 
     if(mysqli_query($link,$sql))
     {
