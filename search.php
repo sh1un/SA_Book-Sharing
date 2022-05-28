@@ -8,7 +8,7 @@ mysqli_query($link, "SET NAMES 'UTF8'");
     $query_rs = "";
     for($i=0;$i<count($result);$i++){
         if($i==0) 
-            $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '$result[0]' ";
+            $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$result[0]%' ";
         else 
             $query_rs .= " UNION SELECT * FROM book_info WHERE book_name LIKE '$result[$i]' ";
     }
