@@ -55,7 +55,7 @@ $rs = mysqli_query($link, $sql);
                             <p>介紹文 : <?php echo $book_info[9]; ?></p>
                             <ul class="actions">
                                 <li><?php if ($book_info[1] == $name) { ?><a href="下架書籍.php?book_id=$book_id" class="button big">下架</a>
-                                    <?php } else { ?><a href="borr.php?br=b" class="button big">借閱</a><?php } ?>
+                                    <?php } else if($book_info['book_user'] == 'none'){ ?><a href="borr.php?br=b" class="button big">借閱</a><?php } ?>
                                 </li>
                             </ul>
 
