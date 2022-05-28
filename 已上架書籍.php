@@ -6,7 +6,7 @@ if (isset($_SESSION['name'])) {
 
     mysqli_query($link, "SET NAMES 'UTF8'");
     mysqli_select_db($link, "sa");
-    $sql = "select * from book_info where book_owner = '$name'";
+    $sql = "select * from book_info where book_owner = '$name'  order by up_date DESC";
     $rs = mysqli_query($link, $sql);
 } else {
     header("location:index.php?log=no");
@@ -71,13 +71,14 @@ if (isset($_GET['sorf'])) {
                                     <img src='images/<?php echo $rslt['book_image']; ?>' alt="" /></a>
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 編號 : <?php echo $rslt['book_id'] ?>
-                                <p>租借情況：<?php if ($rslt['book_user'] == "無") {
-                                            echo "無";
+                                <p>租借情況：<?php if ($rslt['book_user'] == "none") {
+                                            echo "none";
                                         } else {
                                             echo $rslt['book_user'];
                                         }
                                         ?><br>租借人：<?php echo $rslt['book_user'] ?>
                                     <br>捐借人：<?php echo $rslt['book_owner'] ?>
+                                    <br>上架時間：<?php echo $rslt['up_date'] ?>
                                     <br>作者：<?php echo $rslt['book_author'] ?>
                                     <br>出版社：<?php echo $rslt['public'] ?>
                                     <br>出版日期：<?php echo $rslt['public_date'] ?>

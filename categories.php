@@ -6,7 +6,7 @@ $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
-$sql = "select * from book_info where book_category = '$category' order by 'up_date' ASC;";
+$sql = "select * from book_info where book_category = '$category' order by up_date DESC;";
 $rs = mysqli_query($link, $sql);
 
 ?>

@@ -2,16 +2,16 @@
 session_start();
 if (!(isset($_SESSION['name']))) {
     header("location:index.php?log=no");
-}else{
-    $name=$_SESSION['name'];
+} else {
+    $name = $_SESSION['name'];
     $link = mysqli_connect("localhost", "root");
-mysqli_query($link, "SET NAMES 'UTF8'");
+    mysqli_query($link, "SET NAMES 'UTF8'");
 
     mysqli_select_db($link, "sa");
-    $sql = "select * from book_info where book_user = '$name'";
+    $sql = "select * from book_info where book_user = '$name'  order by up_date DESC";
     $rs = mysqli_query($link, $sql);
 }
-    
+
 ?>
 <!DOCTYPE HTML>
 
@@ -56,27 +56,36 @@ mysqli_query($link, "SET NAMES 'UTF8'");
                     </header>
                     <div class="posts">
                         <?php
-                        while($rslt =  mysqli_fetch_assoc($rs)){
+                        while ($rslt =  mysqli_fetch_assoc($rs)) {
                         ?>
-                        <article>
-                            <a href="書籍內容.php?book=<?php echo $rslt['book_id'] ?>" class="image"><img src='images/<?php echo $rslt['book_image'];?>' alt="" /></a>
-                            <h3><?php echo $rslt['book_name'] ?></h3>
-                            <p>租借情況：<?php if($rslt['book_user']=="none"){
-                                echo "none";
-                                }else{echo "租借中" ;}
-                            ?><br>捐借人：<?php echo $rslt['book_owner'] ?></p>
-                            <ul class="actions">
-                                <li><a href="return.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">還書</a></li>
-                            </ul>
-                        </article>
-                        <?php }?>
-                        
+                            <article>
+                                <a href="書籍內容.php?book=<?php echo $rslt['book_id'] ?>" class="image"><img src='images/<?php echo $rslt['book_image']; ?>' alt="" /></a>
+                                <h3><?php echo $rslt['book_name'] ?></h3>
+                                <p>租借情況：<?php if ($rslt['book_user'] == "none") {
+                                            echo "none";
+                                        } else {
+                                            echo "租借中";
+                                        }
+                                        ?><br>捐借人：<?php echo $rslt['book_owner'] ?>
+                                    <br>上架時間：<?php echo $rslt['up_date'] ?>
+                                    <br>作者：<?php echo $rslt['book_author'] ?>
+                                    <br>出版社：<?php echo $rslt['public'] ?>
+                                    <br>出版日期：<?php echo $rslt['public_date'] ?>
+                                    <br>類別：<?php echo $rslt['book_category'] ?>
+                                </p>
+
+                                <ul class="actions">
+                                    <li><a href="return.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">還書</a></li>
+                                </ul>
+                            </article>
+                        <?php } ?>
+
 
                     </div>
                 </section>
 
             </div>
-            
+
         </div>
         <?php include "index_bar.html" ?>
     </div>
