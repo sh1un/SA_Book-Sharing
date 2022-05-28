@@ -49,7 +49,14 @@ mysqli_query($link, "SET NAMES 'UTF8'");
 
                 <!-- Header -->
                 <header id="header">
-                    <a href="index.php" class="logo"><strong>書籍共享平台</strong></a>
+                    
+                    <section id="search" class="alt">
+                    <form method="post" action="search.php">
+                            <input type="text" name="query" id="query" placeholder="輸入關鍵字" />
+                        </form>
+                         <a href="index.php" class="logo"><strong>首頁</strong></a>
+                    </section>
+                   
                 </header>
 
                 <!-- Content -->
