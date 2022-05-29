@@ -20,6 +20,7 @@ $totalRows_rs = mysqli_num_rows($rs);
         margin-right: 50px;
         clear: both;
     }
+
     .box_action:hover {
         cursor: pointer;
         background-color: #F0F0F0;
@@ -73,6 +74,7 @@ $totalRows_rs = mysqli_num_rows($rs);
                     <p align="center"><B>關鍵詞搜索結果如下：</B></p>
 
                     <?php while ($row_rs = mysqli_fetch_assoc($rs)) { ?>
+
                         <div class="box box_action">
                             <div class="book_jpg_style123">
                                 <a href="書籍一覽.php?book_name=<?php echo $row_rs['book_name'] ?>">
@@ -83,6 +85,7 @@ $totalRows_rs = mysqli_num_rows($rs);
                             <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
 
                         </div>
+
                     <?php } ?>
                 </section>
 
@@ -93,7 +96,11 @@ $totalRows_rs = mysqli_num_rows($rs);
         <?php include "index_bar.html" ?>
 
     </div>
-
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
 
 </body>
