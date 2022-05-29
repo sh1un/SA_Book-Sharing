@@ -75,9 +75,9 @@ if (isset($_GET['log'])) {
                             若想要借閱書籍，必須消耗點數才能借閱。借書和還書的部分，
                             我們會將會員提供的聯絡方式、居住地區顯示在網站上，因此借閱者可以和分享者聯絡，
                             並約好在何時何地見面，也可以在面交時確認書籍完整程度，以免發生爭議。</p>
-                            
+
                     </div>
-                        <img src="images/book.jpg" width="700" height="400" alt="" />
+                    <img src="images/book.jpg" width="700" height="400" alt="" />
                 </section>
 
                 <!-- Section  -->
@@ -96,10 +96,15 @@ if (isset($_GET['log'])) {
                                 <div class="content">
                                     <h3><?php echo $rslt['book_name']; ?></h3>
                                     <p><?php echo $rslt['book_introduction']; ?></p>
-                                    <ul class="actions"><?php if ($rslt['book_owner'] == $account) { ?>
-                                            <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架書籍</a>
-                                            </li><?php } else { ?><li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
-                                            </li><?php } ?>
+                                    <ul class="actions">
+                                        <?php if (isset($account)) {
+                                            if ($rslt['book_owner'] == $account) { ?>
+                                                <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架書籍</a>
+                                                </li><?php }
+                                            } else { ?>
+                                                <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
+                                                </li><?php } ?>
+
                                     </ul>
                                 </div>
 

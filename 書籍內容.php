@@ -4,6 +4,7 @@
 
 <?php
 session_start();
+if(!(isset($_SESSION['account']))){header("location:index.php?log=no");}
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $_SESSION['book_id'] = $_GET['book_id'];
