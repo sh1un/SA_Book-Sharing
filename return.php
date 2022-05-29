@@ -61,6 +61,19 @@ $rs = mysqli_query($link, $sql);
                                 <div class="col-6 col-12-xsmall">
                                     <input type="text" name="book-name" id="book-name" value="" placeholder="請詳細說明破損的頁數及其狀況" />
                                 </div><br>
+                                <!--書籍分數-->
+                                <div class="col-8">
+                                    <input type="radio" name="item" id="item01" vlaue="1"checked />
+                                    <label class="star-item" for="item01">不推</label>
+                                    <input type="radio" name="item" id="item02" vlaue="2"/>
+                                    <label class="star-item" for="item02">不太好</label>
+                                    <input type="radio" name="item" id="item03" vlaue="3"/>
+                                    <label class="star-item" for="item03">中等</label>
+                                    <input type="radio" name="item" id="item04" vlaue="4"/>
+                                    <label class="star-item" for="item04">滿意</label>
+                                    <input type="radio" name="item" id="item05" vlaue="5"/>
+                                    <label class="star-item" for="item05">極好</label>
+                                </div><br>
                                 <!--書籍評論-->
                                 <div class="col-8">
                                     <textarea name="book-introduction" id="book-introduction" placeholder="簡單介紹一下書吧！" rows="6"></textarea>

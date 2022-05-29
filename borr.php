@@ -9,8 +9,10 @@ mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
 if ($_GET['br'] == 'r') {
+	//return
 	$book_id = $_POST['book_id'];
 	$sql = "UPDATE `book_info` SET `book_user`='none' WHERE book_id = $book_id";
+	//
 	if (mysqli_query($link, $sql)) {
 		header("location:index.php?log=r_success");
 	}
