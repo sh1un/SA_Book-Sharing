@@ -10,6 +10,8 @@ if (isset($_GET['log'])) {
         echo "<script>alert('請先登入帳號密碼')</script>";
     } else if ($_GET['log'] == 'r_success') {
         echo "<script>alert('還書成功')</script>";
+    } else if ($_GET['log'] == 'r_fail') {
+        echo "<script>alert('還書失敗')</script>";
     } else if ($_GET['log'] == 'b_success') {
         echo "<script>alert('借書成功')</script>";
     }
@@ -100,10 +102,12 @@ if (isset($_GET['log'])) {
                                         <?php if (isset($account)) {
                                             if ($rslt['book_owner'] == $account) { ?>
                                                 <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架書籍</a>
-                                                </li><?php }
-                                            } else { ?>
+                                                </li><?php } else { ?>
                                                 <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
-                                                </li><?php } ?>
+                                                </li><?php }
+                                                } else { ?>
+                                            <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
+                                            </li><?php } ?>
 
                                     </ul>
                                 </div>

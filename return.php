@@ -47,7 +47,7 @@ $rs = mysqli_query($link, $sql);
                                 </header>
                                 <!--還書日期-->
                                 <div class="col-4 col-12-xsmall">
-                                    <h4>還書日期 : <input hidden type="date" name="public-date" id="public-date" value="<?php echo date("Y/m/d"); ?>" />
+                                    <h4>還書日期 : <input hidden type="date" name="return_date" id="return_date" value="<?php echo date("Y/m/d"); ?>" />
                                         <?php echo date("Y/m/d"); ?></h4>
                                 </div>
                                 <!--書籍介紹-->
@@ -63,20 +63,20 @@ $rs = mysqli_query($link, $sql);
                                 </div><br>
                                 <!--書籍分數-->
                                 <div class="col-8">
-                                    <input type="radio" name="item" id="item01" vlaue="1"checked />
-                                    <label class="star-item" for="item01">不推</label>
-                                    <input type="radio" name="item" id="item02" vlaue="2"/>
-                                    <label class="star-item" for="item02">不太好</label>
-                                    <input type="radio" name="item" id="item03" vlaue="3"/>
-                                    <label class="star-item" for="item03">中等</label>
-                                    <input type="radio" name="item" id="item04" vlaue="4"/>
-                                    <label class="star-item" for="item04">滿意</label>
-                                    <input type="radio" name="item" id="item05" vlaue="5"/>
-                                    <label class="star-item" for="item05">極好</label>
+                                    <input type="radio" name="rate" id="item01" vlaue=1 checked />
+                                    <label for="item01">不推</label>
+                                    <input type="radio" name="rate" id="item02" vlaue=2/>
+                                    <label for="item02">不太好</label>
+                                    <input type="radio" name="rate" id="item03" vlaue=3/>
+                                    <label for="item03">中等</label>
+                                    <input type="radio" name="rate" id="item04" vlaue=4/>
+                                    <label for="item04">滿意</label>
+                                    <input type="radio" name="rate" id="item05" vlaue=5/>
+                                    <label for="item05">極好</label>
                                 </div><br>
                                 <!--書籍評論-->
                                 <div class="col-8">
-                                    <textarea name="book-introduction" id="book-introduction" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
+                                    <textarea name="rate_content" id="rate_content" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
                                 </div>
                                 <br>
                                 <div class="col-12">
