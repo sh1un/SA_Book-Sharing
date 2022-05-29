@@ -3544,3 +3544,8 @@ button:disabled,
     margin-top: 0;
     padding-top: 0;
 }
+
+.book_image{
+    width: 240px;
+    height: 240px;
+}
