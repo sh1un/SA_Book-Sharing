@@ -71,7 +71,7 @@ mysqli_query($link, "SET NAMES 'UTF8'");
                     
                     <?php if($totalRows_rs>0) do { ?>
                         <div class="book_jpg_style123">
-                            <a href="書籍內容.php?book=<?php echo $row_rs['book_name'] ?>"><img src="images/<?php echo $row_rs['book_image'];?>" /></a>
+                            <a href="書籍內容.php?book=<?php echo $row_rs['book_name'] ?>"><img class="book_image" src="images/<?php echo $row_rs['book_image'];?>" /></a>
                         </div>
                     <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
                     <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
