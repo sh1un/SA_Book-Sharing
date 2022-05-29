@@ -1,6 +1,7 @@
 <?php
 $name = $_POST['name'];
 $birth = $_POST['birth'];
+$area = $_POST['area'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
 $account = $_POST['account'];
@@ -17,7 +18,7 @@ $rs = mysqli_query($link, $sql);
 if (mysqli_fetch_assoc($rs)) {
     header("location:register.php?register=exist");
 } else {
-    $add = "INSERT INTO `account`(`name`, `email`, `birth`, `address`, `gender`, `account`, `password`) VALUES ('$name','$email','$birth','$address','$gender','$account','$password')";
+    $add = "INSERT INTO `account`(`name`, `email`, `birth`, `area` , `address`, `gender`, `account`, `password`) VALUES ('$name','$email','$birth','$area', '$address','$gender','$account','$password')";
     if (mysqli_query($link, $add)) {
         header('location:login.php?method=message&message=新增成功');
     } else {
