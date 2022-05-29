@@ -140,8 +140,8 @@ if (isset($_GET['log'])) {
                         <article>
                             <span><img class="book_image" src="images/股票作手回憶錄.jpg" alt="" /></span>
                             <div class="content">
-                                <h3>灰階思考</h3>
-                                <p>黑白之間都是灰，找到無限價值的所在。Podcast冠軍節目股癌製作人謝孟恭首本力作！</p>
+                                <h3>股票作手回憶錄</h3>
+                                <p>我之所以能夠賺進大錢，靠的是我能縮手不動，而絕不是靠我的想法。既能看得對，又能縮手不動的人，並不常見。──傳奇操盤手傑西‧李佛摩　</p>
                                 <ul class="actions">
                                     <li><a href="#" class="button">立即借閱</a></li>
                                 </ul>
@@ -160,8 +160,9 @@ if (isset($_GET['log'])) {
                         <article>
                             <span><img class="book_image" src="images/漫步華爾街.jpg" alt="" /></span>
                             <div class="content">
-                                <h3>灰階思考</h3>
-                                <p>黑白之間都是灰，找到無限價值的所在。Podcast冠軍節目股癌製作人謝孟恭首本力作！</p>
+                                <h3>漫步華爾街</h3>
+                                <p>無論你是投資新手、散戶、理財顧問、證券營業員、市場研究專家……
+　　                                所有年齡層的投資人都該必備的投資聖經！</p>
                                 <ul class="actions">
                                     <li><a href="#" class="button">立即借閱</a></li>
                                 </ul>
@@ -211,8 +212,9 @@ if (isset($_GET['log'])) {
                         <article>
                             <span><img class="book_image" src="images/漫步華爾街.jpg" alt="" /></span>
                             <div class="content">
-                                <h3>灰階思考</h3>
-                                <p>黑白之間都是灰，找到無限價值的所在。Podcast冠軍節目股癌製作人謝孟恭首本力作！</p>
+                                <h3>漫步華爾街</h3>
+                                <p>無論你是投資新手、散戶、理財顧問、證券營業員、市場研究專家……
+　　                                所有年齡層的投資人都該必備的投資聖經！</p>
                                 <ul class="actions">
                                     <li><a href="#" class="button">立即借閱</a></li>
                                 </ul>
@@ -221,64 +223,7 @@ if (isset($_GET['log'])) {
                     </div>
                 </section>
 
-                <!-- Section -->
-                <section>
-                    <header class="major">
-                        <h2>Ipsum sed dolor</h2>
-                    </header>
-                    <div class="content">
-                        <article>
-                            <span><img class="book_image" src="images/灰階思考.jpg" alt="" /></span>
-                            <div class="content">
-                                <h3>Interdum aenean</h3>
-                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                                <ul class="actions">
-                                    <li><a href="#" class="button">More</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                        <article>
-                            <a href="#" class="book_image"><img src="images/股票作手回憶錄.jpg" alt="" /></a>
-                            <h3>Nulla amet dolore</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" class="book_image"><img src="images/灰階思考.jpg" alt="" /></a>
-                            <h3>Tempus ullamcorper</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" class="book_image"><img src="images/灰階思考.jpg" alt="" /></a>
-                            <h3>Sed etiam facilis</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" class="book_image"><img src="images/灰階思考.jpg" alt="" /></a>
-                            <h3>Feugiat lorem aenean</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" class="book_image"><img src="images/灰階思考.jpg" alt="" /></a>
-                            <h3>Amet varius aliquam</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul class="actions">
-                                <li><a href="#" class="button">More</a></li>
-                            </ul>
-                        </article>
-                    </div>
-                </section>
+               
 
             </div>
         </div>
