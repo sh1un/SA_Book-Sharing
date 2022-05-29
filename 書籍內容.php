@@ -79,9 +79,8 @@ $rs = mysqli_query($link, $sql);
                             </ul>
 
                     </div>
-                    <span class="image object">
-                        <img src="images/<?php echo $book_info[8]; ?>" alt="">
-                    </span>
+                        <img style="margin:0 0 30% 0" src="images/<?php echo $book_info[8]; ?>" alt="">
+                    
                 <?php } ?>
                 </section>
             </div>

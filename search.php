@@ -19,14 +19,13 @@ $totalRows_rs = mysqli_num_rows($rs);
         float: left;
         margin-right: 50px;
         clear: both;
-        
     }
-
     .box_action:hover {
         cursor: pointer;
         background-color: #F0F0F0;
         opacity: 1.5;
     }
+
     .box_action:focus {
         cursor: pointer;
         opacity: 1.5;
@@ -73,22 +72,22 @@ $totalRows_rs = mysqli_num_rows($rs);
                     <!--搜尋書籍關鍵字結果-->
                     <p align="center"><B>關鍵詞搜索結果如下：</B></p>
 
-                    <?php if ($totalRows_rs > 0) do { ?>
+                    <?php while ($row_rs = mysqli_fetch_assoc($rs)) { ?>
                         <div class="box box_action">
                             <div class="book_jpg_style123">
                                 <a href="書籍一覽.php?book_name=<?php echo $row_rs['book_name'] ?>">
-                                    <img src="images/<?php echo $row_rs['book_image']; ?>" /></a>
+                                    <img class="book_image" src="images/<?php echo $row_rs['book_image']; ?>" /></a>
                             </div>
                             <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
                             <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
                             <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
 
-                        <?php } while ($row_rs = mysqli_fetch_assoc($rs)); ?>
-
                         </div>
+                    <?php } ?>
                 </section>
 
             </div>
+
         </div>
 
         <?php include "index_bar.html" ?>
