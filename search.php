@@ -17,9 +17,19 @@ $totalRows_rs = mysqli_num_rows($rs);
 <style>
     .book_jpg_style123 {
         float: left;
-        margin-right: 40px;
+        margin-right: 50px;
         clear: both;
-        height: 400px;
+        
+    }
+
+    .box_action:hover {
+        cursor: pointer;
+        background-color: #F0F0F0;
+        opacity: 1.5;
+    }
+    .box_action:focus {
+        cursor: pointer;
+        opacity: 1.5;
     }
 </style>
 
@@ -64,20 +74,18 @@ $totalRows_rs = mysqli_num_rows($rs);
                     <p align="center"><B>關鍵詞搜索結果如下：</B></p>
 
                     <?php if ($totalRows_rs > 0) do { ?>
-                        <div class="book_jpg_style123">
-                            <a href="書籍內容.php?book_id=<?php echo $row_rs['book_id'] ?>">
-                            <img src="images/<?php echo $row_rs['book_image']; ?>" /></a>
+                        <div class="box box_action">
+                            <div class="book_jpg_style123">
+                                <a href="書籍一覽.php?book_name=<?php echo $row_rs['book_name'] ?>">
+                                    <img src="images/<?php echo $row_rs['book_image']; ?>" /></a>
+                            </div>
+                            <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
+                            <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
+                            <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
+
+                        <?php } while ($row_rs = mysqli_fetch_assoc($rs)); ?>
+
                         </div>
-                        <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
-                        <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
-                        <p>出版社 : <?php echo $row_rs["public"]; ?><br></p>
-                        <p>出版日期 : <?php echo $row_rs["public_date"]; ?><br></p>
-                        <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
-                        <p>簡介 : <?php echo $row_rs["book_introduction"]; ?><br></p>
-                        <br><br><br><br>
-                    <?php } while ($row_rs = mysqli_fetch_assoc($rs)); ?>
-
-
                 </section>
 
             </div>
@@ -87,12 +95,7 @@ $totalRows_rs = mysqli_num_rows($rs);
 
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+
 
 </body>
 
