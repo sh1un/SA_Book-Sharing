@@ -127,7 +127,7 @@ $rs = mysqli_query($link, $sql);
     <script>
         $(function () {            
             $(".like").click(function () {
-                $(this).toggleClass('clicked_sta');                
+                $(this).toggleClass('clicked_star');                
             })
         })
     
