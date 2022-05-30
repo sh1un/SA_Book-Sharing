@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 
 <html>
@@ -11,7 +10,12 @@ mysqli_select_db($link, "sa");
 
 $sql = "select * from book_info where book_name = '$book_name'";
 $rs = mysqli_query($link, $sql);
+$sql2 = "select * from book_info where book_name = '$book_name'";
+$rs2 = mysqli_query($link, $sql2);
+$book_info = mysqli_fetch_row($rs);
+
 ?>
+
 <head>
     <title>書籍
     </title>
@@ -32,37 +36,51 @@ $rs = mysqli_query($link, $sql);
 
                 <!-- Header -->
                 <header id="header">
-                    <h1>歡迎查看空閒書籍
-                    </h1>
+                    <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
                     <h3 align="right"><br><br>立即借書！</h3>
 
                 </header>
                 <!-- Banner -->
                 <section id="banner">
-                    <div class="content">
-                        <?php $book_info = mysqli_fetch_row($rs)
-                            ?>
-                            
-                                <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
-                                
-                                <h4>作者 : <?php echo $book_info[4]; ?></h4>
-                                <h4>出版社 : <?php echo $book_info[5]; ?></h4>
-                                <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
-                                <h4>類別 : <?php echo $book_info[7]; ?></h4>
-
-                            
-
-                            <p>介紹文 : <?php echo $book_info[9]; ?></p>
-                            
-
+                    <!--書籍-->
+                    <div>
+                        <img class="book_jpg_style123" style="width: 200px; height:240px;" src="images/<?php echo $book_info[8]; ?>" alt="">
                     </div>
-                        <img style="margin:0 0 30% 0" src="images/<?php echo $book_info[8]; ?>" alt="">
-                    
+                    <div class="content">
+                        <h4>作者 : <?php echo $book_info[4]; ?></h4>
+                        <h4>出版社 : <?php echo $book_info[5]; ?></h4>
+                        <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
+                        <h4>類別 : <?php echo $book_info[7]; ?></h4>
+                        <h4>介紹文 : </h4>
+                        <p><?php echo $book_info[9]; ?></p>
+                    </div>
                 </section>
-                
+                <!--搜尋書籍關鍵字結果-->
+                <section>
+                    <h3 align="center"><br><br>擁有</h3>
+                    <div>
+                        <?php while ($book_all = mysqli_fetch_assoc($rs2)) { ?>
+
+                            <div class="box_action">
+                                <div class="book_jpg_style123">
+                                    <a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>" style="margin:30px;">
+                                        <img class="book_image" src="images/<?php echo $book_all['book_image']; ?>" /></a>
+
+                                </div>
+
+                                <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
+                                <p>作者 : <?php echo $book_all["book_author"]; ?><br></p>
+                                <p>類別 : <?php echo $book_all["book_category"]; ?><br></p>
+
+                            </div>
+
+                        <?php } ?>
+                    </div>
+
+                </section>
             </div>
 
-            <!--搜尋書籍關鍵字結果-->
+
 
 
 
@@ -72,7 +90,7 @@ $rs = mysqli_query($link, $sql);
     </div>
 
 
-    
+
 
 </body>
 
