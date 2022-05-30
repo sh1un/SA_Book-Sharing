@@ -39,6 +39,10 @@ $rs = mysqli_query($link, $sql);
                 <!-- Header -->
                 <header id="header">
                     <h2>會員中心</h2>
+                    <?php echo "<ul class='icons'>
+                                <li><a href='login.php' class='button primary small'>登出</span></a></li>
+                                </ul>";
+                                ?>
                 </header>
 
                 <!-- Banner -->
