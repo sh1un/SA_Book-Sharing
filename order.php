@@ -75,7 +75,7 @@ if (isset($_SESSION['name'])) {
                             <tbody>
                                 <tr>
                                 <?php
-                                    $link=mysqli_connect("localhost","root","12345678","sa");
+                                    $link=mysqli_connect("localhost","root","sa");
                                     if(empty($searchtxt))
                                     {
                                     $sql="select * from orderlist where book_owner like '$name' or book_user like '$name' ";

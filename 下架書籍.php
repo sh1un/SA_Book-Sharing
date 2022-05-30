@@ -2,7 +2,7 @@
 session_start();
     $book_id = $_GET['book_id'];
 
-    $link = mysqli_connect("localhost", "root", "12345678");
+    $link = mysqli_connect("localhost", "root");
 	mysqli_select_db($link, "sa");
     
     $sql="DELETE FROM book_info WHERE book_id = '$book_id';";

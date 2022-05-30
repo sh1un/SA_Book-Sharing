@@ -11,7 +11,7 @@ date_default_timezone_set('Asia/Taipei');
     $book_owner = $_SESSION['account'];
     $book_user =$_POST['book_user'];
     $book_up_date = date("Y/m/d/H/m/s");
-    $link = mysqli_connect("localhost", "root", "12345678");
+    $link = mysqli_connect("localhost", "root");
     
     mysqli_query($link, "SET NAMES 'UTF8'");
 	mysqli_select_db($link, "sa");

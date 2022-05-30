@@ -24,7 +24,7 @@
                             <?php
                             $account = $_POST['account'];
                             $email = $_POST['email'];
-                            $link = mysqli_connect("localhost", "root", "12345678");
+                            $link = mysqli_connect("localhost", "root");
                             mysqli_select_db($link, "sa");
 
 
