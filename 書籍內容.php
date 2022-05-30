@@ -71,47 +71,53 @@ if (isset($_GET['f'])) {
                 <!-- Content -->
 
                 <section id="banner">
-                    <div class="content">
-                        <?php if ($book_info = mysqli_fetch_row($rs)) {
-                            $ownsql = "select * from account where account = '$book_info[1]'";
-                            $ownrs = mysqli_query($link, $ownsql);
-                            $book_own = mysqli_fetch_assoc($ownrs);
+                    <form action="addorder.php" method="post">
+                        <div class="content">
+                            <?php if ($book_info = mysqli_fetch_row($rs)) {
+                                $ownsql = "select * from account where account = '$book_info[1]'";
+                                $ownrs = mysqli_query($link, $ownsql);
+                                $book_own = mysqli_fetch_assoc($ownrs);
 
-                            $usersql = "select * from account where account = '$book_info[2]'";
-                            $userrs = mysqli_query($link, $usersql);
-                            $book_user = mysqli_fetch_assoc($userrs); ?>
-                            <header>
-                                <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
-                                <h4>編號 : <?php echo $book_id; ?></h4>
-                                <h4>擁有者 : <?php echo $book_own['name']; ?></h4>
-                                <h4>借閱者 : <?php if ($book_info[2] == "none") {
-                                                echo "none";
-                                            } else {
-                                                echo $book_user['name'];
-                                            } ?></h4>
-                                <h4>上架日期 : <?php echo $book_info[10]; ?></h4>
-                                <h4>作者 : <?php echo $book_info[4]; ?></h4>
-                                <h4>出版社 : <?php echo $book_info[5]; ?></h4>
-                                <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
-                                <h4>類別 : <?php echo $book_info[7]; ?></h4>
-                                <h4>聯絡方式 : <?php echo $book_info[11]; ?></h4>
-                            </header>
+                                $usersql = "select * from account where account = '$book_info[2]'";
+                                $userrs = mysqli_query($link, $usersql);
+                                $book_user = mysqli_fetch_assoc($userrs); ?>
+                                <header>
+                                    <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
+                                    <input type="hidden" name="book_name" id="book_name" value="<?php echo $book_info[3]; ?>">
+                                    <h4>編號 : <?php echo $book_id; ?></h4>
+                                    <h4>擁有者 : <?php echo $book_own['name']; ?></h4>
+                                    <input type="hidden" name="book_owner" id="book_owner" value="<?php echo $book_own['name']; ?>">
+                                    <h4>借閱者 : <?php if ($book_info[2] == "none") {
+                                                    echo "none";
+                                                } else {
+                                                    echo $book_user['name'];
+                                                } ?></h4>
+                                                <input type="hidden" name="book_user" id="book_user" value="<?php echo $name; ?>">
+                                    <h4>上架日期 : <?php echo $book_info[10]; ?></h4>
+                                    <h4>作者 : <?php echo $book_info[4]; ?></h4>
+                                    <h4>出版社 : <?php echo $book_info[5]; ?></h4>
+                                    <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
+                                    <h4>類別 : <?php echo $book_info[7]; ?></h4>
+                                    <?php $order_status = "雙方確認無誤後請各自按下完成借書"; ?>
+                                    <input type="hidden" name="order_status" id="order_status" value="<?php echo $order_status; ?>">
+                                    <h4>聯絡方式 : <?php echo $book_info[11]; ?></h4>
+                                </header>
 
-                            <p>介紹文 : <?php echo $book_info[9]; ?></p>
-                            <ul class="actions">
-                                <li><?php if ($book_info[1] == $account) { ?><a href="下架書籍.php?book_id=$book_id" class="button big">下架</a>
-                                    <?php } else if ($book_info[2] == $account) { ?><a href='return.php?book_id=<?php echo $book_info[0]; ?>' class="button big">還書</a><?php } else if ($book_info[2] == 'none') { ?>
-                                        <?php if ($fav == "Y") {
-                                            echo "<a style='background-color:#f56a6a' href='書籍內容.php?f=N&book_id=$book_id' class=button big><font style='color:white'>🤍收藏</font>";
-                                            } else {
-                                            echo "<a href='書籍內容.php?f=Y&book_id=$book_id' class=button big>🤍收藏";
-                                            } ?></a>
-                                        &nbsp&nbsp&nbsp<a href="borr.php?br=b" class="button big">借閱</a><?php } ?>
-                                </li>
-                            </ul>
+                                <p>介紹文 : <?php echo $book_info[9]; ?></p>
+                                <ul class="actions">
+                                    <li><?php if ($book_info[1] == $account) { ?><a href="下架書籍.php?book_id=$book_id" class="button big">下架</a>
+                                        <?php } else if ($book_info[2] == $account) { ?><a href='return.php?book_id=<?php echo $book_info[0]; ?>' class="button big">還書</a><?php } else if ($book_info[2] == 'none') { ?>
+                                            <?php if ($fav == "Y") {
+                                                echo "<a style='background-color:#f56a6a' href='書籍內容.php?f=N&book_id=$book_id' class=button big><font style='color:white'>🤍收藏</font>";
+                                                } else {
+                                                echo "<a href='書籍內容.php?f=Y&book_id=$book_id' class=button big>🤍收藏";
+                                                } ?></a>
+                                            &nbsp&nbsp&nbsp<button class="button big"  type="submit">借閱</button><?php } ?>
+                                    </li>
+                                </ul>
 
-                    </div>
-
+                        </div>
+                    </form>
                     <img style="margin:0 0 30% 0" src="images/<?php echo $book_info[8]; ?>" alt="">
 
                 <?php } ?>
