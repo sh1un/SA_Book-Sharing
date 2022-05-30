@@ -14,24 +14,6 @@ $row_rs = mysqli_fetch_assoc($rs);
 $totalRows_rs = mysqli_num_rows($rs);
 ?>
 
-<style>
-    .book_jpg_style123 {
-        float: left;
-        margin-right: 50px;
-        clear: both;
-    }
-
-    .box_action:hover {
-        cursor: pointer;
-        background-color: #F0F0F0;
-        opacity: 1.5;
-    }
-
-    .box_action:focus {
-        cursor: pointer;
-        opacity: 1.5;
-    }
-</style>
 
 <html>
 

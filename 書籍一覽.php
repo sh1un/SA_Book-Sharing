@@ -1,19 +1,17 @@
+
+<!DOCTYPE HTML>
+
+<html>
 <?php
 $book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
-$sql = "select * from book_info where book_name = $book_name";
-?>
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
 
+$sql = "select * from book_info where book_name = '$book_name'";
+$rs = mysqli_query($link, $sql);
+?>
 <head>
     <title>書籍
     </title>
@@ -40,33 +38,41 @@ $sql = "select * from book_info where book_name = $book_name";
 
                 </header>
                 <!-- Banner -->
-                <section>
+                <section id="banner">
+                    <div class="content">
+                        <?php $book_info = mysqli_fetch_row($rs)
+                            ?>
+                            
+                                <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
+                                
+                                <h4>作者 : <?php echo $book_info[4]; ?></h4>
+                                <h4>出版社 : <?php echo $book_info[5]; ?></h4>
+                                <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
+                                <h4>類別 : <?php echo $book_info[7]; ?></h4>
 
-                    <!-- Content -->
-                    <h2 id="content">書籍內容</h2>
-                    <hr class="major" />
-                    <?php $row_rs = mysqli_fetch_row(mysqli_query($link, $sql)) ?>
-                    <div class="box">
-                        <img class="book_image" src="images/<?php echo $row_rs[8]; ?>" />
-                        <h2>書名 : <?php echo $row_rs["book_name"]; ?><br></h2>
-                        <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
-                        <p>類別 : <?php echo $row_rs["book_introduction"]; ?><br></p>
-                        <p>類別 : <?php echo $row_rs["book_introduction"]; ?><br></p>
+                            
+
+                            <p>介紹文 : <?php echo $book_info[9]; ?></p>
+                            
+
                     </div>
-
-
-
+                        <img style="margin:0 0 30% 0" src="images/<?php echo $book_info[8]; ?>" alt="">
+                    
+                </section>
+                
             </div>
 
             <!--搜尋書籍關鍵字結果-->
-            
 
-            </section>
+
+
+
         </div>
-    </div>
-    <?php include "index_bar.html" ?>
+        <?php include "index_bar.html" ?>
     </div>
 
+
+    
 
 </body>
 
