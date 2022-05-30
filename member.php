@@ -8,7 +8,7 @@ if (isset($_SESSION['name'])) {
 $name = $_SESSION['name'];
 }
 
-$sql ="select * form account where name= '$name'";
+$sql ="select * from account where name = $name ";
 $rs = mysqli_query($link, $sql);
 
 if (isset($_GET['log'])) {
