@@ -15,6 +15,7 @@ if ($user = mysqli_fetch_assoc($rs)) {
     if ($user['password'] == $password) {
         $_SESSION['account'] = $user['account'];
         $_SESSION['name'] = $user['name'];
+        $_SESSION['con'] = $user['con'];
         header('location:index.php');
     } else {
         header('location:login.php?login=fail&method=message&message=登入失敗');

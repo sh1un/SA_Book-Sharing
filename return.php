@@ -9,6 +9,25 @@ mysqli_select_db($link, "sa");
 $sql = "select * from book_info where book_user = '$name' and book_id = '$book_id'";
 $rs = mysqli_query($link, $sql);
 ?>
+
+<style>
+    p{
+        display: inline-block;
+    }
+
+    .like{ 
+        font-size:66px;  
+        color:#ccc; 
+        cursor:pointer;
+    }
+
+    .clicked_star{
+        color: rgb(237, 203, 31);;
+        }
+
+</style>
+
+
 <!DOCTYPE HTML>
 <html>
 
@@ -47,7 +66,7 @@ $rs = mysqli_query($link, $sql);
                                 </header>
                                 <!--還書日期-->
                                 <div class="col-4 col-12-xsmall">
-                                    <h4>還書日期 : <input hidden type="date" name="public-date" id="public-date" value="<?php echo date("Y/m/d"); ?>" />
+                                    <h4>還書日期 : <input hidden type="date" name="return_date" id="return_date" value="<?php echo date("Y/m/d"); ?>" />
                                         <?php echo date("Y/m/d"); ?></h4>
                                 </div>
                                 <!--書籍介紹-->
@@ -61,9 +80,22 @@ $rs = mysqli_query($link, $sql);
                                 <div class="col-6 col-12-xsmall">
                                     <input type="text" name="book-name" id="book-name" value="" placeholder="請詳細說明破損的頁數及其狀況" />
                                 </div><br>
+                                <!--書籍分數-->
+                                <div class="col-8 p like">
+                                    <input type="radio" name="rate" id="item01" vlaue=1 checked />
+                                    <label for="item01">&#9733;</label>
+                                    <input type="radio" name="rate" id="item02" vlaue=2/>
+                                    <label for="item02">&#9733;</label>
+                                    <input type="radio" name="rate" id="item03" vlaue=3/>
+                                    <label for="item03">&#9733;</label>
+                                    <input type="radio" name="rate" id="item04" vlaue=4/>
+                                    <label for="item04">&#9733;</label>
+                                    <input type="radio" name="rate" id="item05" vlaue=5/>
+                                    <label for="item05">&#9733;</label>
+                                </div><br>
                                 <!--書籍評論-->
                                 <div class="col-8">
-                                    <textarea name="book-introduction" id="book-introduction" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
+                                    <textarea name="rate_content" id="rate_content" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
                                 </div>
                                 <br>
                                 <div class="col-12">
@@ -90,6 +122,30 @@ $rs = mysqli_query($link, $sql);
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(function () {            
+            $(".like").click(function () {
+                $(this).toggleClass('clicked_star');                
+            })
+        })
+    
+    $(document).ready(function(){
+        var valueNum = window.sessionStorage.userdata;
+        if (valueNum != "1") {
+      $("#myModal").modal();
+    }
+    });
+    function cancel(){
+    window.sessionStorage.userdata = "1";
+    }
+    function show(){
+        window.sessionStorage.userdata = "0";
+        $("#myModal").modal();
+    }
+
+    </script>
 </body>
 
 </html>
