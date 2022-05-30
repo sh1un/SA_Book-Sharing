@@ -1,5 +1,3 @@
-
-
 <head>
     <title>忘記密碼
     </title>
@@ -23,7 +21,7 @@
                     <h3 align="right"><br><br>忘記密碼！</h3>
 
                 </header>
-                <form action="getpw.php" method="POST">
+                <form action="safe_qa.php" method="post">
                     <!-- Banner -->
                     <section id="banner">
                         <span class="box">

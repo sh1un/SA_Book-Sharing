@@ -9,6 +9,25 @@ mysqli_select_db($link, "sa");
 $sql = "select * from book_info where book_user = '$name' and book_id = '$book_id'";
 $rs = mysqli_query($link, $sql);
 ?>
+
+<style>
+    p{
+        display: inline-block;
+    }
+
+    .like{ 
+        font-size:66px;  
+        color:#ccc; 
+        cursor:pointer;
+    }
+
+    .clicked_star{
+        color: rgb(237, 203, 31);;
+        }
+
+</style>
+
+
 <!DOCTYPE HTML>
 <html>
 
@@ -62,17 +81,17 @@ $rs = mysqli_query($link, $sql);
                                     <input type="text" name="book-name" id="book-name" value="" placeholder="請詳細說明破損的頁數及其狀況" />
                                 </div><br>
                                 <!--書籍分數-->
-                                <div class="col-8">
+                                <div class="col-8 p like">
                                     <input type="radio" name="rate" id="item01" vlaue=1 checked />
-                                    <label for="item01">不推</label>
+                                    <label for="item01">&#9733;</label>
                                     <input type="radio" name="rate" id="item02" vlaue=2/>
-                                    <label for="item02">不太好</label>
+                                    <label for="item02">&#9733;</label>
                                     <input type="radio" name="rate" id="item03" vlaue=3/>
-                                    <label for="item03">中等</label>
+                                    <label for="item03">&#9733;</label>
                                     <input type="radio" name="rate" id="item04" vlaue=4/>
-                                    <label for="item04">滿意</label>
+                                    <label for="item04">&#9733;</label>
                                     <input type="radio" name="rate" id="item05" vlaue=5/>
-                                    <label for="item05">極好</label>
+                                    <label for="item05">&#9733;</label>
                                 </div><br>
                                 <!--書籍評論-->
                                 <div class="col-8">
@@ -103,6 +122,30 @@ $rs = mysqli_query($link, $sql);
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(function () {            
+            $(".like").click(function () {
+                $(this).toggleClass('clicked_star');                
+            })
+        })
+    
+    $(document).ready(function(){
+        var valueNum = window.sessionStorage.userdata;
+        if (valueNum != "1") {
+      $("#myModal").modal();
+    }
+    });
+    function cancel(){
+    window.sessionStorage.userdata = "1";
+    }
+    function show(){
+        window.sessionStorage.userdata = "0";
+        $("#myModal").modal();
+    }
+
+    </script>
 </body>
 
 </html>
