@@ -95,7 +95,7 @@ $book_info = mysqli_fetch_row($rs);
                             </div>
 
                             <div class="haved_bar_items ">
-                                <h4><a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>">借閱</h4>
+                                <h4><a href="書籍內容.php?book_id=<?php echo $book_all['book_id'] ?>">借閱</h4>
                             </div>
 
                         </div>
