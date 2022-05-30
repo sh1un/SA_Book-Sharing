@@ -16,7 +16,7 @@
         echo $sql;
             if(mysqli_query($link, $sql))
         {
-            header('location:預約成功.php?method=query');
+            header('location:order.php?method=query');
         }
 
 ?>
