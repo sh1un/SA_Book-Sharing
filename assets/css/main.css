@@ -3548,6 +3548,23 @@ button:disabled,
 }
 
 .book_image {
-    width: 100%;
-    height: 1.5%;
+    width: 120px;
+    height: 100px;
+}
+
+.book_jpg_style123 {
+    float: left;
+    margin-right: 50px;
+    clear: both;
+}
+
+.box_action:hover {
+    cursor: pointer;
+    background-color: #F0F0F0;
+    opacity: 1.5;
+}
+
+.box_action:focus {
+    cursor: pointer;
+    opacity: 1.5;
 }
