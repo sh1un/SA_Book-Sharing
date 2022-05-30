@@ -39,6 +39,7 @@ if (isset($_GET['log'])) {
 
                 <!-- Header -->
                 <header id="header">
+                    <form action="member.php">
                     <section id="search" class="alt">
                         <?php
                         session_start();
@@ -54,7 +55,7 @@ if (isset($_GET['log'])) {
                                 </ul>";
                         }
                         ?>
-
+                        </form>
                         <form method="post" action="search.php">
                             <input type="text" name="query" id="query" placeholder="輸入關鍵字" />
                         </form>
