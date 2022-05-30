@@ -4,20 +4,17 @@ $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
 
-if (isset($_SESSION['name'])) {
-$name = $_SESSION['name'];
-$account = $_SESSION['account'];
+if (isset($_SESSION['account'])) {
+    $name = $_SESSION['name'];
+    $account = $_SESSION['account'];
+} else {
+    header("location:index.php?log=no");
 }
-else{echo "Error";} //test
 
-$sql ="select * from account where name = $name and account = $account ";
+$sql = "select * from account where account = $account ";
 $rs = mysqli_query($link, $sql);
 
 
-if (isset($_GET['log'])) {
-    if ($_GET['log'] == 'no') {
-        echo "<script>alert('請先登入帳號密碼')</script>";
-}}
 ?>
 <!DOCTYPE HTML>
 
@@ -48,44 +45,54 @@ if (isset($_GET['log'])) {
 
                 <section id="banner">
                     <div class="content">
-                        <form action="update.php">
-                        <table>
-                    <?php while($row = mysqli_fetch_assoc($rs)){ ?>
-                        <tr>
-                            <td>使用者名稱</td>
-                            <td><?php echo $row['name']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>帳號</td>
-                            <td><?php echo $row['account']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>密碼</td>
-                            <td><?php echo $row['password']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>電子信箱</td>
-                            <td><?php echo $row['email']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>生日</td>
-                            <td><?php echo $row['birth']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>居住區域</td>
-                            <td><?php echo $row['area'] ."  ". $row['address']; ?></td>
-                        </tr>
-                        <tr>
-                            <td>性別</td>
-                            <td><?php if($row['gender'] == 'fe'){ echo "女";}
-                             else if($row['gender'] == 'ma'){ echo "男";}?></td>
-                        </tr>
-                        <?php } ?>
-                        </table>
-                        <div align="center">
-                        <input type="submit" class="input_btn" value="編輯會員資料"><br>
-                        </div>
-                    </form>
+                        <form action="update.php" method="POST">
+                            <table>
+                                <?php while ($row = mysqli_fetch_assoc($rs)) { ?>
+                                    <tr>
+                                        <td>使用者名稱</td>
+                                        <td><input type="hidden" value=" <?php echo $row['name']; ?>" name="name">
+                                            <?php echo $row['name']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>帳號</td>
+                                        <td><input type="hidden" value=" <?php echo $row['account']; ?>" name="account">
+                                            <?php echo $row['account']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>密碼</td>
+                                        <td><input type="hidden" value=" <?php echo $row['password']; ?>" name="password">
+                                            <?php echo $row['password']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>電子信箱</td>
+                                        <td><input type="hidden" value=" <?php echo $row['email']; ?>" name="email">
+                                            <?php echo $row['email']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>生日</td>
+                                        <td><input type="hidden" value=" <?php echo $row['birth']; ?>" name="birth">
+                                            <?php echo $row['birth']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>居住區域</td>
+                                        <td><input type="hidden" value=" <?php echo $row['area']; ?>" name="area"><input type="hidden" value=" <?php echo $row['address']; ?>" name="address">
+                                            <?php echo $row['area'] . "     " . $row['address']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>性別</td>
+                                        <td><input type="hidden" value=" <?php echo $row['gender']; ?>" name="gender">
+                                            <?php if ($row['gender'] == 'fe') {
+                                                echo "女";
+                                            } else if ($row['gender'] == 'ma') {
+                                                echo "男";
+                                            } ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </table>
+                            <div align="center">
+                                <input type="submit" class="input_btn" value="編輯會員資料"><br>
+                            </div>
+                        </form>
                     </div>
                 </section>
 
