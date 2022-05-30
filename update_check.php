@@ -14,7 +14,6 @@ $udarea = $_POST['udarea'];
 $udaddress = $_POST['udaddress'];
 $udgender = $_POST['udgender'];
 $udcon = $_POST['udcon'];
-echo $udgender.$udarea.$udaddress.$account.$udcon;
 
 $sql = "UPDATE `account` SET `name`='$udname',`password`='$udpassword',`email`='$udemail',`birth`='$udbirth'
 ,`area`='$udarea',`address`='$udaddress',`gender`='$udgender',`con`='$udcon' WHERE account = '$account'";

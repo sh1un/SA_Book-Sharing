@@ -94,7 +94,7 @@ if (isset($_GET['f'])) {
                                 <h4>出版社 : <?php echo $book_info[5]; ?></h4>
                                 <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
                                 <h4>類別 : <?php echo $book_info[7]; ?></h4>
-
+                                <h4>聯絡方式 : <?php echo $book_info[11]; ?></h4>
                             </header>
 
                             <p>介紹文 : <?php echo $book_info[9]; ?></p>
