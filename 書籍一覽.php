@@ -47,12 +47,12 @@ $book_info = mysqli_fetch_row($rs);
                         <img class="book_jpg_style123" style="width: 200px; height:240px;" src="images/<?php echo $book_info[8]; ?>" alt="">
                     </div>
                     <div class="content">
-                        <h4>作者 : <?php echo $book_info[4]; ?></h4>
-                        <h4>出版社 : <?php echo $book_info[5]; ?></h4>
-                        <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
-                        <h4>類別 : <?php echo $book_info[7]; ?></h4>
+                        <h4>作者 : <?php echo $book_info[5]; ?></h4>
+                        <h4>出版社 : <?php echo $book_info[6]; ?></h4>
+                        <h4>出版日期 : <?php echo $book_info[7]; ?></h4>
+                        <h4>類別 : <?php echo $book_info[8]; ?></h4>
                         <h4>介紹文 : </h4>
-                        <p><?php echo $book_info[9]; ?></p>
+                        <p><?php echo $book_info[10]; ?></p>
                     </div>
                 </section>
                 <!--搜尋書籍關鍵字結果-->
@@ -64,7 +64,7 @@ $book_info = mysqli_fetch_row($rs);
                             $ownrs = mysqli_query($link, $ownsql);
                             $book_own = mysqli_fetch_assoc($ownrs);
 
-                            $usersql = "select * from account where account = '$book_info[2]'";
+                            $usersql = "select * from account where account = '$book_info[3]'";
                             $userrs = mysqli_query($link, $usersql);
                             $book_user = mysqli_fetch_assoc($userrs); ?>
 
@@ -81,7 +81,7 @@ $book_info = mysqli_fetch_row($rs);
                                 <div>
                                     <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
                                     <p>擁有者 : <?php echo $book_own['name']; ?><br></p>
-                                    <p>借閱者 : <?php if ($book_info[2] == "none") {
+                                    <p>借閱者 : <?php if ($book_info[3] == "none") {
                                                 echo "none";
                                             } else {
                                                 echo $book_user['name'];

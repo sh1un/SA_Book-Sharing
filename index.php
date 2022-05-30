@@ -46,6 +46,7 @@ if (isset($_GET['log'])) {
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
                             $account = $_SESSION['account'];
+                            $con = $_SESSION['con'];
                             echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";

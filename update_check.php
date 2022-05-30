@@ -13,10 +13,12 @@ $udbirth = $_POST['udbirth'];
 $udarea = $_POST['udarea'];
 $udaddress = $_POST['udaddress'];
 $udgender = $_POST['udgender'];
-echo $udgender.$udarea.$udaddress.$account;
+$udcon = $_POST['udcon'];
+echo $udgender.$udarea.$udaddress.$account.$udcon;
 
 $sql = "UPDATE `account` SET `name`='$udname',`password`='$udpassword',`email`='$udemail',`birth`='$udbirth'
-,`area`='$udarea',`address`='$udaddress',`gender`='$udgender' WHERE account = $account";
+,`area`='$udarea',`address`='$udaddress',`gender`='$udgender',`con`='$udcon' WHERE account = '$account'";
+$sql2 = "UPDATE `book_info` SET `connection_method` = '$udcon' WHERE book_owner = '$account'";
 
 if (mysqli_query($link, $sql)) {
     header('location:member.php?資料已修改');

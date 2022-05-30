@@ -135,9 +135,12 @@ function renew(index){
 							<input type="radio" name="gender" id="r2" value="male"><label for="r2">男</label><br>
 							<input type="text" class="input_box" placeholder="帳號" name="account" required><br>
                          	<input type="password" class="input_box" placeholder="請輸入16位密碼" name="password" required><br>
+                            <input type="text" class="input_box" placeholder="想提供的聯絡方式 (當您作為捐借者，借閱者聯絡您的方式)" name="con">
+                            &emsp13;ex.手機：0912345678<br>
+                            &emsp13;電子信箱：123@gmail.com
 						</div>
+                        
 						<?php
-
                         if (isset($_GET['register'])) {
                             if ($_GET['register'] == "exist") {
                                 echo "<span style='color:#CE0000;font-size:15px;'><br>帳號已存在 </span><span style='font-size: 20px;'></span>";

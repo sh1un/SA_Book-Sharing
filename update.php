@@ -170,6 +170,12 @@ mysqli_select_db($link, "sa");
                                         <input type="radio" name="udgender" id="r2" value="male"><label for="r2">男</label><br>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>聯絡方式</td>
+                                    <td>
+                                        <input type="text" value=<?php echo $_POST['con'];?> name="udcon">
+                                    </td>
+                                </tr>
                             </table>
                             <div align="center">
                                 <input type="submit" class="input_btn" value="確認修改"><br>

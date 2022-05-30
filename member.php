@@ -53,7 +53,7 @@ $rs = mysqli_query($link, $sql);
                             <table>
                                 <?php $row = mysqli_fetch_assoc($rs) ?>
                                 <tr>
-                                    <td>使用者名稱</td>
+                                    <td width="550px">使用者名稱</td>
                                     <td><input type="hidden" value=<?php echo $row['name']; ?> name="name">
                                         <?php echo $row['name']; ?></td>
                                 </tr>
@@ -90,6 +90,13 @@ $rs = mysqli_query($link, $sql);
                                         } else if ($row['gender'] == 'ma') {
                                             echo "男";
                                         } ?></td>
+                                </tr>
+                                <tr>
+                                    <td>聯絡方式</td>
+                                    <td>
+                                        <input type="hidden" value=<?php echo $row['con'];?> name="con">
+                                        <?php echo $row['con'];?>
+                                    </td>
                                 </tr>
 
                             </table>

@@ -7,6 +7,7 @@ $gender = $_POST['gender'];
 $account = $_POST['account'];
 $password = $_POST['password'];
 $email = $_POST['email'];
+$con = $_POST['con'];
 
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
@@ -18,7 +19,7 @@ $rs = mysqli_query($link, $sql);
 if (mysqli_fetch_assoc($rs)) {
     header("location:register.php?register=exist");
 } else {
-    $add = "INSERT INTO `account`(`name`, `email`, `birth`, `area` , `address`, `gender`, `account`, `password`) VALUES ('$name','$email','$birth','$area', '$address','$gender','$account','$password')";
+    $add = "INSERT INTO `account`(`name`, `email`, `birth`, `area` , `address`, `gender`, `account`, `password`, `con`) VALUES ('$name','$email','$birth','$area', '$address','$gender','$account','$password', '$con')";
     if (mysqli_query($link, $add)) {
         header('location:login.php?method=message&message=新增成功');
     } else {
