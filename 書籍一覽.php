@@ -36,7 +36,7 @@ $book_info = mysqli_fetch_row($rs);
 
                 <!-- Header -->
                 <header id="header">
-                    <h1>書名 : <?php echo $book_info[3]; ?><br></h1>
+                    <h1>書名 :<?php echo $book_info[3]; ?></h1><br>
                     <h3 align="right"><br><br>立即借書！</h3>
 
                 </header>
@@ -58,25 +58,50 @@ $book_info = mysqli_fetch_row($rs);
                 <!--搜尋書籍關鍵字結果-->
                 <section>
                     <h3 align="center"><br><br>擁有</h3>
-                    <div>
-                        <?php while ($book_all = mysqli_fetch_assoc($rs2)) { ?>
+                    <div class="have_box">
+                        <?php while ($book_all = mysqli_fetch_assoc($rs2)) {
+                            $ownsql = "select * from account where account = '$book_info[1]'";
+                            $ownrs = mysqli_query($link, $ownsql);
+                            $book_own = mysqli_fetch_assoc($ownrs);
 
-                            <div class="box_action">
-                                <div class="book_jpg_style123">
-                                    <a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>" style="margin:30px;">
-                                        <img class="book_image" src="images/<?php echo $book_all['book_image']; ?>" /></a>
+                            $usersql = "select * from account where account = '$book_info[2]'";
+                            $userrs = mysqli_query($link, $usersql);
+                            $book_user = mysqli_fetch_assoc($userrs); ?>
 
-                                </div>
-
-                                <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
-                                <p>作者 : <?php echo $book_all["book_author"]; ?><br></p>
-                                <p>類別 : <?php echo $book_all["book_category"]; ?><br></p>
+                        <div class="box_action haved_bar">
+                            <div class="book_jpg_style123 haved_bar_items">
+                                <a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>" style="margin:30px;">
+                                    <img class="book_image" src="images/<?php echo $book_all['book_image']; ?>" /></a>
 
                             </div>
+                            <div class="haved_bar_items">
+                                <h4>ID : <?php echo $book_all["book_id"]; ?><br></h4>
+                            </div>
+                            <div class="haved_bar_item2">
+                                <div>
+                                    <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
+                                    <p>擁有者 : <?php echo $book_own['name']; ?><br></p>
+                                    <p>借閱者 : <?php if ($book_info[2] == "none") {
+                                                echo "none";
+                                            } else {
+                                                echo $book_user['name'];
+                                            } ?><br></p>
+                                    <p>類別 : <?php echo $book_all["book_category"]; ?><br></p>
+                                </div>
+                            </div>
+                            <div class="haved_bar_items ">
+                                <h5><?php if ($book_all['book_user'] == "none") {
+                                    echo "<font color = green>●可借閱</font>";} else {echo "<font color = red>●可借閱</font>"; } ?></h5>
+                            </div>
 
-                        <?php } ?>
+                            <div class="haved_bar_items ">
+                                <h4><a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>">借閱</h4>
+                            </div>
+
+                        </div>
+                    <?php } ?>
+
                     </div>
-
                 </section>
             </div>
 
