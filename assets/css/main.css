@@ -3568,3 +3568,30 @@ button:disabled,
     cursor: pointer;
     opacity: 1.5;
 }
+
+.have_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.haved_bar {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+
+.haved_bar_items {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.haved_bar_item2 {
+    flex: 4;
+    margin: 1px;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+}
