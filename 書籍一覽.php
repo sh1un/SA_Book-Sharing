@@ -1,5 +1,10 @@
 <?php
 $book_name = $_GET['book_name'];
+
+$link = mysqli_connect("localhost", "root");
+mysqli_query($link, "SET NAMES 'UTF8'");
+mysqli_select_db($link, "sa");
+$sql = "select * from book_info where book_name = $book_name";
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -40,28 +45,26 @@ $book_name = $_GET['book_name'];
                     <!-- Content -->
                     <h2 id="content">書籍內容</h2>
                     <hr class="major" />
+                    <?php $row_rs = mysqli_fetch_row(mysqli_query($link, $sql)) ?>
+                    <div class="box">
+                        <img class="book_image" src="images/<?php echo $row_rs[8]; ?>" />
+                        <h2>書名 : <?php echo $row_rs["book_name"]; ?><br></h2>
+                        <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
+                        <p>類別 : <?php echo $row_rs["book_introduction"]; ?><br></p>
+                        <p>類別 : <?php echo $row_rs["book_introduction"]; ?><br></p>
+                    </div>
 
-                    <!--搜尋書籍關鍵字結果-->
-                    <p align="center"><B>相同書籍內容如下</B></p>
 
-                    <?php while ($row_rs = mysqli_fetch_assoc($rs)) { ?>
 
-                        <div class="box box_action">
-                            <div class="book_jpg_style123">
-                                <a href="書籍一覽.php?book_name=<?php echo $row_rs['book_name'] ?>">
-                                    <img class="book_image" src="images/<?php echo $row_rs['book_image']; ?>" /></a>
-                            </div>
-                            <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
-                            <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
-                            <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
-
-                        </div>
-
-                    <?php } ?>
-                </section>
             </div>
+
+            <!--搜尋書籍關鍵字結果-->
+            
+
+            </section>
         </div>
-        <?php include "index_bar.html" ?>
+    </div>
+    <?php include "index_bar.html" ?>
     </div>
 
 
