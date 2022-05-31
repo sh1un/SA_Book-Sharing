@@ -17,8 +17,8 @@ date_default_timezone_set('Asia/Taipei');
     mysqli_query($link, "SET NAMES 'UTF8'");
 	mysqli_select_db($link, "sa");
     
-    $sql="INSERT INTO `book_info`(`book_id`,`book_owner`,`connection_method`,`book_user`,`book_name`, `book_author`, `public`, `public_date`, `book_category`, `book_image`, `book_introduction`, `up_date`) 
-    VALUES (null,'$book_owner','$connection_method','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction','$book_up_date')";
+    $sql="INSERT INTO `book_info`(`book_id`,`book_owner`,`connection_method`,`book_user`,`book_name`, `book_author`, `public`, `public_date`, `book_category`, `book_image`, `book_introduction`, `up_date`, `likes`) 
+    VALUES (null,'$book_owner','$connection_method','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction','$book_up_date',0)";
 
     if(mysqli_query($link,$sql))
     {

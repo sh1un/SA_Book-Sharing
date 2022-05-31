@@ -3,7 +3,7 @@
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
-$sql = "select * from book_info";
+$sql = "select * from book_info order by likes DESC";
 $rs = mysqli_query($link, $sql);
 if (isset($_GET['log'])) {
     if ($_GET['log'] == 'no') {
