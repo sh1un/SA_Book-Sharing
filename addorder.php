@@ -8,7 +8,10 @@
     $return_time = date("Y/m/d/H/m/s");
     $order_status = $_POST['order_status'];
 
-    $link=mysqli_connect("localhost", "root", "sa");
+    $link = mysqli_connect("localhost", "root", "12345678");
+    mysqli_query($link, "SET NAMES 'UTF8'");
+    mysqli_select_db($link, "sa");
+    
     if(!$link){
         echo "連接失敗" . mysqli_connect_error();
     }
