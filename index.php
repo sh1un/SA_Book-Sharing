@@ -103,12 +103,12 @@ if (isset($_GET['log'])) {
                                     <ul class="actions">
                                         <?php if (isset($account)) {
                                             if ($rslt['book_owner'] == $account) { ?>
-                                                <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架書籍</a>
+                                                <li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button">下架書籍</a>
                                                 </li><?php } else { ?>
-                                                <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
+                                                <li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button">立即借閱</a>
                                                 </li><?php }
                                                 } else { ?>
-                                            <li><a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">立即借閱</a>
+                                            <li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button">立即借閱</a>
                                             </li><?php } ?>
 
                                     </ul>

@@ -2,7 +2,7 @@
 
 <html>
 <?php
-$book_name = $_GET['book_name'];
+$book_name = $_POST['book_name'];
 
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
@@ -47,12 +47,12 @@ $book_info = mysqli_fetch_row($rs);
                         <img class="book_jpg_style123" style="width: 200px; height:240px;" src="images/<?php echo $book_info[8]; ?>" alt="">
                     </div>
                     <div class="content">
-                        <h4>作者 : <?php echo $book_info[5]; ?></h4>
-                        <h4>出版社 : <?php echo $book_info[6]; ?></h4>
-                        <h4>出版日期 : <?php echo $book_info[7]; ?></h4>
-                        <h4>類別 : <?php echo $book_info[8]; ?></h4>
+                        <h4>作者 : <?php echo $book_info[4]; ?></h4>
+                        <h4>出版社 : <?php echo $book_info[5]; ?></h4>
+                        <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
+                        <h4>類別 : <?php echo $book_info[7]; ?></h4>
                         <h4>介紹文 : </h4>
-                        <p><?php echo $book_info[10]; ?></p>
+                        <p><?php echo $book_info[9]; ?></p>
                     </div>
                 </section>
                 <!--搜尋書籍關鍵字結果-->
@@ -79,7 +79,6 @@ $book_info = mysqli_fetch_row($rs);
                                 <div>
                                     <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
                                     <p>擁有者 : <?php echo $book_own['name']; ?><br></p>
-                                    
                                     <p>類別 : <?php echo $book_all["book_category"]; ?><br></p>
                                 </div>
                             </div>
@@ -92,7 +91,8 @@ $book_info = mysqli_fetch_row($rs);
                             </div>
 
                             <div class="haved_bar_items ">
-                                <h4><a href="書籍內容.php?book_id=<?php echo $book_all['book_id'] ?>">借閱</h4>
+                            <!--這邊連到訂單查詢-->
+                                <h4><a href="addorder.php?book_id=<?php echo $book_all['book_id'] ?>">借閱</h4>
                             </div>
 
                         </div>
