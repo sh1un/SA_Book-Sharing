@@ -8,7 +8,7 @@
 }
 
 .box {
-    height: 800px;
+    height: 1400px;
     width: 100%;
     background-color: rgb(236, 236, 234);
     display: flex;
@@ -38,7 +38,7 @@
 
 .input_box {
     outline: none;
-    margin-top: 5px;
+    margin-top: 0px;
     height: 20px;
     width: 100%;
     background-color: white;
