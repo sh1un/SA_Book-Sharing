@@ -51,7 +51,7 @@ if (isset($_SESSION['name'])) {
                         <h2>訂單列表</h2>
                     </header>
                     <?php
-                        $searchtxt = $_GET["searchtxt"]
+                        @$searchtxt = $_GET["searchtxt"]
                     ?>
                     <form method="get" action="">
                             <input type="text" name="searchtxt" value="<?php echo $searchtxt ?>"  placeholder="輸入關鍵字" />
