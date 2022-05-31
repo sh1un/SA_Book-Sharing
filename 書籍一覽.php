@@ -64,9 +64,7 @@ $book_info = mysqli_fetch_row($rs);
                             $ownrs = mysqli_query($link, $ownsql);
                             $book_own = mysqli_fetch_assoc($ownrs);
 
-                            $usersql = "select * from account where account = '$book_info[3]'";
-                            $userrs = mysqli_query($link, $usersql);
-                            $book_user = mysqli_fetch_assoc($userrs); ?>
+                            ?>
 
                         <div class="box_action haved_bar">
                             <div class="book_jpg_style123 haved_bar_items">
@@ -81,13 +79,12 @@ $book_info = mysqli_fetch_row($rs);
                                 <div>
                                     <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
                                     <p>擁有者 : <?php echo $book_own['name']; ?><br></p>
-                                    <p>借閱者 : <?php if ($book_info[3] == "none") {
-                                                echo "none";
-                                            } else {
-                                                echo $book_user['name'];
-                                            } ?><br></p>
+                                    
                                     <p>類別 : <?php echo $book_all["book_category"]; ?><br></p>
                                 </div>
+                            </div>
+                            <div class="haved_bar_items ">
+                                <h5>這邊放星星</h5>
                             </div>
                             <div class="haved_bar_items ">
                                 <h5><?php if ($book_all['book_user'] == "none") {
