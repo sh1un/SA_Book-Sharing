@@ -36,7 +36,7 @@ if (isset($_GET['f'])) {
     VALUES ('$book_id','$account','$fav')";
         if (mysqli_query($link, $fav_insert_sql)) {
             //總按讚次數
-            $likes_sql = "UPDATE book_info SET likes = $book_info[12]+1 WHERE book_id='$book_id'";
+            $likes_sql = "UPDATE book_info SET likes = $book_info[11]+1 WHERE book_id='$book_id'";
             mysqli_query($link, $likes_sql);
             header("location:書籍內容.php?book_id=$book_id");
         }
@@ -44,7 +44,7 @@ if (isset($_GET['f'])) {
         $fav_delete_sql = "DELETE FROM favorite WHERE book_id = '$book_id' and account = '$account';";
         if (mysqli_query($link, $fav_delete_sql)) {
             //總按讚次數
-            $likes_sql = "UPDATE book_info SET likes = $book_info[12]-1 WHERE book_id='$book_id'";
+            $likes_sql = "UPDATE book_info SET likes = $book_info[11]-1 WHERE book_id='$book_id'";
             mysqli_query($link, $likes_sql);
             header("location:書籍內容.php?book_id=$book_id");
         }
@@ -107,7 +107,7 @@ if (isset($_GET['f'])) {
                                 <h4>類別 : <?php echo $book_info[7]; ?></h4>
                                 <?php $order_status = "雙方確認無誤後請各自按下完成借書"; ?>
                                 <input type="hidden" name="order_status" id="order_status" value="<?php echo $order_status; ?>">
-                                <h4>聯絡方式 : <?php echo $book_info[11]; ?></h4>
+                                <h4>聯絡方式 : <?php echo $book_own['con']; ?></h4>
                             </header>
 
                             <p>介紹文 : <?php echo $book_info[9]; ?></p>
