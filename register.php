@@ -137,7 +137,7 @@ function renew(index){
                          	<input type="password" class="input_box" placeholder="請輸入16位密碼" name="password" required><br>
                             <input type="text" class="input_box" placeholder="想提供的聯絡方式 (當您作為捐借者，借閱者聯絡您的方式)" name="con">
                             &emsp13;ex.手機：0912345678<br>
-                            &emsp13;電子信箱：123@gmail.com
+                            &emsp13;line ID：Arielxxxxx
 						</div>
                         
 						<?php
