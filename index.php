@@ -87,7 +87,7 @@ if (isset($_GET['log'])) {
                 <!-- Section  -->
                 <section>
                     <header class="major">
-                        <h2>本月推薦</h2>
+                        <h2>熱門推薦</h2>
                     </header>
                     <div class="features">
 

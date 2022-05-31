@@ -16,8 +16,6 @@
     
         mysqli_query($link, "SET NAMES 'UTF8'");
         mysqli_select_db($link, "sa");
-        
-        $rs = mysqli_query($link, $sql);
     } else {
         header("location:index.php?log=no");
     }
