@@ -75,7 +75,9 @@ if (isset($_SESSION['name'])) {
                             <tbody>
                                 <tr>
                                 <?php
-                                    $link=mysqli_connect("localhost","root","sa");
+                                    $link = mysqli_connect("localhost", "root");
+                                    mysqli_query($link, "SET NAMES 'UTF8'");
+                                    mysqli_select_db($link, "sa");
                                     if(empty($searchtxt))
                                     {
                                     $sql="select * from orderlist where book_owner like '$name' or book_user like '$name' ";
