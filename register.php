@@ -131,13 +131,27 @@ function renew(index){
 	                        <option value="請選擇行政區域" disabled>請先選擇行政區域
                         </select>
 							性別：<br>
-							<input type="radio" name="gender" id="r1" value="female" checked><label for="r1">女</label>
-							<input type="radio" name="gender" id="r2" value="male"><label for="r2">男</label><br>
+							<input type="radio" name="gender" id="r1" value="fe" checked><label for="r1">女</label>
+							<input type="radio" name="gender" id="r2" value="ma"><label for="r2">男</label><br>
 							<input type="text" class="input_box" placeholder="帳號" name="account" required><br>
                          	<input type="password" class="input_box" placeholder="請輸入16位密碼" name="password" required><br>
                             <input type="text" class="input_box" placeholder="想提供的聯絡方式 (當您作為捐借者，借閱者聯絡您的方式)" name="con">
                             &emsp13;ex.手機：0912345678<br>
-                            &emsp13;line ID：Arielxxxxx
+                            &emsp13;line ID：Arielxxxxx<br><br>
+                            <h3>安全性問題：</h3>
+                            <p>作為日後忘記密碼之預防手段</p>
+                            問題一：
+                            <input type="text" name="safe_q1" placeholder="Ex.第一份工作是什麼？">
+                            答案
+                            <input type="text" name="safe_a1">
+                            問題二：
+                            <input type="text" name="safe_q2" placeholder="Ex.第一任女朋友的名字？">
+                            答案
+                            <input type="text" name="safe_a2">
+                            問題三：
+                            <input type="text" name="safe_q3"  placeholder="Ex.最喜歡的食物？">
+                            答案
+                            <input type="text" name="safe_a3">
 						</div>
                         
 						<?php
