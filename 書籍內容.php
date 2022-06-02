@@ -22,7 +22,7 @@ $rs = mysqli_query($link, $sql);
 $book_info = mysqli_fetch_row($rs);
 
 //favorite
-$fav_sql = "select * from favorite where book_name = '$book_name' and account = '$account'";
+$fav_sql = "SELECT * FROM favorite WHERE book_id = '$book_name' AND account = '$account'";
 $fav_rs = mysqli_query($link, $fav_sql);
 if ($fav_reslt = mysqli_fetch_assoc($fav_rs)) {
     $fav = "Y";
