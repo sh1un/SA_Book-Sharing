@@ -81,18 +81,21 @@ $rs = mysqli_query($link, $sql);
                                     <input type="text" name="book-name" id="book-name" value="" placeholder="請詳細說明破損的頁數及其狀況" />
                                 </div><br>
                                 <!--書籍分數-->
-                                <div class="col-8 p like">
-                                    <input type="radio" name="rate" id="item01" vlaue=1 checked />
-                                    <label for="item01">&#9733;</label>
-                                    <input type="radio" name="rate" id="item02" vlaue=2/>
-                                    <label for="item02">&#9733;</label>
-                                    <input type="radio" name="rate" id="item03" vlaue=3/>
-                                    <label for="item03">&#9733;</label>
-                                    <input type="radio" name="rate" id="item04" vlaue=4/>
-                                    <label for="item04">&#9733;</label>
-                                    <input type="radio" name="rate" id="item05" vlaue=5/>
-                                    <label for="item05">&#9733;</label>
+                                <div class="col-8 ppppp">
+                                    <input class="likepp" type="radio" name="rate" id="item01" vlaue=1/>
+                                    <label for="item01">極差</label>
+                                    <input class="likepp" type="radio" name="rate" id="item02" vlaue=2/>
+                                    <label for="item02">不優</label>
+                                    <input class="likepp" type="radio" name="rate" id="item03" vlaue=3/>
+                                    <label for="item03">普通</label>
+                                    <input class="likepp" type="radio" name="rate" id="item04" vlaue=4/>
+                                    <label for="item04">優質</label>
+                                    <input class="likepp" type="radio" name="rate" id="item05" vlaue=5/>
+                                    <label for="item05">極優</label>
                                 </div><br>
+                                    
+
+
                                 <!--書籍評論-->
                                 <div class="col-8">
                                     <textarea name="rate_content" id="rate_content" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
@@ -123,29 +126,7 @@ $rs = mysqli_query($link, $sql);
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-        $(function () {            
-            $(".like").click(function () {
-                $(this).toggleClass('clicked_star');                
-            })
-        })
     
-    $(document).ready(function(){
-        var valueNum = window.sessionStorage.userdata;
-        if (valueNum != "1") {
-      $("#myModal").modal();
-    }
-    });
-    function cancel(){
-    window.sessionStorage.userdata = "1";
-    }
-    function show(){
-        window.sessionStorage.userdata = "0";
-        $("#myModal").modal();
-    }
-
-    </script>
 </body>
 
 </html>
