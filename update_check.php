@@ -18,6 +18,9 @@ $udcon = $_POST['udcon'];
 $sql = "UPDATE `account` SET `name`='$udname',`password`='$udpassword',`email`='$udemail',`birth`='$udbirth'
 ,`area`='$udarea',`address`='$udaddress',`gender`='$udgender',`con`='$udcon' WHERE account = '$account'";
 
+
 if (mysqli_query($link, $sql)) {
+    $_SESSION['name']=$udname;
     header('location:member.php?資料已修改');
+    
 }
