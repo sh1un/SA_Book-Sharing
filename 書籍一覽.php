@@ -64,39 +64,44 @@ $book_info = mysqli_fetch_row($rs);
                             $ownrs = mysqli_query($link, $ownsql);
                             $book_own = mysqli_fetch_assoc($ownrs);
 
-                            ?>
+                        ?>
+                            <form action="addorder.php?book_id=<?php echo $book_all['book_id'] ?>" method="POST">
+                                <div class="box_action haved_bar">
+                                    <div class="book_jpg_style123 haved_bar_items">
+                                        <a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>" style="margin:30px;">
+                                            <img class="book_image" src="images/<?php echo $book_all['book_image']; ?>" /></a>
 
-                        <div class="box_action haved_bar">
-                            <div class="book_jpg_style123 haved_bar_items">
-                                <a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>" style="margin:30px;">
-                                    <img class="book_image" src="images/<?php echo $book_all['book_image']; ?>" /></a>
+                                    </div>
+                                    <div class="haved_bar_items">
+                                        <h4>ID : <?php echo $book_all["book_id"]; ?><br></h4>
+                                    </div>
+                                    <div class="haved_bar_item2">
+                                        <div>
+                                            <p>書名 : <?php echo $book_all["book_name"]; ?><br></p><input type="hidden" name="book_name" value="<?php echo $book_all['book_name']; ?>">
+                                            <p>擁有者 : <?php echo $book_own['name']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_own['account']; ?>">
+                                            <p>類別 : <?php echo $book_all["book_category"]; ?><br></p><input type="hidden" name="book_user" value="<?php echo $book_all['book_category']; ?>">
+                                            <input type="hidden" name="status" value="待借書">
+                                        </div>
+                                    </div>
+                                    <div class="haved_bar_items ">
+                                        <h5>這邊放星星</h5>
+                                    </div>
+                                    <div class="haved_bar_items ">
+                                        <h5><?php if ($book_all['book_user'] == "none") {
+                                                echo "<font color = green>●可借閱</font>";
+                                            } else {
+                                                echo "<font color = red>●可借閱</font>";
+                                            } ?></h5>
+                                    </div>
 
-                            </div>
-                            <div class="haved_bar_items">
-                                <h4>ID : <?php echo $book_all["book_id"]; ?><br></h4>
-                            </div>
-                            <div class="haved_bar_item2">
-                                <div>
-                                    <p>書名 : <?php echo $book_all["book_name"]; ?><br></p>
-                                    <p>擁有者 : <?php echo $book_own['name']; ?><br></p>
-                                    <p>類別 : <?php echo $book_all["book_category"]; ?><br></p>
+                                    <div class="haved_bar_items ">
+                                        <!--這邊連到訂單查詢-->
+                                        <input type="submit" value="借閱">
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="haved_bar_items ">
-                                <h5>這邊放星星</h5>
-                            </div>
-                            <div class="haved_bar_items ">
-                                <h5><?php if ($book_all['book_user'] == "none") {
-                                    echo "<font color = green>●可借閱</font>";} else {echo "<font color = red>●可借閱</font>"; } ?></h5>
-                            </div>
-
-                            <div class="haved_bar_items ">
-                            <!--這邊連到訂單查詢-->
-                                <h4><a href="addorder.php?book_id=<?php echo $book_all['book_id'] ?>">借閱</h4>
-                            </div>
-
-                        </div>
-                    <?php } ?>
+                            </form>
+                        <?php } ?>
 
                     </div>
                 </section>

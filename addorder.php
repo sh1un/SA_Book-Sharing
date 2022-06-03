@@ -2,11 +2,11 @@
     session_start();
     date_default_timezone_set('Asia/Taipei');
     $book_name = $_POST['book_name'];
-    $book_owner = $_POST['book_owner'];
+    $book_owner = $_POST['book_own'];
     $book_user = $_POST['book_user'];
     $order_time = date("Y/m/d/H/m/s");
     $return_time = date("Y/m/d/H/m/s");
-    $order_status = $_POST['order_status'];
+    $order_status = $_POST['status'];
 
     $link = mysqli_connect("localhost", "root");
     mysqli_query($link, "SET NAMES 'UTF8'");
