@@ -52,12 +52,11 @@ $rs = mysqli_query($link, $query_rs);
                     <hr class="major" />
 
                     <!--搜尋書籍關鍵字結果-->
-                    
+                    <p align="center"><B>關鍵詞搜索結果如下：</B></p>
 
-                    <?php if ($row_rs = mysqli_fetch_assoc($rs)){
-                        
+                    <?php while ($row_rs = mysqli_fetch_assoc($rs)) {
                         ?>
-                        <p align="center"><B>關鍵詞搜索結果如下：</B></p>
+
                         <div class="box box_action">
                             <div class="book_jpg_style123">
                                 <a href="書籍內容.php?book_name=<?php echo $row_rs['book_name'] ?>">
@@ -69,9 +68,7 @@ $rs = mysqli_query($link, $query_rs);
 
                         </div>
 
-                    <?php }
-                    else{
-                        echo "無搜尋到您想要的書籍，換個關鍵字試試?";}  ?>
+                    <?php } ?>
                 </section>
 
             </div>
