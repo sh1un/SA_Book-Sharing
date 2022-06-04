@@ -13,9 +13,11 @@
         $name = $_SESSION['name'];
         $account = $_SESSION['account'];
         $link = mysqli_connect("localhost", "root");
-    
+        
         mysqli_query($link, "SET NAMES 'UTF8'");
         mysqli_select_db($link, "sa");
+        
+        $rs = mysqli_query($link, $sql);
     } else {
         header("location:index.php?log=no");
     }
@@ -30,7 +32,6 @@
     $fetch_order_check="SELECT order_check FROM orderlist WHERE order_id='$order_id' ";
     $rs=mysqli_query($link, $fetch_order_check);
     $record=mysqli_fetch_assoc($rs);
-    // echo $record['order_check'];
     $record2=$record['order_check'];
     $sql="UPDATE orderlist SET order_check = $record2 + 1 WHERE order_id='$order_id'";
     mysqli_query($link, $sql);

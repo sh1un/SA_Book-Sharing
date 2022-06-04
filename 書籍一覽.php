@@ -2,6 +2,7 @@
 
 <html>
 <?php
+session_start();
 $book_name = $_POST['book_name'];
 
 $link = mysqli_connect("localhost", "root");
@@ -17,8 +18,7 @@ $book_info = mysqli_fetch_row($rs);
 ?>
 
 <head>
-    <title>書籍
-    </title>
+    <title>書籍</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -79,7 +79,7 @@ $book_info = mysqli_fetch_row($rs);
                                         <div>
                                             <p>書名 : <?php echo $book_all["book_name"]; ?><br></p><input type="hidden" name="book_name" value="<?php echo $book_all['book_name']; ?>">
                                             <p>擁有者 : <?php echo $book_own['name']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_own['account']; ?>">
-                                            <p>類別 : <?php echo $book_all["book_category"]; ?><br></p><input type="hidden" name="book_user" value="<?php echo $book_all['book_category']; ?>">
+                                            <p>類別 : <?php echo $book_all["book_category"]; ?><br></p><input type="hidden" name="book_user" value="<?php echo $_SESSION['account']; ?>">
                                             <input type="hidden" name="status" value="待借書">
                                         </div>
                                     </div>

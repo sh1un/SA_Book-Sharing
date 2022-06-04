@@ -54,17 +54,16 @@ if (isset($_SESSION['name'])) {
                         @$searchtxt = $_GET["searchtxt"]
                     ?>
                     <form method="get" action="">
-                            <input type="text" name="searchtxt" value="<?php echo $searchtxt ?>"  placeholder="輸入關鍵字" />
-                        </form>
+                        <input type="text" name="searchtxt" value="<?php echo $searchtxt ?>"  placeholder="輸入關鍵字" />
+                    </form>
                     <div class="posts">
-                    
                         <table>
                             <thead>
                                 <tr>
                                     <th>訂單編號</th>
                                     <th>書名</th>
-                                    <th>捐借者名稱</th>
-                                    <th>租借者名稱</th>
+                                    <th>捐借者</th>
+                                    <th>租借者</th>
                                     <th>訂單成立時間</th>
                                     <th>最慢還書日期</th>
                                     <th>狀態</th>
@@ -80,11 +79,11 @@ if (isset($_SESSION['name'])) {
                                     mysqli_select_db($link, "sa");
                                     if(empty($searchtxt))
                                     {
-                                    $sql="select * from orderlist where book_owner like '$name' or book_user like '$name' ";
+                                    $sql="select * from orderlist where book_owner like '$account' or book_user like '$account' ";
                                     }
                                     else
                                     {
-                                    $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or book_owner like '$searchtxt' or book_user like '$searchtxt' or order_time like '$searchtxt' or return_time like '$searchtxt' ";
+                                    $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or order_time like '$searchtxt' or return_time like '$searchtxt' or book_owner like '$account' or book_user like '$account' ";
                                     }
                                     
                                     $rs=mysqli_query($link,$sql);
