@@ -57,6 +57,7 @@ if (isset($_GET['sorf'])) {
                     <header class="major">
                         <h2>已上架書籍</h2>
                     </header>
+                    <form action="編輯書籍.php" method="POST">
                     <div class="posts">
                         <?php
                         while ($rslt =  mysqli_fetch_assoc($rs)) {
@@ -67,26 +68,38 @@ if (isset($_GET['sorf'])) {
                         ?>
                             <article>
                                 <div class="img_box">
+                                <input type="hidden" value=<?php echo $rslt['book_image']; ?> name="book_image">
                                     <img class="img_item" src='images/<?php echo $rslt['book_image']; ?>' alt="" /></div>
-                                <h3><?php echo $rslt['book_name'] ?></h3>
-                                編號 : <?php echo $rslt['book_id'] ?>
+                                    <input type="hidden" value=<?php echo $rslt['book_name'] ?> name="book_name">
+                                    <h3><?php echo $rslt['book_name'] ?></h3>
+                                編號 : <input type="hidden" value=<?php echo $rslt['book_id'] ?> name="book_id">
+                                <?php echo $rslt['book_id'] ?>
                                 <p><?php if ($rslt['book_user'] == "none") {
-                                    ?>租借情況：none <br> 租借人：none<?php
-                                    } else { ?>租借情況：租借中 <br> 租借人 : <?php
+                                    ?><input type="hidden" value="none" name="book_user">
+                                    租借情況：none <br> 租借人：none<?php
+                                    } else { ?><input type="hidden" value="<?php echo $rslt2['name']?>" name="book_user">
+                                    租借情況：租借中 <br> 租借人 : <?php
                                             echo $rslt2['name'];}?>
-                                <br>捐借人：<?php echo $name ?>
-                                <br>上架時間：<?php echo $rslt['up_date'] ?>
-                                <br>作者：<?php echo $rslt['book_author'] ?>
-                                <br>出版社：<?php echo $rslt['public'] ?>
-                                <br>出版日期：<?php echo $rslt['public_date'] ?>
-                                <br>類別：<?php echo $rslt['book_category'] ?>
+                                <br>捐借人：<input type="hidden" value=<?php echo $name ?> name="book_owner">
+                                <?php echo $name ?>
+                                <br>上架時間：<input type="hidden" value=<?php echo $rslt['up_date'] ?> name="up_date">
+                                <?php echo $rslt['up_date'] ?>
+                                <br>作者：<input type="hidden" value=<?php echo $rslt['book_author'] ?> name="book_author">
+                                <?php echo $rslt['book_author'] ?>
+                                <br>出版社：<input type="hidden" value=<?php echo $rslt['public'] ?> name="public">
+                                <?php echo $rslt['public'] ?>
+                                <br>出版日期：<input type="hidden" value=<?php echo $rslt['public_date'] ?> name="public_date">
+                                <?php echo $rslt['public_date'] ?>
+                                <br>類別：<input type="hidden" value=<?php echo $rslt['book_category'] ?> name="book_category">
+                                <?php echo $rslt['book_category'] ?>
 
                                 </p>
 
 
                                 <ul class="actions">
                                     <li><a href="下架書籍.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架</a></li>
-                                    <li><a href="" class="button">編輯資訊</a></li>
+                                    <li><input type="submit" class="input_btn" value="編輯資訊"></li>
+                                    
 
                                 </ul>
                             </article>
@@ -94,6 +107,7 @@ if (isset($_GET['sorf'])) {
 
 
                     </div>
+                    </form>
                 </section>
 
             </div>
