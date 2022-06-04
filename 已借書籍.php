@@ -57,7 +57,7 @@ if (!(isset($_SESSION['name']))) {
                             $rslt2 =  mysqli_fetch_assoc($reslt);
                         ?>
                             <article>
-                                <a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="image"><img src='images/<?php echo $rslt['book_image']; ?>' alt="" /></a>
+                                <img src='images/<?php echo $rslt['book_image']; ?>' alt="" />
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 <p>租借情況：<?php if ($rslt['book_user'] == "none") {
                                             echo "none";

@@ -66,8 +66,7 @@ if (isset($_GET['sorf'])) {
                             $rslt2 =  mysqli_fetch_assoc($reslt);
                         ?>
                             <article>
-                                <a href="書籍內容.php?book_id=<?php echo $rslt['book_id'] ?>" class="image">
-                                    <img src='images/<?php echo $rslt['book_image']; ?>' alt="" /></a>
+                                    <img src='images/<?php echo $rslt['book_image']; ?>' alt="" />
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 編號 : <?php echo $rslt['book_id'] ?>
                                 <p><?php if ($rslt['book_user'] == "none") {
@@ -86,6 +85,8 @@ if (isset($_GET['sorf'])) {
 
                                 <ul class="actions">
                                     <li><a href="下架書籍.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">下架</a></li>
+                                    <li><a href="" class="button">編輯資訊</a></li>
+
                                 </ul>
                             </article>
                         <?php } ?>
