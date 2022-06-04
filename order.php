@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION['name'])) {
     $name = $_SESSION['name'];
     $account = $_SESSION['account'];
+    $account2 = $_SESSION['account'];
     $link = mysqli_connect("localhost", "root");
 
     mysqli_query($link, "SET NAMES 'UTF8'");
@@ -51,11 +52,24 @@ if (isset($_SESSION['name'])) {
                         <h2>訂單列表</h2>
                     </header>
                     <?php
-                        @$searchtxt = $_GET["searchtxt"]
+                        @$searchtxt = $_GET["searchtxt"];
+                        @$iamowner = $_GET["iamowner"];
+                        @$iamuser = $_GET["iamuser"];
+                        @$filter = $_GET["filter"]
                     ?>
-                    <form method="get" action="">
-                        <input type="text" name="searchtxt" value="<?php echo $searchtxt ?>"  placeholder="輸入關鍵字" />
+                    <form method="get" action="" id='searchtxt'>
+                        <input type="text" name="searchtxt" value="<?php echo $searchtxt; ?>"  placeholder="輸入關鍵字" />
                     </form>
+                    <ul class="pagination">
+                        <li><a href="order.php?filter=iamowner" class="page">我是捐借者</a></li> |
+                        <li><a href="order.php?filter=iamuser" class="page">我是租借者</a></li> |
+                        <li><a href="order.php?filter=tobeborrowed" class="page">待借書</a></li> |
+                        <li><a href="order.php?filter=tobereturn" class="page">待還書</a></li> |
+                        <li><a href="order.php?filter=tobeevaluation" class="page">待評價</a></li> |
+                        <li><a href="order.php?filter=finished" class="page">已完成</a></li>
+                    </ul>
+                    <?php $searchtxt='default'; ?>
+                    <br>
                     <div class="posts">
                         <table>
                             <thead>
@@ -79,11 +93,41 @@ if (isset($_SESSION['name'])) {
                                     mysqli_select_db($link, "sa");
                                     if(empty($searchtxt))
                                     {
-                                    $sql="select * from orderlist where book_owner like '$account' or book_user like '$account' ";
+                                        $sql="select * from orderlist where book_owner like '$account' or book_user like '$account' ";
+                                    }
+                                    elseif($filter=='iamowner')
+                                    {
+                                        $sql="select * from orderlist where book_owner like '$account'";
+
+                                    }
+                                    elseif($filter=='iamuser')
+                                    {
+                                        $sql="select * from orderlist where book_user like '$account'";
+
+                                    }
+                                    elseif($filter=='tobeborrowed')
+                                    {
+                                        $sql="select * from orderlist where (book_owner like '$account' or book_user like '$account') and order_status like '待借書' ";
+
+                                    }
+                                    elseif($filter=='tobereturn')
+                                    {
+                                        $sql="select * from orderlist where (book_owner like '$account' or book_user like '$account') and order_status like '待還書' ";
+
+                                    }
+                                    elseif($filter=='tobeevaluation')
+                                    {
+                                        $sql="select * from orderlist where (book_owner like '$account' or book_user like '$account') and order_status like '待評價' ";
+
+                                    }
+                                    elseif($filter=='finished')
+                                    {
+                                        $sql="select * from orderlist where (book_owner like '$account' or book_user like '$account') and order_status like '已完成' ";
+
                                     }
                                     else
                                     {
-                                    $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or order_time like '$searchtxt' or return_time like '$searchtxt' or book_owner like '$account' or book_user like '$account' ";
+                                        $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or order_time like '$searchtxt' or return_time like '$searchtxt' or book_owner like '$account' or book_user like '$account' ";
                                     }
                                     
                                     $rs=mysqli_query($link,$sql);
