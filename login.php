@@ -12,7 +12,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/register.css" />
+    <link rel="stylesheet" href="assets/css/login.css" />
 </head>
 
 <body class="is-preload">
@@ -42,7 +42,7 @@
                         <div class="items2">
                             <form action="login_check.php" method="post">
                                 請輸入帳號密碼：
-                                <input type="text" class="input_box" placeholder="帳號" name="account" required><br>
+                                <input type="text" class="input_box" placeholder="帳號" name="account" required><br><br>
                                 <input type="password" class="input_box" placeholder="請輸入16位密碼" name="password" required><br>
                         </div>
                         <?php
