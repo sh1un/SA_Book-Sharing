@@ -90,7 +90,7 @@ $book_info = mysqli_fetch_row($rs);
                                         <h5><?php if ($book_all['book_user'] == "none") {
                                                 echo "<font color = green>●可借閱</font>";
                                             } else {
-                                                echo "<font color = red>●可借閱</font>";
+                                                echo "<font color = red>●已借閱</font>";
                                             } ?></h5>
                                     </div>
 
