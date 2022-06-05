@@ -13,7 +13,8 @@ if ($_GET['br'] == 'r') {
 	$book_id = $_POST['book_id'];
 	$sql = "UPDATE `book_info` SET `book_user`='none' WHERE book_id = $book_id";
 	//評論書籍
-	$return_time = $_POST['return_date'];
+	$return_time = date('Y-m-d');
+	echo $return_time;
 	$rate = $_POST['rate'];
 	$rate_content = $_POST['rate_content'];
 	$rate_sql = "INSERT INTO `evaluation`(`rate_id`,`book_id`,`account`,`rate`, `rate_content`, `rate_time`) 

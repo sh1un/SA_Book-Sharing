@@ -54,8 +54,7 @@ $rs = mysqli_query($link, $sql);
                                 </header>
                                 <!--還書日期-->
                                 <div class="col-4 col-12-xsmall">
-                                    <h4>還書日期 : <input hidden type="date" name="return_date" id="return_date" value="<?php echo date("Y/m/d"); ?>" />
-                                        <?php echo date("Y/m/d"); ?></h4>
+                                    <h4>還書日期 : <?php echo date("Y/m/d"); ?></h4>
                                 </div>
                                 <!--書籍介紹-->
                                 <p>介紹文 : <?php echo $book_info[9]; ?></p>
