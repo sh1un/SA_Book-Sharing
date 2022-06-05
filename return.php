@@ -11,22 +11,7 @@ $sql = "select * from book_info where book_user = '$account' and book_id = '$boo
 $rs = mysqli_query($link, $sql);
 ?>
 
-<style>
-    p{
-        display: inline-block;
-    }
 
-    .like{ 
-        font-size:66px;  
-        color:#ccc; 
-        cursor:pointer;
-    }
-
-    .clicked_star{
-        color: rgb(237, 203, 31);;
-        }
-
-</style>
 
 
 <!DOCTYPE HTML>
