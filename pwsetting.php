@@ -65,11 +65,11 @@ if(isset($pw1)){
                     <input hidden name="account" value= <?php echo "$account" ?>>
                     <input hidden name="email" value=<?php echo "$email" ?>>
 							重新設定新密碼：
-							<input type="text" class="input_box" placeholder="新密碼" name="pw1" required><br>
+							<input type="password" class="input_box" placeholder="新密碼" name="pw1" required><br>
                         </div>
                         <div class="items2">
 							確認密碼：
-							<input type="text" class="input_box" placeholder="新密碼" name="pw2" required><br>
+							<input type="password" class="input_box" placeholder="新密碼" name="pw2" required><br>
                         </div>
                         <input type="submit" value="確認"><br>
 </form>
