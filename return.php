@@ -83,15 +83,15 @@ $rs = mysqli_query($link, $sql);
                                 </div><br>
                                 <!--書籍分數-->
                                 <div class="col-8 ppppp">
-                                    <input class="likepp" type="radio" name="rate" id="item01" vlaue=1/>
+                                    <input class="likepp" type="radio" name="rate" id="item01" value=1/>
                                     <label for="item01">極差</label>
-                                    <input class="likepp" type="radio" name="rate" id="item02" vlaue=2/>
+                                    <input class="likepp" type="radio" name="rate" id="item02" value=2/>
                                     <label for="item02">不優</label>
-                                    <input class="likepp" type="radio" name="rate" id="item03" vlaue=3/>
+                                    <input class="likepp" type="radio" name="rate" id="item03" value=3/>
                                     <label for="item03">普通</label>
-                                    <input class="likepp" type="radio" name="rate" id="item04" vlaue=4/>
+                                    <input class="likepp" type="radio" name="rate" id="item04" value=4/>
                                     <label for="item04">優質</label>
-                                    <input class="likepp" type="radio" name="rate" id="item05" vlaue=5/>
+                                    <input class="likepp" type="radio" name="rate" id="item05" value=5/>
                                     <label for="item05">極優</label>
                                 </div><br>
                                     
