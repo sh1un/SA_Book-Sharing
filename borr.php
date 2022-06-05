@@ -14,11 +14,13 @@ if ($_GET['br'] == 'r') {
 	$sql = "UPDATE `book_info` SET `book_user`='none' WHERE book_id = $book_id";
 	//評論書籍
 	$return_time = date('Y-m-d');
-	echo $return_time;
+	
 	$rate = $_POST['rate'];
 	$rate_content = $_POST['rate_content'];
-	$rate_sql = "INSERT INTO `evaluation`(`rate_id`,`book_id`,`account`,`rate`, `rate_content`, `rate_time`) 
-    VALUES (null,'$book_id','$account','$rate','$rate_content','$return_time')";
+	$brok_img = $_POST['brok_img'];
+	
+	$rate_sql = "INSERT INTO `evaluation`(`rate_id`,`book_id`,`account`,`rate`, `rate_content`, `rate_time`, `brok_img`) 
+    VALUES (null,'$book_id','$account','$rate','$rate_content','$return_time','$brok_img')";
 	//query
 	if (mysqli_query($link, $rate_sql) and mysqli_query($link, $sql)) {
 		header("location:index.php?log=r_success");
