@@ -65,7 +65,7 @@ $book_info = mysqli_fetch_row($rs);
                             $book_own = mysqli_fetch_assoc($ownrs);
 
                         ?>
-                            <form action="addorder.php?book_id=<?php echo $book_all['book_id'] ?>" method="POST">
+                            <form action="broken.php?book_id=<?php echo $book_all['book_id'] ?>" method="POST">
                                 <div class="box_action haved_bar">
                                     <div class="book_jpg_style123 haved_bar_items">
                                         <a href="書籍一覽.php?book_name=<?php echo $book_all['book_name'] ?>" style="margin:30px;">

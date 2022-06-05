@@ -60,7 +60,7 @@ $rs = mysqli_query($link, $sql);
                                 <p>介紹文 : <?php echo $book_info[9]; ?></p>
                                 <!-- 破損 -->
                                 <div class="col-6">
-                                    破損頁面&nbsp&nbsp&nbsp<input type="file" name="book-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=" " />
+                                    破損頁面&nbsp&nbsp&nbsp<input type="file" name="brok_img" accept=".jpg, .png, .img, .jpeg" value=" " />
                                 </div>
                                 <br>
                                 <!--破損詳細-->
