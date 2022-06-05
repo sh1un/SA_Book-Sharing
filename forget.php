@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/register.css" />
+    <link rel="stylesheet" href="assets/css/login.css" />
 </head>
 
 <body class="is-preload">
@@ -16,7 +16,7 @@
         <div id="main">
             <div class="inner">
             <header id="header">
-                    <h1>歡迎忘記書籍共享平台的密碼
+                    <h1>歡迎使用書籍共享平台
                     </h1>
                     <h3 align="right"><br><br>忘記密碼！</h3>
 

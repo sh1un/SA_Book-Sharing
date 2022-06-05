@@ -2,22 +2,8 @@
 //login傳值
 $account = $_GET['account'];
 $email = $_GET['email'];
-$pw1 = $_POST['pw1'];
-$pw2 = $_POST['pw2'];
-
-if(isset($pw1)){
-    $link = mysqli_connect("localhost", "root");
-    mysqli_select_db($link, "sa");
-    if($pw1 == $pw2){
-        $sql = "UPDATE account SET password = '1234' WHERE email='$email';";
-        if(mysqli_query($link, $sql))
-        {
-            header("location:login.php?密碼修改成功！");
-        }
-    }else{
-        echo "<script>alert('密碼不一致')</script>";
-    }
-}
+$link = mysqli_connect("localhost", "root");
+mysqli_select_db($link, "sa");
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -32,7 +18,7 @@ if(isset($pw1)){
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/register.css" />
+    <link rel="stylesheet" href="assets/css/login.css" />
 
 <body class="is-preload">
 
@@ -48,7 +34,7 @@ if(isset($pw1)){
                     <h1>歡迎使用書籍共享平台
                     </h1>
 
-                    <h3 align="right"><br><br>立即註冊開始使用！</h3>
+                    <h3 align="right"><br><br>重設密碼</h3>
 
                 </header>
 
@@ -65,11 +51,10 @@ if(isset($pw1)){
                     <input hidden name="account" value= <?php echo "$account" ?>>
                     <input hidden name="email" value=<?php echo "$email" ?>>
 							重新設定新密碼：
-							<input type="password" class="input_box" placeholder="新密碼" name="pw1" required><br>
-                        </div>
-                        <div class="items2">
+							<input type="password" class="input_box" placeholder="新密碼" name="pw1" required>
+                            <br><br>
 							確認密碼：
-							<input type="password" class="input_box" placeholder="新密碼" name="pw2" required><br>
+							<input type="password" class="input_box" placeholder="新密碼" name="pw2" required>
                         </div>
                         <input type="submit" value="確認"><br>
 </form>
@@ -77,8 +62,23 @@ if(isset($pw1)){
         </div>
         <?php include "index_bar.html" ?>
     </div>
+<?php 
+@$pw1 = $_POST['pw1'];
+@$pw2 = $_POST['pw2'];
 
-
+if(isset($pw1)){ 
+    if($pw1 == $pw2){
+        $sql = "UPDATE `account` SET `password` = '$pw1' WHERE `email` = '$email'";
+        if(mysqli_query($link, $sql))
+        {
+            echo "<script>alert('密碼修改成功')</script>";
+            header("location:login.php?密碼修改成功！");
+        }
+    }else{
+        echo "<script>alert('密碼不一致')</script>";
+    }
+}
+?>
 </body>
 
 </html>

@@ -143,17 +143,17 @@ function renew(index){
                             <h3>安全性問題：</h3>
                             <p>作為日後忘記密碼之預防手段</p>
                             問題一：
-                            <input type="text" name="safe_q1" placeholder="Ex.第一份工作是什麼？">
+                            <input type="text" name="safe_q1" placeholder="Ex.第一份工作是什麼？" required>
                             答案
-                            <input type="text" name="safe_a1">
+                            <input type="text" name="safe_a1" required>
                             問題二：
-                            <input type="text" name="safe_q2" placeholder="Ex.第一任女朋友的名字？">
+                            <input type="text" name="safe_q2" placeholder="Ex.第一任女朋友的名字？" required>
                             答案
-                            <input type="text" name="safe_a2">
+                            <input type="text" name="safe_a2" required>
                             問題三：
-                            <input type="text" name="safe_q3"  placeholder="Ex.最喜歡的食物？">
+                            <input type="text" name="safe_q3"  placeholder="Ex.最喜歡的食物？" required>
                             答案
-                            <input type="text" name="safe_a3">
+                            <input type="text" name="safe_a3" required>
 						</div>
                         
 						<?php
