@@ -69,7 +69,7 @@ $rs = mysqli_query($link, $query_rs);
                         </div>
 
                     <?php }
-                    if($get=="true"){
+                    if($get<>"true"){
                         echo "無搜尋到您想要的書籍，換個關鍵字試試?";}  ?>
                 </section>
 
