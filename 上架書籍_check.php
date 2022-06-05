@@ -21,8 +21,11 @@ date_default_timezone_set('Asia/Taipei');
     VALUES (null,'$book_owner','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction','$book_up_date',0)";
 
     if(mysqli_query($link,$sql))
-    {
-        header('location:已上架書籍.php?sorf=上架成功');
+    {  
+        $login_sql = "UPDATE `account` SET point=point+5 WHERE account = '$_SESSION[account]'";
+        mysqli_query($link, $login_sql);
+        echo "<script>alert('上架成功，獲得5point'); location.href='已上架書籍.php'</script>";
+        
     }else{
         header('location:已上架書籍.php?sorf=上架失敗');
     }
