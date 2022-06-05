@@ -60,14 +60,16 @@ if (isset($_SESSION['name'])) {
                     <form method="get" action="" id='searchtxt'>
                         <input type="text" name="searchtxt" value="<?php echo $searchtxt; ?>"  placeholder="輸入關鍵字" />
                     </form>
-                    <ul class="pagination">
-                        <li><a href="order.php?filter=iamowner" class="page">我是捐借者</a></li> |
-                        <li><a href="order.php?filter=iamuser" class="page">我是租借者</a></li> |
-                        <li><a href="order.php?filter=tobeborrowed" class="page">待借書</a></li> |
-                        <li><a href="order.php?filter=tobereturn" class="page">待還書</a></li> |
-                        <li><a href="order.php?filter=tobeevaluation" class="page">待評價</a></li> |
-                        <li><a href="order.php?filter=finished" class="page">已完成</a></li>
-                    </ul>
+                    <div id="ss">
+                        <ul class="pagination">
+                            <li><a href="order.php?filter=iamowner" class="page" onclick="changestyle(this)">我是捐借者</a></li> |
+                            <li><a href="order.php?filter=iamuser" class="page">我是租借者</a></li> |
+                            <li><a href="order.php?filter=tobeborrowed" class="page">待借書</a></li> |
+                            <li><a href="order.php?filter=tobereturn" class="page">待還書</a></li> |
+                            <li><a href="order.php?filter=tobeevaluation" class="page">待評價</a></li> |
+                            <li><a href="order.php?filter=finished" class="page">已完成</a></li>
+                        </ul>
+                    </div>
                     <?php $searchtxt='default'; ?>
                     <br>
                     <div class="posts">
@@ -98,6 +100,7 @@ if (isset($_SESSION['name'])) {
                                     elseif($filter=='iamowner')
                                     {
                                         $sql="select * from orderlist where book_owner like '$account'";
+                                        
 
                                     }
                                     elseif($filter=='iamuser')
@@ -149,7 +152,7 @@ if (isset($_SESSION['name'])) {
                                             
                                             <td><a href=order_check.php?method=update&order_id=$record[0]><button>完成訂單</button></a></td>
                                             
-                                            <td><button>取消訂單</button></td>
+                                            <td><a href=order_check.php?method=delete&order_id=$record[0]><button>取消訂單</button></a></td>
                                             ";
                                       
                                       
@@ -180,7 +183,13 @@ if (isset($_SESSION['name'])) {
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-
+    <script>
+        function changestyle(obj){
+        //obj.className='current';
+        // document.getElementById('ss').className="page active";
+        obj.className="page active";
+        }
+    </script>
 </body>
 
 </html>

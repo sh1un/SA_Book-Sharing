@@ -24,6 +24,7 @@
 ?>
 <?php
     $order_id = $_GET['order_id'];
+    $method = $_GET['method'];
 ?>
     <form action='' method='post'>
         <input type='hidden' name='order_id' value="<?php echo $order_id; ?>">
@@ -53,6 +54,14 @@
         $sql4="UPDATE orderlist SET order_status = '已完成' WHERE order_id='$order_id'";
         mysqli_query($link, $sql4);
     }
+?>
+
+<?php
+    if($method=='delete'){
+        $sql5="DELETE FROM orderlist WHERE order_id = '$order_id'";
+        mysqli_query($link, $sql5);
+    }
+
 ?>
 <?php
     mysqli_close($link);
