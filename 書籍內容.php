@@ -103,7 +103,7 @@ if (isset($_GET['f'])) {
                                     } else {
                                         echo "<a href='書籍內容.php?f=Y&book_name=$book_name' class=button big>" . $book_info[11] . "🤍收藏";
                                     } ?></a>
-                                    &nbsp&nbsp&nbsp<button class="button big" type="submit">常看所有相同書籍</button>
+                                    &nbsp&nbsp&nbsp<button class="button big" type="submit">查看所有相同書籍</button>
                                 </li>
                             </ul>
 
