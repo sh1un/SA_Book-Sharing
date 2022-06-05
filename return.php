@@ -13,7 +13,6 @@ $rs = mysqli_query($link, $sql);
 
 
 
-
 <!DOCTYPE HTML>
 <html>
 
@@ -44,11 +43,14 @@ $rs = mysqli_query($link, $sql);
                         <form action="borr.php?br=r" method="POST">
                             <?php if ($book_info = mysqli_fetch_row($rs)) { ?>
                                 <header>
+                                    
                                     <h1>書名 : <?php echo $book_info[3]; ?><br></h1><input hidden name="book_name" value="<?php echo $book_info[3]; ?>" />
+                                    <img src="images/<?php echo $book_info[8]; ?>" alt="">
                                     <h4>編號 : <?php echo $book_id; ?></h4><input hidden name="book_id" value="<?php echo $book_id; ?>" />
                                     <h4>作者 : <?php echo $book_info[4]; ?></h4><input hidden name="book_author" value="<?php echo $book_info[4]; ?>" />
                                     <h4>擁有者 : <?php echo $book_info[1]; ?></h4><input hidden name="book_owner" value="<?php echo $book_info[1]; ?>" />
                                     <h4>借閱者 : <?php echo $book_info[2]; ?></h4><input hidden name="book_user" value="<?php echo $book_info[2]; ?>" />
+                                    
                                 </header>
                                 <!--還書日期-->
                                 <div class="col-4 col-12-xsmall">
@@ -68,6 +70,7 @@ $rs = mysqli_query($link, $sql);
                                 </div><br>
                                 <!--書籍分數-->
                                 <div class="col-8 ppppp">
+                                    <p>對書籍持有者ID<<?php echo $book_info[1]; ?>>的評價?</p>
                                     <input class="likepp" type="radio" name="rate" id="item01" value=1/>
                                     <label for="item01">極差</label>
                                     <input class="likepp" type="radio" name="rate" id="item02" value=2/>
@@ -84,7 +87,7 @@ $rs = mysqli_query($link, $sql);
 
                                 <!--書籍評論-->
                                 <div class="col-8">
-                                    <textarea name="rate_content" id="rate_content" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
+                                    <textarea name="rate_content" id="rate_content" placeholder="對於這本書的體驗如何?" rows="6"></textarea>
                                 </div>
                                 <br>
                                 <div class="col-12">
@@ -95,9 +98,6 @@ $rs = mysqli_query($link, $sql);
                                 </div>
                         </form>
                     </div>
-                    <span class="image object">
-                        <img src="images/<?php echo $book_info[8]; ?>" alt="">
-                    </span>
                 <?php } ?>
                 </section>
             </div>
