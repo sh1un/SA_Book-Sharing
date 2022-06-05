@@ -18,7 +18,17 @@ if ($user = mysqli_fetch_assoc($rs)) {
         $_SESSION['account'] = $user['account'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['con'] = $user['con'];
-        header('location:index.php');
+        //每日登入
+        $now_login = date("Y-m-d");
+        if ($now_login <> $user['lasttime_login']) {
+            $point = $user['point'] + 1;
+            $login_sql = "UPDATE `account` SET `lasttime_login`='$now_login',`point`='$point' WHERE account = '$_SESSION[account]'";
+            mysqli_query($link, $login_sql);
+            echo "<script>alert('登入成功，獲得1point``,
+            $point'); location.href='index.php'</script>";
+        } else {
+            header('location:index.php');
+        }
     } else {
         header('location:login.php?login=fail&method=message&message=登入失敗');
     }

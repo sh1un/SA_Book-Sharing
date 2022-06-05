@@ -58,6 +58,11 @@ $rs = mysqli_query($link, $sql);
                                         <?php echo $row['name']; ?></td>
                                 </tr>
                                 <tr>
+                                    <td>持有點數</td>
+                                    <td>
+                                        <?php echo $row['point']; ?></td>
+                                </tr>
+                                <tr>
                                     <td>帳號</td>
                                     <td><input type="hidden" value=<?php echo $row['account']; ?> name="account">
                                         <?php echo $row['account']; ?></td>

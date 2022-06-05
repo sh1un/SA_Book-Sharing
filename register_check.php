@@ -25,11 +25,12 @@ $rs = mysqli_query($link, $sql);
 if (mysqli_fetch_assoc($rs)) {
     header("location:register.php?register=exist");
 } else {
-    $add = "INSERT INTO `account`(`name`, `email`, `birth`, `area` , `address`, `gender`, `account`, `password`, `con`, `a1`, `q1`, `a2`, `q2`, `a3`, `q3`) VALUES ('$name','$email','$birth','$area', '$address','$gender','$account','$password', '$con', '$safe_a1', '$safe_q1', '$safe_a2', '$safe_q2', '$safe_a3', '$safe_q3')";
-    echo $add;
+    $add = "INSERT INTO `account`(`name`, `email`, `birth`, `area` , `address`, `gender`, `account`, `password`, `con`, `a1`, `q1`, `a2`, `q2`, `a3`, `q3`, `point`) 
+    VALUES ('$name','$email','$birth','$area', '$address','$gender','$account','$password', '$con', '$safe_a1', '$safe_q1', '$safe_a2', '$safe_q2', '$safe_a3', '$safe_q3',0)";
+
     if (mysqli_query($link, $add)) {
         header('location:login.php?method=message&message=新增成功');
     } else {
-        // header('location:register.php?method=message&message=新增失敗');
+        header('location:register.php?method=message&message=新增失敗');
     }
 }
