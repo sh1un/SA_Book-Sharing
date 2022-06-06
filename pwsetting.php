@@ -71,8 +71,7 @@ if(isset($pw1)){
         $sql = "UPDATE `account` SET `password` = '$pw1' WHERE `email` = '$email'";
         if(mysqli_query($link, $sql))
         {
-            echo "<script>alert('密碼修改成功')</script>";
-            header("location:login.php?密碼修改成功！");
+            echo "<script>alert('密碼修改成功');location.href='login.php'</script>";
         }
     }else{
         echo "<script>alert('密碼不一致')</script>";

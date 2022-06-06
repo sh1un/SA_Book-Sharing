@@ -69,7 +69,7 @@ $user = mysqli_fetch_assoc($rs);
                             @$answer3 = $_POST['answer3'];
                             if (isset($answer1)) {
                                 if ($user['a1'] == $answer1 && $user['a2'] == $answer2 && $user['a3'] == $answer3) {
-                                    header("location:pwsetting.php?email='$email'&account='$account'");
+                                    header("location:pwsetting.php?email=$email&account=$account");
                                 }
                                 else{echo "<span style='color:#CE0000;font-size:15px;'><br>回答錯誤！</span><span style='font-size: 20px;'></span>";}
                             }?><br>
