@@ -75,10 +75,7 @@ $rs = mysqli_query($link, $sql);
 									上架時間 : <?php echo $rslt['up_date']; ?><br>
 									<?php echo $rslt['book_introduction']; ?></p>
 									<ul class="actions">
-										<li><?php if ($rslt["book_owner"] == $account) { ?><a href="下架書籍.php?book_id=$book_id" class="button big">下架</a>
-                                    <?php } else if ($rslt["book_user"] == $account) { ?><a href='return.php?book_id=<?php echo $rslt[0]; ?>' class="button big">還書</a><?php } 
-									else { ?>
-                                        <a href="borr.php?br=b" class="button big">立即借閱</a><?php } ?>
+										<li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button big">書籍資訊</a>
                                 </li></li>
 									</ul>
 								</div>
