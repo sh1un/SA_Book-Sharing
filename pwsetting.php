@@ -1,10 +1,27 @@
 <?php
 //login傳值
-$account = $_GET['account'];
-$email = $_GET['email'];
+$account = $_POST['account'];
+$email = $_POST['email'];
 $link = mysqli_connect("localhost", "root");
 mysqli_select_db($link, "sa");
+//sql語法
+$sql_account = "select * from account where account = '$account' and email = '$email'";
+//mysqli_query(連結，sql語法)
+$rs = mysqli_query($link, $sql_account);
+$user = mysqli_fetch_assoc($rs);
 ?>
+
+<?php 
+    @$answer1 = $_POST['answer1'];
+    @$answer2 = $_POST['answer2'];
+    @$answer3 = $_POST['answer3'];
+        if ($user['a1'] == $answer1 && $user['a2'] == $answer2 && $user['a3'] == $answer3) {
+            
+        }else{
+            header("safe_qa.php?account=$account&email=$email&回答錯誤！");
+        }
+
+            ?>
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
