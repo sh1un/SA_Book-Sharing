@@ -62,7 +62,9 @@ $points = $point['point'];
                             ?> <div class="brok_box_item link-right">
                                 <img class="brok_img" src="images/<?php echo $book['book_image']; ?>" />
                                 <h4><?php echo $book['book_name']; ?></h4>
+                                <input type='hidden' name='book_name' value="<?php echo $book['book_name']; ?>">
                                 <h8>#<?php echo $book['book_id']; ?><br></h8>
+                                <input type='hidden' name='book_id' value="<?php echo $_GET['book_id']; ?>">
                                 <h5>擁有者 : <?php echo $book_own['account']; ?><br></h5>
                                 <input type="hidden" name="book_own" value="<?php echo $book['book_owner']; ?>">
                                 <h5>租借者 : <?php if ($book['book_user'] == "none") {
@@ -70,7 +72,7 @@ $points = $point['point'];
                                             } else {
                                                 echo $book_use['account'];
                                             } ?><br></h5>
-                                <input type="hidden" name="book_user" value="<?php echo $book['book_user']; ?>">
+                                <input type="hidden" name="book_user" value="<?php echo $account; ?>">
                                 <h7>作者 : <?php echo $book['book_author']; ?><br></h7>
                                 <h7>出版社 : <?php echo $book['public']; ?><br></h7>
                                 <h7>出版日期 : <?php echo $book['public_date']; ?><br></h7>
