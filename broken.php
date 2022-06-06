@@ -50,37 +50,38 @@ $points = $point['point'];
                     <form action="addorder.php" method="post">
                         <div class="brok_box">
 
-                            <?php while ($rate = mysqli_fetch_assoc($rate_rs)) {
-
-                                if ($book = mysqli_fetch_assoc($book_rs)) {
-                                    //借書跟捐書人的名字
-                                    $ownsql = "select * from account where account = '$book[book_owner]'";
-                                    $ownrs = mysqli_query($link, $ownsql);
-                                    $book_own = mysqli_fetch_assoc($ownrs);
-                                    $usesql = "select * from account where account = '$book[book_user]'";
-                                    $users = mysqli_query($link, $usesql);
-                                    $book_use = mysqli_fetch_assoc($users); ?>
-
-                                    <div class="brok_box_item link-right">
-                                        <img class="brok_img" src="images/<?php echo $book['book_image']; ?>" />
-                                        <h4><?php echo $book['book_name']; ?></h4>
-                                        <h8>#<?php echo $book['book_id']; ?><br></h8>
-                                        <h5>擁有者 : <?php echo $book_own['account']; ?><br></h5>
-                                        <input type="hidden" name="book_own" value="<?php echo $book['book_owner']; ?>">
-                                        <h5>租借者 : <?php if ($book['book_user'] == "none") {
-                                                        echo "none";
-                                                    } else {
-                                                        echo $book_use['account'];
-                                                    } ?><br></h5>
-                                        <input type="hidden" name="book_user" value="<?php echo $book['book_user']; ?>">
-                                        <h7>作者 : <?php echo $book['book_author']; ?><br></h7>
-                                        <h7>出版社 : <?php echo $book['public']; ?><br></h7>
-                                        <h7>出版日期 : <?php echo $book['public_date']; ?><br></h7>
-                                        <input type="hidden" name="status" value="待借書">
-                                    </div>
-                                <?php }
+                            <?php
+                            $book = mysqli_fetch_assoc($book_rs);
+                            //借書跟捐書人的名字
+                            $ownsql = "select * from account where account = '$book[book_owner]'";
+                            $ownrs = mysqli_query($link, $ownsql);
+                            $book_own = mysqli_fetch_assoc($ownrs);
+                            $usesql = "select * from account where account = '$book[book_user]'";
+                            $users = mysqli_query($link, $usesql);
+                            $book_use = mysqli_fetch_assoc($users);
+                            ?> <div class="brok_box_item link-right">
+                                <img class="brok_img" src="images/<?php echo $book['book_image']; ?>" />
+                                <h4><?php echo $book['book_name']; ?></h4>
+                                <h8>#<?php echo $book['book_id']; ?><br></h8>
+                                <h5>擁有者 : <?php echo $book_own['account']; ?><br></h5>
+                                <input type="hidden" name="book_own" value="<?php echo $book['book_owner']; ?>">
+                                <h5>租借者 : <?php if ($book['book_user'] == "none") {
+                                                echo "none";
+                                            } else {
+                                                echo $book_use['account'];
+                                            } ?><br></h5>
+                                <input type="hidden" name="book_user" value="<?php echo $book['book_user']; ?>">
+                                <h7>作者 : <?php echo $book['book_author']; ?><br></h7>
+                                <h7>出版社 : <?php echo $book['public']; ?><br></h7>
+                                <h7>出版日期 : <?php echo $book['public_date']; ?><br></h7>
+                                <input type="hidden" name="status" value="待借書">
+                            </div>
+                            <div class="brok_box_item2">
+                                <?php
+                                while ($rate = mysqli_fetch_assoc($rate_rs)) {
                                 ?>
-                                <div class="brok_box_item2">
+
+                                    &nbsp;
                                     <div style="flex: 1;"><img class="book_image" src="images/<?php echo $rate['brok_img']; ?>" /></div>
                                     <div style="flex:5;margin-left: 40px; display:flex; flex-direction:column" class="link-top">
                                         <div style="flex:1">
@@ -94,17 +95,18 @@ $points = $point['point'];
                                         </div>
                                     </div>
 
-                                </div>
 
 
-                            <?php } ?>
+
+                                <?php } ?>
+                            </div>
 
                         </div>
                         <div class="haved_bar_items " style="margin:30px ;">
-                            <?php if ($points < 5) {?>
+                            <?php if ($points < 5) { ?>
                                 <input type="submit" value="您的點數<5" disabled>
-                            <?php }else{?>
-                            <input type="submit" value="確定借閱"> <?php } ?>
+                            <?php } else { ?>
+                                <input type="submit" value="確定借閱"> <?php } ?>
                         </div>
                     </form>
                 </section>
