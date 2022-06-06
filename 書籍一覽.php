@@ -80,7 +80,7 @@ $book_info = mysqli_fetch_row($rs);
                                             <p>書名 : <?php echo $book_all["book_name"]; ?><br></p><input type="hidden" name="book_name" value="<?php echo $book_all['book_name']; ?>">
                                             <p>擁有者 : <?php echo $book_own['name']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_own['account']; ?>">
                                             <p>類別 : <?php echo $book_all["book_category"]; ?><br></p><input type="hidden" name="book_user" value="<?php echo $_SESSION['account']; ?>">
-                                            <input type="hidden" name="status" value="待借書">
+                                            
                                         </div>
                                     </div>
                                     <div class="haved_bar_items ">
