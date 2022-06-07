@@ -151,7 +151,7 @@ if (isset($_SESSION['name'])) {
                                     while($record=mysqli_fetch_row($rs))
                                     {
                                         echo 
-                                        "
+                                        "   
                                         <tr>
                                             <td>$record[0]</td>
                                             <td>$record[1]</td>
@@ -160,13 +160,62 @@ if (isset($_SESSION['name'])) {
                                             <td>$record[4]</td>
                                             <td>$record[5]</td>
                                             <td>$record[6]</td>
+                                        ";
+
+                                            $fetch_owner_user_check_sql = "SELECT * FROM orderlist WHERE order_id = '$record[0]'";//抱歉這裡可能需要改一下變數名稱我發現我設得不太合理雖然不影響系統運作，by Shiun
+                                            $check_rs = mysqli_query($link,$fetch_owner_user_check_sql);
+                                            $check_rs_array = mysqli_fetch_array($check_rs);
+                                            $owner_check = $check_rs_array['owner_check'];
+                                            $user_check = $check_rs_array['user_check'];
+                                            $book_owner = $check_rs_array['book_owner'];
+                                            $book_user = $check_rs_array['book_user'];
+                                            $order_check = $check_rs_array['order_check'];
+                                            $book_name = $check_rs_array['book_name'];
+
+                                        if($book_owner == $account){
+                                            if($owner_check == 1){
+                                                echo "<td><button disabled>操作完成</button></td>";
+                                            }
+                                            elseif($order_check < 2){
+                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成借書</button></a></td>";
+                                            }
+                                            elseif($order_check < 4){
+                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成還書</button></a></td>";
+                                            }
+                                            elseif($order_check < 5){
+                                                echo "<td><button disabled>等待評價</button></td>";
+                                            }
+                                            else{
+                                                echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=000000000001><button>查看書籍</button></a></td>";
+                                            }
+                                        }
+                                        elseif($book_user == $account){
+                                            if($user_check == 1){
+                                                echo "<td><button disabled>操作完成</button></td>";
+                                            }
+                                            elseif($order_check < 2){
+                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成借書</button></a></td>";
+                                            }
+                                            elseif($order_check < 4){
+                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成還書</button></a></td>";
+                                            }
+                                            elseif($order_check < 5){
+                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>進行評價</button></a></td>";//點擊此按鈕應要進入評價頁面
+                                            }
+                                            else{
+                                                echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=000000000001><button>查看書籍</button></a></td>";//讓使用者可以回到這本書的頁面去看評價
+                                            }
+                                        }
                                             
                                             
+                                        if($order_check == 5){
+                                            echo "<td><button disabled>訂單完成</button></td>";
+                                        }
+                                        else{
+                                            echo "<td><a href=order_check.php?method=delete&order_id=$record[0]><button>取消訂單</button></a></td>";
+                                        }
                                             
-                                            <td><a href=order_check.php?method=update&order_id=$record[0]><button>完成訂單</button></a></td>
                                             
-                                            <td><a href=order_check.php?method=delete&order_id=$record[0]><button>取消訂單</button></a></td>
-                                            ";
                                       
                                       
                                         

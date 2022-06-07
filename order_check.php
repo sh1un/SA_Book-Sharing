@@ -38,33 +38,76 @@
     $sql="UPDATE orderlist SET order_check = $record2 + 1 WHERE order_id='$order_id'";
     mysqli_query($link, $sql);
 ?>
+<?php
+//從orderlist資料表取得資料
+    $fetch_orderlist_all_sql = "SELECT * FROM orderlist WHERE order_id = '$order_id'";
+    $orderlist_rs = mysqli_query($link,$fetch_orderlist_all_sql);
+    $orderlist_array = mysqli_fetch_array($orderlist_rs);
+    $book_owner = $orderlist_array['book_owner'];
+    $book_user = $orderlist_array['book_user'];
+    $return_time = $orderlist_array['return_time'];
+?>
+<?php
+// 判斷目前登入帳號是書本的捐借者還是租借者，點擊使owner_check或user_check +1
+    if($book_owner==$account){
+        $fetch_owner_check="SELECT owner_check FROM orderlist WHERE order_id='$order_id' ";
+        $owner_check_rs=mysqli_query($link, $fetch_owner_check);
+        $owner_check_record=mysqli_fetch_assoc($owner_check_rs);
+        $owner_check_record2=$owner_check_record['order_check'];
+        $owner_check_plusone_sql="UPDATE orderlist SET owner_check = $owner_check_record2 + 1 WHERE order_id='$order_id'";
+        mysqli_query($link, $owner_check_plusone_sql);
+    }
+    else{
+        $fetch_user_check="SELECT user_check FROM orderlist WHERE order_id='$order_id' ";
+        $user_check_rs=mysqli_query($link, $fetch_user_check);
+        $user_check_record=mysqli_fetch_assoc($user_check_rs);
+        $user_check_record2=$user_check_record['order_check'];
+        $user_check_plusone_sql="UPDATE orderlist SET user_check = $user_check_record2 + 1 WHERE order_id='$order_id'";
+        mysqli_query($link, $user_check_plusone_sql);
+    }
+?>
+
 
 <?php
-// 根據order_check 更改 order_status
+// 根據order_check 更改 order_status，每過一個階段就會將owner_check和user_check歸零
     $fetch_book_user="SELECT book_user FROM orderlist WHERE order_id='$order_id' ";//抓此訂單的book_user
     $rs2=mysqli_query($link, $fetch_book_user);
     $record_book_user=mysqli_fetch_assoc($rs2);
+    $owner_check_clear_sql="UPDATE orderlist SET owner_check = 0 WHERE order_id='$order_id'";
+    $user_check_clear_sql="UPDATE orderlist SET user_check = 0 WHERE order_id='$order_id'";
+    
 
     if($record['order_check']+1 == 2){
         $sql2="UPDATE orderlist SET order_status = '待還書' WHERE order_id='$order_id'";
         
-        if($record_book_user['book_user']==$account){//判斷按下此按鈕的人是否為租借者，是的話將他點數-5
-            $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'"; 
-            mysqli_query($link, $borrow_point_sql);
-            $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
-            echo "<script>alert('借書成功，扣除5point'); location.href='order.php'</script>";
-            
-        }
+        
         mysqli_query($link, $sql2);
+        mysqli_query($link, $owner_check_clear_sql);
+        mysqli_query($link, $user_check_clear_sql);
+    }
+    if($record_book_user['book_user']==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為租借者，以及是否為待借書狀態，是的話將他點數-5
+        $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'"; 
+        mysqli_query($link, $borrow_point_sql);
+        $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
+        echo "<script>alert('借書成功，扣除5point，最慢還書日期:$return_time'); location.href='order.php'</script>";
+        
     }
     elseif($record['order_check']+1 == 4){
         $sql3="UPDATE orderlist SET order_status = '待評價' WHERE order_id='$order_id'";
         mysqli_query($link, $sql3);
+        mysqli_query($link, $owner_check_clear_sql);
+        mysqli_query($link, $user_check_clear_sql);
     }
     elseif($record['order_check']+1 == 5){
         $sql4="UPDATE orderlist SET order_status = '已完成' WHERE order_id='$order_id'";
         mysqli_query($link, $sql4);
+        mysqli_query($link, $owner_check_clear_sql);
+        mysqli_query($link, $user_check_clear_sql);
     }
+?>
+
+<?php
+    if($record['order_check'+1])
 ?>
 
 <?php
