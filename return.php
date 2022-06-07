@@ -36,7 +36,20 @@ $rs = mysqli_query($link, $sql);
                 <header id="header">
                     <h2>我來還書了</h2>
                     <h3 align='right'><br><br>馬上還書評論書籍！</h3>
-
+                    <?php
+                        if (isset($_SESSION['name'])) {
+                            $name = $_SESSION['name'];
+                            $account = $_SESSION['account'];
+                            $con = $_SESSION['con'];
+                            echo "<ul class='icons'>
+                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
+                                </ul>";
+                        } else {
+                            echo "<ul class='icons'>
+                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
+                                </ul>";
+                        }
+                        ?>
                 </header>
                 <section id="banner">
                     <div class="content">

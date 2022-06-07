@@ -41,7 +41,20 @@ $rs = mysqli_query($link, $query_rs);
                         </form>
                         <a href="index.php" class="logo"><strong>首頁</strong></a>
                     </section>
-
+                    <?php
+                        if (isset($_SESSION['name'])) {
+                            $name = $_SESSION['name'];
+                            $account = $_SESSION['account'];
+                            $con = $_SESSION['con'];
+                            echo "<ul class='icons'>
+                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
+                                </ul>";
+                        } else {
+                            echo "<ul class='icons'>
+                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
+                                </ul>";
+                        }
+                        ?>
                 </header>
 
                 <!-- Content -->

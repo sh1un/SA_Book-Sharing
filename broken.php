@@ -42,7 +42,20 @@ $points = $point['point'];
                 <header id="header">
                     <h1>書名 :</h1><br>
                     <h3 align="right"><br><br>立即借書！</h3>
-
+                    <?php
+                        if (isset($_SESSION['name'])) {
+                            $name = $_SESSION['name'];
+                            $account = $_SESSION['account'];
+                            $con = $_SESSION['con'];
+                            echo "<ul class='icons'>
+                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
+                                </ul>";
+                        } else {
+                            echo "<ul class='icons'>
+                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
+                                </ul>";
+                        }
+                        ?>
                 </header>
 
                 <!--破損情況-->
