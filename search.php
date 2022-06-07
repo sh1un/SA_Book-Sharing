@@ -72,7 +72,7 @@ $rs = mysqli_query($link, $query_rs);
                         
                         <div class="box box_action">
                             <div class="book_jpg_style123">
-                                <a href="書籍內容.php?book_name=<?php echo $row_rs['book_name'] ?>">
+                                <a href="書籍內容.php?book_name=<?php echo $row_rs['book_name'] ?>&ISBN=<?php echo $row_rs['ISBN'] ?>">
                                     <img class="book_image" src="images/<?php echo $row_rs['book_image']; ?>" /></a>
                             </div>
                             <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>

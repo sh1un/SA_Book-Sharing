@@ -9,6 +9,7 @@ date_default_timezone_set('Asia/Taipei');
     $book_image = $_POST['book-image'];
     $book_introduction = $_POST['book-introduction'];
     $book_owner = $_SESSION['account'];
+    $ISBN = $_POST['ISBN'];
     $connection_method = $_SESSION['con'];
     $book_user =$_POST['book_user'];
     $book_up_date = date("Y/m/d/H/m/s");
@@ -17,8 +18,8 @@ date_default_timezone_set('Asia/Taipei');
     mysqli_query($link, "SET NAMES 'UTF8'");
 	mysqli_select_db($link, "sa");
     
-    $sql="INSERT INTO `book_info`(`book_id`,`book_owner`,`book_user`,`book_name`, `book_author`, `public`, `public_date`, `book_category`, `book_image`, `book_introduction`, `up_date`, `likes`) 
-    VALUES (null,'$book_owner','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction','$book_up_date',0)";
+    $sql="INSERT INTO `book_info`(`book_id`,`book_owner`,`book_user`,`book_name`, `book_author`, `public`, `public_date`, `book_category`, `book_image`, `book_introduction`, `up_date`, `likes`, `ISBN`) 
+    VALUES (null,'$book_owner','$book_user','$book_name','$book_author','$public','$public_date','$book_category','$book_image','$book_introduction','$book_up_date',0,'$ISBN')";
 
     if(mysqli_query($link,$sql))
     {  

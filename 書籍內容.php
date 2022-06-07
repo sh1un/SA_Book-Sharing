@@ -9,20 +9,21 @@ if (!(isset($_SESSION['account']))) {
 }
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
-$book_name = $_GET['book_name'];
 
+$ISBN = $_GET['ISBN'];
+$book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
 
-$sql = "select * from book_info where book_name = '$book_name'";
+$sql = "select * from book_info where ISBN = '$ISBN'";
 $rs = mysqli_query($link, $sql);
 $book_info = mysqli_fetch_row($rs);
 
 //favorite
-$fav_sql = "SELECT * FROM favorite WHERE book_name = '$book_name' AND account = '$account'";
+$fav_sql = "SELECT * FROM favorite WHERE ISBN = '$ISBN' AND account = '$account'";
 $fav_rs = mysqli_query($link, $fav_sql);
 if ($fav_reslt = mysqli_fetch_assoc($fav_rs)) {
     $fav = "Y";
@@ -33,21 +34,21 @@ if ($fav_reslt = mysqli_fetch_assoc($fav_rs)) {
 if (isset($_GET['f'])) {
     if ($_GET['f'] == "Y") {
         $fav = "Y";
-        $fav_insert_sql = "INSERT INTO `favorite`(`book_name`, `account`, `favorite`) VALUES ('$book_name','$account','$fav')";
+        $fav_insert_sql = "INSERT INTO `favorite`(`book_name`, `account`, `favorite`, `ISBN`) VALUES ('$book_name','$account','$fav','$ISBN')";
         if (mysqli_query($link, $fav_insert_sql)) {
             //總按讚次數
-            $likes_sql = "UPDATE book_info SET likes = $book_info[11]+1 WHERE book_name='$book_name'";
+            $likes_sql = "UPDATE book_info SET likes = $book_info[11]+1 WHERE ISBN='$ISBN'";
             if (mysqli_query($link, $likes_sql)) {
-                header("location:書籍內容.php?book_name=$book_name");
+                header("location:書籍內容.php?ISBN=$ISBN&book_name=$book_name");
             }
         }
     } else {
-        $fav_delete_sql = "DELETE FROM favorite WHERE book_name = '$book_name' and account = '$account';";
+        $fav_delete_sql = "DELETE FROM favorite WHERE ISBN = '$ISBN' and account = '$account';";
         if (mysqli_query($link, $fav_delete_sql)) {
             //總按讚次數
-            $likes_sql = "UPDATE book_info SET likes = $book_info[11]-1 WHERE book_name='$book_name'";
+            $likes_sql = "UPDATE book_info SET likes = $book_info[11]-1 WHERE ISBN='$ISBN'";
             mysqli_query($link, $likes_sql);
-            header("location:書籍內容.php?book_name=$book_name");
+            header("location:書籍內容.php?ISBN=$ISBN&book_name=$book_name");
         }
     }
 }
@@ -112,9 +113,9 @@ if (isset($_GET['f'])) {
                             <ul class="actions">
                                 <li>
                                     <?php if ($fav == "Y") {
-                                        echo "<a style='background-color:#f56a6a' href='書籍內容.php?f=N&book_name=$book_name' class=button big><font style='color:white'>" . $book_info[11] . "🤍收藏</font>";
+                                        echo "<a style='background-color:#f56a6a' href='書籍內容.php?f=N&ISBN=$ISBN&book_name=$book_name' class=button big><font style='color:white'>" . $book_info[11] . "🤍收藏</font>";
                                     } else {
-                                        echo "<a href='書籍內容.php?f=Y&book_name=$book_name' class=button big>" . $book_info[11] . "🤍收藏";
+                                        echo "<a href='書籍內容.php?f=Y&ISBN=$ISBN&book_name=$book_name' class=button big>" . $book_info[11] . "🤍收藏";
                                     } ?></a>
                                     &nbsp&nbsp&nbsp<button class="button big" type="submit">查看所有相同書籍</button>
                                 </li>

@@ -47,19 +47,15 @@ if (isset($_GET['sorf'])) {
                 <header id="header">
                     <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
-                        if (isset($_SESSION['name'])) {
-                            $name = $_SESSION['name'];
-                            $account = $_SESSION['account'];
-                            $con = $_SESSION['con'];
-                            echo "<ul class='icons'>
+
+                    $name = $_SESSION['name'];
+                    $account = $_SESSION['account'];
+                    $con = $_SESSION['con'];
+                    echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
-                        } else {
-                            echo "<ul class='icons'>
-                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
-                                </ul>";
-                        }
-                        ?>
+
+                    ?>
                 </header>
 
 
@@ -80,13 +76,15 @@ if (isset($_GET['sorf'])) {
                         ?>
                             <article>
                                 <div class="img_box">
-                                    <img class="img_item" src='images/<?php echo $rslt['book_image']; ?>' alt="" /></div>
+                                    <img class="img_item" src='images/<?php echo $rslt['book_image']; ?>' alt="" />
+                                </div>
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 編號 : <?php echo $rslt['book_id'] ?>
                                 <p><?php if ($rslt['book_user'] == "none") {
                                     ?>租借情況：none <br> 租借人：none<?php
-                                    } else { ?>租借情況：租借中 <br> 租借人 : <?php
-                                            echo $rslt2['name'];}?>
+                                                            } else { ?>租借情況：租借中 <br> 租借人 : <?php
+                                                                    echo $rslt2['name'];
+                                                                } ?>
                                 <br>捐借人：<?php echo $name ?>
                                 <br>上架時間：<?php echo $rslt['up_date'] ?>
                                 <br>作者：<?php echo $rslt['book_author'] ?>

@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (!(isset($_SESSION['account']))) {
-    header("location:index.php?log=no");
-}
+
 
 ?>
 <!DOCTYPE HTML>
@@ -37,9 +35,7 @@ if (!(isset($_SESSION['account']))) {
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
                         } else {
-                            echo "<ul class='icons'>
-                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
-                                </ul>";
+                            header("location:index.php?log=no");
                         }
                         ?>
                 </header>
@@ -60,6 +56,10 @@ if (!(isset($_SESSION['account']))) {
                             <!--書名-->
                             <div class="col-6 col-12-xsmall">
                                 <input type="text" name="book-name" id="book-name" value="" placeholder="書名" />
+                            </div>
+                             <!--ISBN-->
+                             <div class="col-6 col-12-xsmall">
+                                <input type="text" name="ISBN" id="ISBN" value="" placeholder="ISBN" />
                             </div>
                             <!--作者-->
                             <div class="col-6 col-12-xsmall">

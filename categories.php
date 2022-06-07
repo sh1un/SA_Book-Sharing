@@ -75,7 +75,7 @@ $rs = mysqli_query($link, $sql);
 									上架時間 : <?php echo $rslt['up_date']; ?><br>
 									<?php echo $rslt['book_introduction']; ?></p>
 									<ul class="actions">
-										<li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button big">書籍資訊</a>
+										<li><a href="書籍內容.php?ISBN=<?php echo $rslt['ISBN'] ?>" class="button big">書籍資訊</a>
                                 </li></li>
 									</ul>
 								</div>
