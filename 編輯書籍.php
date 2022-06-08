@@ -68,28 +68,58 @@ if (isset($_SESSION['name'])) {
                         <?php
                             $rs =  mysqli_fetch_assoc($rs);
                         ?>
-                            <article>
-                                <div class="img_box">
-                                更換圖片：<input type="file" name="udbook-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=""/>
-                                <input type="hidden" value=<?php echo $rs['book_image']; ?> name="book-image">
-                                    <img class="img_item" src='images/<?php echo $rs['book_image']; ?>' alt="" /></div>
-                                書名：<h3><input type="text" name="udbook-name" id="book-name" value="<?php echo $rs['book_name'] ?>"/></h3>
-                                編號 : <input type="hidden" value=<?php echo $rs['book_id'] ?> name="book_id">
-                                <?php echo $rs['book_id'] ?>
-                                <p><?php if ($rs['book_user'] == "none") {
-                                    ?><input type="hidden" value="none" name="book_user">
-                                    租借情況：none <br> 租借人：none<?php
+                        <div>
+                            <table>
+                                
+                                <tr>
+                                    <td width="550px">更換圖片：</td>
+                                    <td><input type="file" name="udbook-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=""/>
+                                    <input type="hidden" value=<?php echo $rs['book_image']; ?> name="book-image">
+                                    <img class="img_item" src='images/<?php echo $rs['book_image']; ?>' alt="" /></div></td>
+                                </tr>
+                                <tr>
+                                    <td>書名：</td>
+                                    <td>
+                                        <h3><input type="text" name="udbook-name" id="book-name" value="<?php echo $rs['book_name'] ?>"/></h3></td>
+                                </tr>
+                                <tr>
+                                    <td>編號 :</td>
+                                    <td><input type="hidden" value=<?php echo $rs['book_id'] ?> name="book_id">
+                                    <?php echo $rs['book_id'] ?>
+                                    <p><?php if ($rs['book_user'] == "none") {
+                                    ?><input type="hidden" value="none" name="book_user"></td></p>
+                                </tr>
+                                <tr>
+                                    <td>租借情況：none <br> 租借人：none</td>
+                                    <td><?php
                                     } else { ?><input type="hidden" value="<?php echo $rs['name']?>" name="book_user">
                                     租借情況：租借中 <br> 租借人 : <?php
-                                            echo $rs['name'];}?>
-                                <br>捐借人：<input type="hidden" value=<?php echo $name ?> name="book_owner">
-                                <?php echo $name ?>
-                                <br>上架時間：<input type="hidden" value=<?php echo $rs['up_date'] ?> name="up_date">
-                                <?php echo $rs['up_date'] ?>
-                                <br>作者：<input type="text" name="udbook-author" id="book-author"  value="<?php echo $rs['book_author'] ?>" required>
-                                <br>出版社：<input type="text" name="udpublic" id="public" value="<?php echo $rs['public'] ?>"/>
-                                <br>出版日期：<input type="date" name="udpublic-date" id="public-date" value="<?php echo $rs['public_date'] ?>"/>
-                                <br>類別：<select name="udbook-category" id="book-category" required>
+                                            echo $rs['name'];}?></td>
+                                </tr>
+                                <tr>
+                                    <td>捐借人：</td>
+                                    <td><input type="hidden" value=<?php echo $name ?> name="book_owner"><?php echo $name ?></td>
+                                </tr>
+                                <tr>
+                                    <td>上架時間：</td>
+                                    <td><input type="hidden" value=<?php echo $rs['up_date'] ?> name="up_date">
+                                    <?php echo $rs['up_date'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>作者：</td>
+                                    <td><input type="text" name="udbook-author" id="book-author"  value="<?php echo $rs['book_author'] ?>" required></td>
+                                </tr>
+                                <tr>
+                                    <td>出版社：</td>
+                                    <td><input type="text" name="udpublic" id="public" value="<?php echo $rs['public'] ?>"/></td>
+                                </tr>
+                                <tr>
+                                    <td>出版日期：</td>
+                                    <td><input type="date" name="udpublic-date" id="public-date" value="<?php echo $rs['public_date'] ?>"/></td>
+                                </tr>
+                                <tr>
+                                    <td>類別：</td>
+                                    <td><select name="udbook-category" id="book-category" required>
                                     <option selected="selected" disabled>請重新選擇類別</option>
                                     <option value="總類">000 總類</option>
                                     <option value="哲學類">100 哲學類</option>
@@ -101,16 +131,19 @@ if (isset($_SESSION['name'])) {
                                     <option value="史地類：世界史地">700 史地類：世界史地</option>
                                     <option value="語言文學類">800 語言文學類</option>
                                     <option value="藝術類">900 藝術類</option>
-                                </select>
-                                
+                                    </select></td>
+                                </tr>
 
-                                </p>
-
-                                <div align="center">
+                            </table>
+                            <div align="center">
                                 <input type="submit" class="input_btn" value="確認修改"><br>
-                                </div>
-                            </article>
+                            </div>
 
+                        </div>
+                            
+
+                            
+                            
 
                     </div>
                     </form>
