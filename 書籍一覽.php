@@ -36,19 +36,19 @@ $book_info = mysqli_fetch_row($rs);
 
                 <!-- Header -->
                 <header id="header">
-                    <h1>書名 :<?php echo $book_info[3]; ?></h1><br>
+                <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
                             $account = $_SESSION['account'];
                             $con = $_SESSION['con'];
                             echo "<ul class='icons'>
-                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li><br>
-                                <li><h3>立即借書！</h3></li></ul>";
+                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
+                                </ul>";
                         } else {
                             echo "<ul class='icons'>
-                                <li><a href='login.php' class='button primary small'>登入</span></a></li><br>
-                                <li><h3>立即借書！</h3></li></ul>";
+                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
+                                </ul>";
                         }
                         ?>
                 </header>
@@ -59,6 +59,7 @@ $book_info = mysqli_fetch_row($rs);
                         <img class="book_jpg_style123" style="width: 200px; height:240px;" src="images/<?php echo $book_info[8]; ?>" alt="">
                     </div>
                     <div class="content">
+                        <h2>書名 :<?php echo $book_info[3]; ?></h2><br>
                         <h4>作者 : <?php echo $book_info[4]; ?></h4>
                         <h4>出版社 : <?php echo $book_info[5]; ?></h4>
                         <h4>出版日期 : <?php echo $book_info[6]; ?></h4>

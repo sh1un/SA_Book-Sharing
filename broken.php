@@ -40,29 +40,27 @@ $points = $point['point'];
 
                 <!-- Header -->
                 <header id="header">
-                    <h1>書名 :<?php echo $book_name; ?></h1><br>
+                <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
                             $account = $_SESSION['account'];
                             $con = $_SESSION['con'];
                             echo "<ul class='icons'>
-                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li><br>
-                                <li><h3>立即借書！</h3></li>
+                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
                         } else {
                             echo "<ul class='icons'>
-                                <li><a href='login.php' class='button primary small'>登入</span></a></li><br>
-                                <li><h3>立即借書！</h3></li>
+                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
                                 </ul>";
                         }
                         ?>
                 </header>
 
                 <!--破損情況-->
-                <section>
+                <section id="banner">
                     <form action="addorder.php" method="post">
-                        <div class="posts">
+                        <div class="content">
 
                             <?php
                             $book = mysqli_fetch_assoc($book_rs);
@@ -75,26 +73,28 @@ $points = $point['point'];
                             $book_use = mysqli_fetch_assoc($users);
                             ?> 
                             <article>
-                                <div class="img_box">
-                                <img class="img_item" src="images/<?php echo $book['book_image']; ?>" />
-                                <h4><?php echo $book['book_name']; ?></h4>
+                                <header>
+                                
+                                <h2><?php echo $book['book_name']; ?></h2>
                                 <input type='hidden' name='book_name' value="<?php echo $book['book_name']; ?>">
                                 <h8>#<?php echo $book['book_id']; ?><br></h8>
                                 <input type='hidden' name='book_id' value="<?php echo $_GET['book_id']; ?>">
-                                <h5>擁有者 : <?php echo $book_own['account']; ?><br></h5>
+                                <h4>擁有者 : <?php echo $book_own['account']; ?><br></h4>
                                 <input type="hidden" name="book_own" value="<?php echo $book['book_owner']; ?>">
-                                <h5>租借者 : <?php if ($book['book_user'] == "none") {
+                                <h4>租借者 : <?php if ($book['book_user'] == "none") {
                                                 echo "none";
                                             } else {
                                                 echo $book_use['account'];
-                                            } ?><br></h5>
+                                            } ?><br></h4>
                                 <input type="hidden" name="book_user" value="<?php echo $account; ?>">
-                                <h7>作者 : <?php echo $book['book_author']; ?><br></h7>
-                                <h7>出版社 : <?php echo $book['public']; ?><br></h7>
-                                <h7>出版日期 : <?php echo $book['public_date']; ?><br></h7>
+                                <h4>作者 : <?php echo $book['book_author']; ?><br></h4>
+                                <h4>出版社 : <?php echo $book['public']; ?><br></h4>
+                                <h4>出版日期 : <?php echo $book['public_date']; ?><br></h4>
+                                <h4>類別 : <?php echo $book['book_category']; ?></h4>
+                                <p>介紹文 : <?php echo $book['book_introduction']; ?></p>
                                 <input type="hidden" name="status" value="待借書">
-                            </div>
-                            <div class="brok_box_item2">
+                            
+                                </header>
                                 <?php
                                 while ($rate = mysqli_fetch_assoc($rate_rs)) {
                                 ?>
@@ -115,18 +115,15 @@ $points = $point['point'];
 
 
                                 <?php } ?>
-                            </div>
-                            
-                        
-                        <div class="actions" style="margin:30px ;">
+                        </article>
+                        <div class="actions">
                             <?php if ($points < 5) { ?>
                                 <input type="submit" value="您的點數<5" disabled>
                             <?php } else { ?>
                                 <input type="submit" value="確定借閱"> <?php } ?>
                         </div>
-                        </article>
                         </div>
-                    </form>
+                    </form><img src="images/<?php echo $book['book_image']; ?>" />
                 </section>
             </div>
         </div>
