@@ -25,8 +25,8 @@ $points = $point['point'];
     <title>書籍</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/book-list.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/register.css" />
 </head>
 
 <body class="is-preload">
@@ -40,19 +40,20 @@ $points = $point['point'];
 
                 <!-- Header -->
                 <header id="header">
-                    <h1>書名 :</h1><br>
-                    <h3 align="right"><br><br>立即借書！</h3>
+                    <h1>書名 :<?php echo $book_name; ?></h1><br>
                     <?php
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
                             $account = $_SESSION['account'];
                             $con = $_SESSION['con'];
                             echo "<ul class='icons'>
-                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
+                                <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li><br>
+                                <li><h3>立即借書！</h3></li>
                                 </ul>";
                         } else {
                             echo "<ul class='icons'>
-                                <li><a href='login.php' class='button primary small'>登入</span></a></li>
+                                <li><a href='login.php' class='button primary small'>登入</span></a></li><br>
+                                <li><h3>立即借書！</h3></li>
                                 </ul>";
                         }
                         ?>
@@ -61,7 +62,7 @@ $points = $point['point'];
                 <!--破損情況-->
                 <section>
                     <form action="addorder.php" method="post">
-                        <div class="brok_box">
+                        <div class="posts">
 
                             <?php
                             $book = mysqli_fetch_assoc($book_rs);
@@ -72,8 +73,10 @@ $points = $point['point'];
                             $usesql = "select * from account where account = '$book[book_user]'";
                             $users = mysqli_query($link, $usesql);
                             $book_use = mysqli_fetch_assoc($users);
-                            ?> <div class="brok_box_item link-right">
-                                <img class="brok_img" src="images/<?php echo $book['book_image']; ?>" />
+                            ?> 
+                            <article>
+                                <div class="img_box">
+                                <img class="img_item" src="images/<?php echo $book['book_image']; ?>" />
                                 <h4><?php echo $book['book_name']; ?></h4>
                                 <input type='hidden' name='book_name' value="<?php echo $book['book_name']; ?>">
                                 <h8>#<?php echo $book['book_id']; ?><br></h8>
@@ -111,27 +114,21 @@ $points = $point['point'];
                                     </div>
 
 
-
-
                                 <?php } ?>
                             </div>
-
-                        </div>
-                        <div class="haved_bar_items " style="margin:30px ;">
+                            
+                        
+                        <div class="actions" style="margin:30px ;">
                             <?php if ($points < 5) { ?>
                                 <input type="submit" value="您的點數<5" disabled>
                             <?php } else { ?>
                                 <input type="submit" value="確定借閱"> <?php } ?>
                         </div>
+                        </article>
+                        </div>
                     </form>
                 </section>
             </div>
-
-
-
-
-
-
         </div>
         <?php include "index_bar.html" ?>
     </div>

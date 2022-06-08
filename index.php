@@ -103,12 +103,12 @@ if (isset($_GET['log'])) {
                                     <ul class="actions">
                                         <?php if (isset($account)) {
                                             if ($rslt['book_owner'] == $account) { ?>
-                                                <li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button">下架書籍</a>
+                                                <li><a href="書籍內容.php?ISBN=<?php echo $rslt['book_name'] ?>" class="button">書籍資訊</a>
                                                 </li><?php } else { ?>
-                                                <li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button">立即借閱</a>
+                                                <li><a href="書籍內容.php?ISBN=<?php echo $rslt['ISBN'] ?>" class="button">書籍資訊</a>
                                                 </li><?php }
                                                 } else { ?>
-                                            <li><a href="書籍內容.php?book_name=<?php echo $rslt['book_name'] ?>" class="button">立即借閱</a>
+                                            <li><a href="書籍內容.php?ISBN=<?php echo $rslt['ISBN'] ?>" class="button">書籍資訊</a>
                                             </li><?php } ?>
 
                                     </ul>
@@ -135,7 +135,7 @@ if (isset($_GET['log'])) {
                                 <h3>灰階思考</h3>
                                 <p>黑白之間都是灰，找到無限價值的所在。Podcast冠軍節目股癌製作人謝孟恭首本力作！</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -145,7 +145,7 @@ if (isset($_GET['log'])) {
                                 <h3>股票作手回憶錄</h3>
                                 <p>我之所以能夠賺進大錢，靠的是我能縮手不動，而絕不是靠我的想法。既能看得對，又能縮手不動的人，並不常見。──傳奇操盤手傑西‧李佛摩　</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -155,7 +155,7 @@ if (isset($_GET['log'])) {
                                 <h3>致富心態</h3>
                                 <p>《華爾街日報》、亞馬遜書店暢銷書現代社會最重要、卻被嚴重被低估的技能</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -166,7 +166,7 @@ if (isset($_GET['log'])) {
                                 <p>無論你是投資新手、散戶、理財顧問、證券營業員、市場研究專家……
 　　                                所有年齡層的投資人都該必備的投資聖經！</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>

@@ -11,7 +11,7 @@ $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 
 $ISBN = $_GET['ISBN'];
-$book_name = $_GET['book_name'];
+@$book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");

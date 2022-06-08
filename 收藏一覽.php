@@ -26,8 +26,7 @@ if (isset($_GET['f'])) {
     <title>收藏書籍</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/register.css" />
+    <link rel="stylesheet" href="assets/css/book-list.css" />
 </head>
 
 <body class="is-preload">
@@ -41,11 +40,8 @@ if (isset($_GET['f'])) {
 
                 <!-- Header -->
                 <header id="header">
-
-                    <h3 align="right"><br><br>收藏書籍</h3>
+                <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
-
-                    
                     echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
@@ -56,37 +52,42 @@ if (isset($_GET['f'])) {
                     ?>
                 </header>
                 <!-- Banner -->
-
+                <section>
+                <header class="major">
+                        <h2>已收藏書籍</h2>
+                    </header>
                 <!--書籍-->
+                <div class="posts">
                 <?php while ($fav = mysqli_fetch_assoc($rs)) { ?>
-                    <section id="banner">
                         <?php
                         $book_sql = "select * from book_info where ISBN = '$fav[ISBN]'";
                         $book_rs = mysqli_query($link, $book_sql);
                         if ($book_info = mysqli_fetch_assoc($book_rs)) {
 
                         ?>
-
-                            <div>
-                                <img class="book_jpg_style123" src="images/<?php echo $book_info['book_image']; ?>" alt="">
+                        <article>
+                            <div class="img_box">
+                                <img class="img_item" src="images/<?php echo $book_info['book_image']; ?>" alt="">
                             </div>
-                            <div class="content">
                                 <h2>書名 : <?php echo $book_info['book_name']; ?></h2>
                                 <h5>作者 : <?php echo $book_info['book_author']; ?></h5>
                                 <h5>出版社 : <?php echo $book_info['public']; ?></h5>
                                 <h5>介紹文 : </h5>
                                 <p><?php echo $book_info['book_introduction']; ?></p>
-                                <a style='background-color:#f56a6a' href='收藏一覽.php?f=N&like=<?php echo $book_info['likes']; ?>&ISBN=<?php echo $book_info['ISBN']; ?>' class=button big>
-                                    <font style='color:white'>🤍收藏</font>"
-                                </a>
-                            </div>
-
+                                <ul class="actions">
+									<li><a style='background-color:#f56a6a' href='收藏一覽.php?f=N&like=<?php echo $book_info['likes']; ?>&ISBN=<?php echo $book_info['ISBN']; ?>' class=button big>
+                                    <font style='color:white'>🤍收藏</font>"</a></li>
+                                    <li><a href="書籍內容.php?ISBN=<?php echo $fav['ISBN'] ?>" class="button big">書籍資訊</a></li>
+                                    
+                            </ul>
+                        </article>
                         <?php } ?>
-                    </section><?php
+                    <?php
                             } ?>
-
+                </div>
+                </section>
             </div>
-
+            
         </div>
         <?php include "index_bar.html" ?>
     </div>
