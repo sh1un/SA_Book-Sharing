@@ -41,8 +41,9 @@
 
                         <div class="items2">
                             <form action="login_check.php" method="post">
-                                請輸入帳號密碼：
+                                請輸入帳號：
                                 <input type="text" class="input_box" placeholder="帳號" name="account" required><br><br>
+                                請輸入密碼：
                                 <input type="password" class="input_box" placeholder="請輸入16位密碼" name="password" required><br>
                         </div>
                         <?php
