@@ -187,7 +187,7 @@ if (isset($_GET['log'])) {
                                 <h3>灰階思考</h3>
                                 <p>黑白之間都是灰，找到無限價值的所在。Podcast冠軍節目股癌製作人謝孟恭首本力作！</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -197,7 +197,7 @@ if (isset($_GET['log'])) {
                                 <h3>灰階思考</h3>
                                 <p>黑白之間都是灰，找到無限價值的所在。Podcast冠軍節目股癌製作人謝孟恭首本力作！</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -207,7 +207,7 @@ if (isset($_GET['log'])) {
                                 <h3>致富心態</h3>
                                 <p>《華爾街日報》、亞馬遜書店暢銷書現代社會最重要、卻被嚴重被低估的技能</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
@@ -218,7 +218,7 @@ if (isset($_GET['log'])) {
                                 <p>無論你是投資新手、散戶、理財顧問、證券營業員、市場研究專家……
 　　                                所有年齡層的投資人都該必備的投資聖經！</p>
                                 <ul class="actions">
-                                    <li><a href="#" class="button">立即借閱</a></li>
+                                    <li><a href="#" class="button">書籍資訊</a></li>
                                 </ul>
                             </div>
                         </article>
