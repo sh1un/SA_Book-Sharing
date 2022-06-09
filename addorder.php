@@ -1,5 +1,4 @@
 <?php
-    session_start();
     date_default_timezone_set('Asia/Taipei');
     $book_name = $_POST['book_name'];
     $book_owner = $_POST['book_own'];
