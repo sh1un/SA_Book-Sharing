@@ -78,11 +78,6 @@ $rs = mysqli_query($link, $sql);
                                         <?php echo $row['account']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>密碼</td>
-                                    <td><input type="hidden" value=<?php echo $row['password']; ?> name="password">
-                                        <?php echo $row['password']; ?></td>
-                                </tr>
-                                <tr>
                                     <td>電子信箱</td>
                                     <td><input type="hidden" value=<?php echo $row['email']; ?> name="email">
                                         <?php echo $row['email']; ?></td>

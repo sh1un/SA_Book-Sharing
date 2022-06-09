@@ -1,7 +1,7 @@
 <?php
 //login傳值
-$account = $_POST['account'];
-$email = $_POST['email'];
+@$account = $_POST['account'];
+@$email = $_POST['email'];
 $link = mysqli_connect("localhost", "root");
 mysqli_select_db($link, "sa");
 //sql語法
@@ -15,7 +15,7 @@ $user = mysqli_fetch_assoc($rs);
     @$answer1 = $_POST['answer1'];
     @$answer2 = $_POST['answer2'];
     @$answer3 = $_POST['answer3'];
-        if ($user['a1'] == $answer1 && $user['a2'] == $answer2 && $user['a3'] == $answer3) {
+        if (@$user['a1'] == $answer1 && @$user['a2'] == $answer2 && @$user['a3'] == $answer3) {
             
         }else{
             header("safe_qa.php?account=$account&email=$email&回答錯誤！");
