@@ -3593,7 +3593,7 @@ button:disabled,
 .haved_bar_item2 {
     flex: 4;
     margin: 1px;
-    justify-content: start;
+    justify-content: middle;
     align-items: center;
     display: flex;
 }
