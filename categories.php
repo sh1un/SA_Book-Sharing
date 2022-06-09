@@ -1,5 +1,4 @@
 <?php
-session_start();
 $account = $_SESSION['account'];
 $category = $_GET['cat'];
 $link = mysqli_connect("localhost", "root");
