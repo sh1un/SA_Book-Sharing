@@ -17,9 +17,10 @@ if ($_GET['br'] == 'r') {
 	$rate = $_POST['rate'];
 	$rate_content = $_POST['rate_content'];
 	$brok_img = $_POST['brok_img'];
-	
-	$rate_sql = "INSERT INTO `evaluation`(`rate_id`,`book_id`,`account`,`rate`, `rate_content`, `rate_time`, `brok_img`) 
-    VALUES (null,'$book_id','$account','$rate','$rate_content','$return_time','$brok_img')";
+	$book_owner = $_POST['book_owner'];
+
+	$rate_sql = "INSERT INTO `evaluation`(`book_id`,`account`,`rate`, `rate_content`, `rate_time`, `brok_img`, `owner_account`) 
+    VALUES ('$book_id','$account','$rate','$rate_content','$return_time','$brok_img','$book_owner')";
 	//query
 	if (mysqli_query($link, $rate_sql) and mysqli_query($link, $sql)) {
 		header("location:index.php?log=r_success");

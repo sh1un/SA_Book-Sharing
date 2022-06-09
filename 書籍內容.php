@@ -115,6 +115,7 @@ if (isset($_GET['f'])) {
                                     } ?></a>
                                     &nbsp&nbsp&nbsp<button class="button big" type="submit">查看所有相同書籍</button>
                                 </li>
+                                <input type="hidden" name="ISBN" value="<?php echo $ISBN; ?>">
                             </ul>
 
                         </div>

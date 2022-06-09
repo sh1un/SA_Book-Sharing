@@ -3,7 +3,7 @@
 <html>
 <?php
 $book_name = $_POST['book_name'];
-
+$ISBN = $_POST['ISBN'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
@@ -35,21 +35,21 @@ $book_info = mysqli_fetch_row($rs);
 
                 <!-- Header -->
                 <header id="header">
-                <a href="index.php" class="logo"><strong>首頁</strong></a>
+                    <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
-                        if (isset($_SESSION['name'])) {
-                            $name = $_SESSION['name'];
-                            $account = $_SESSION['account'];
-                            $con = $_SESSION['con'];
-                            echo "<ul class='icons'>
+                    if (isset($_SESSION['name'])) {
+                        $name = $_SESSION['name'];
+                        $account = $_SESSION['account'];
+                        $con = $_SESSION['con'];
+                        echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
-                        } else {
-                            echo "<ul class='icons'>
+                    } else {
+                        echo "<ul class='icons'>
                                 <li><a href='login.php' class='button primary small'>登入</span></a></li>
                                 </ul>";
-                        }
-                        ?>
+                    }
+                    ?>
                 </header>
                 <!-- Banner -->
                 <section id="banner">
@@ -87,16 +87,27 @@ $book_info = mysqli_fetch_row($rs);
                                     <div class="haved_bar_items">
                                         <h4>ID : <?php echo $book_all["book_id"]; ?><br></h4>
                                     </div>
-                                    <div class="haved_bar_item2">
+                                    <div class="haved_bar_items">
                                         <div>
                                             <p>書名 : <?php echo $book_all["book_name"]; ?><br></p><input type="hidden" name="book_name" value="<?php echo $book_all['book_name']; ?>">
                                             <p>擁有者 : <?php echo $book_own['name']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_own['account']; ?>">
                                             <p>類別 : <?php echo $book_all["book_category"]; ?><br></p><input type="hidden" name="book_user" value="<?php echo $_SESSION['account']; ?>">
-                                            
+
                                         </div>
                                     </div>
                                     <div class="haved_bar_items ">
-                                        <h5>這邊放星星</h5>
+                                        <?php $rates_sql = "select rate from evaluation where owner_account = '$book_all[book_owner]'";
+                                        $total_rate = 0;
+                                        $i = 1;
+                                        $rate_rs=mysqli_query($link, $rates_sql);
+                                       while ($rate = mysqli_fetch_row($rate_rs)) {
+                                            $total_rate += $rate[0];
+                                            $i++;
+                                        }
+                                        $total_rate /= $i;
+                                        echo "<h5>". round($total_rate,2) ."⭐</h5>";
+                                        ?>
+                                        
                                     </div>
                                     <div class="haved_bar_items ">
                                         <h5><?php if ($book_all['book_user'] == "none") {
