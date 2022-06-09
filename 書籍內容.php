@@ -3,7 +3,6 @@
 <html>
 
 <?php
-session_start();
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 
