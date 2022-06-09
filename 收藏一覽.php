@@ -2,7 +2,6 @@
 
 <html>
 <?php
-session_start();
 $account = $_SESSION['account'];
 $name = $_SESSION['name'];
 $link = mysqli_connect("localhost", "root");
