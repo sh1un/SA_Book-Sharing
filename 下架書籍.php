@@ -1,5 +1,4 @@
 <?php
-session_start();
     $book_id = $_GET['book_id'];
 
     $link = mysqli_connect("localhost", "root");
