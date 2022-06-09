@@ -83,6 +83,11 @@ if (isset($_SESSION['name'])) {
                                         <h3><input type="text" name="udbook-name" id="book-name" value="<?php echo $rs['book_name'] ?>"/></h3></td>
                                 </tr>
                                 <tr>
+                                    <td>ISBN：</td>
+                                    <td>
+                                        <h3><input type="text" name="udISBN" id="ISBN" value="<?php echo $rs['ISBN'] ?>"/></h3></td>
+                                </tr>
+                                <tr>
                                     <td>編號 :</td>
                                     <td><input type="hidden" value=<?php echo $rs['book_id'] ?> name="book_id">
                                     <?php echo $rs['book_id'] ?>
