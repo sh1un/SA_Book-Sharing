@@ -1,6 +1,5 @@
 <!--借書或還書-->
 <?php
-session_start();
 
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
