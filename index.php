@@ -42,7 +42,6 @@ if (isset($_GET['log'])) {
                     <form action="member.php">
                     <section id="search" class="alt">
                         <?php
-                        session_start();
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
                             $account = $_SESSION['account'];
