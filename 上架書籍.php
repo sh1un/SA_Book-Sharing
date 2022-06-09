@@ -65,6 +65,9 @@ session_start();
                             <div class="col-6 col-12-xsmall">
                                 <input type="name" name="book-author" id="book-author" value="" placeholder="作者" />
                             </div>
+                            <div>
+                                幫助：<a href="https://isbn.ncl.edu.tw/NEW_ISBNNet/">查詢ISBN</a>
+                            </div>
                             <!--出版社-->
                             <div class="col-8 col-12-xsmall">
                                 <input type="text" name="public" id="public" value="" placeholder="出版社" />
