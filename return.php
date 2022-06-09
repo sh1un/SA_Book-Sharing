@@ -1,5 +1,4 @@
 <?php
-session_start();
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $book_id = $_GET['book_id'];
