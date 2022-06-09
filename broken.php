@@ -2,7 +2,6 @@
 
 <html>
 <?php
-session_start();
 $book_name = $_POST['book_name'];
 $account = $_SESSION['account'];
 $link = mysqli_connect("localhost", "root");
