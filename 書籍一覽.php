@@ -3,7 +3,7 @@
 <html>
 <?php
 $book_name = $_POST['book_name'];
-$ISBN = $_POST['ISBN'];
+
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
@@ -91,8 +91,7 @@ $book_info = mysqli_fetch_row($rs);
                                         <div>
                                             <p>書名 : <?php echo $book_all["book_name"]; ?><br></p><input type="hidden" name="book_name" value="<?php echo $book_all['book_name']; ?>">
                                             <p>擁有者 : <?php echo $book_own['name']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_own['account']; ?>">
-                                            <p>類別 : <?php echo $book_all["book_category"]; ?><br></p><input type="hidden" name="book_user" value="<?php echo $_SESSION['account']; ?>">
-
+                                            <p>可借閱天數 : <?php echo $book_all["borrow_day"]; ?><br></p><input type="hidden" name="borrow_day" value="<?php echo $book_all['borrow_day']; ?>">
                                         </div>
                                     </div>
                                     <div class="haved_bar_items ">

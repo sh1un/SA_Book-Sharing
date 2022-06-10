@@ -23,6 +23,7 @@
     }
 ?>
 <?php
+    date_default_timezone_set('Asia/Taipei');
     $order_id = $_GET['order_id'];
     $method = $_GET['method'];
     $book_id = $_GET['book_id'];
@@ -48,6 +49,15 @@
     $book_user = $orderlist_array['book_user'];
     $return_time = $orderlist_array['return_time'];
 ?>
+
+<?php
+//從book_info資料表取得資料
+    $fetch_book_info_all_sql = "SELECT * FROM book_info WHERE book_id = '$book_id'";
+    $book_info_rs = mysqli_query($link,$fetch_book_info_all_sql);
+    $book_info_array = mysqli_fetch_array($book_info_rs);
+    $borrow_day = $book_info_array['borrow_day'];
+?>
+
 <?php
 // 判斷目前登入帳號是書本的捐借者還是租借者，點擊使owner_check或user_check +1
     if($book_owner==$account){
@@ -87,11 +97,15 @@
         mysqli_query($link, $user_check_clear_sql);
         
     }
+
+    $return_time = date("Y-m-d H:m:s",strtotime("+$borrow_day day"));
     if($record_book_user['book_user']==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為租借者，以及是否為待借書狀態，是的話將他點數-5
         $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'";
         $update_book_info_user_sql="UPDATE book_info SET book_user = '$account' WHERE book_id='$book_id'";
+        $update_return_time_sql="UPDATE orderlist SET return_time = '$return_time' WHERE book_id='$book_id'";
         mysqli_query($link, $borrow_point_sql);
         mysqli_query($link, $update_book_info_user_sql);
+        mysqli_query($link, $update_return_time_sql);
         $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
         echo "<script>alert('借書成功，扣除5point，最慢還書日期:$return_time'); location.href='order.php'</script>";
         

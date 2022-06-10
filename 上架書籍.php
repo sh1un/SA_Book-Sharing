@@ -95,7 +95,7 @@
                             </div>
                             <div class="col-6">
                                 設定借閱天數：
-                                <select name="book-category" id="book-category">
+                                <select name="borrow_day" id="book-category">
                                     <option value="30">借閱天數</option>
                                     <option value="14">14</option>
                                     <option value="15">15</option>
@@ -118,7 +118,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                若書本有破損，請拍攝破損頁面上傳，以確保雙方權益&nbsp&nbsp&nbsp<input type="file" name="book-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=" " required />
+                                若書本有破損，請拍攝破損頁面上傳，以確保雙方權益&nbsp&nbsp&nbsp<input type="file" name="book_condition_image" id="book_condition_image" accept=".jpg, .png, .img, .jpeg" value=" " />
                             </div>
                             <div class="col-8">
                                 <textarea name="book-introduction" id="book-introduction" placeholder="備註" rows="6"></textarea>

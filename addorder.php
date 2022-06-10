@@ -4,7 +4,6 @@
     $book_owner = $_POST['book_own'];
     $book_user = $_POST['book_user'];
     $order_time = date("Y/m/d/H/m/s");
-    $return_time = date("Y/m/d/H/m/s");
     $order_status = $_POST['status'];
     $book_id = $_POST['book_id'];
 
@@ -15,7 +14,7 @@
     if(!$link){
         echo "連接失敗" . mysqli_connect_error();
     }
-        $sql="insert into orderlist (book_name, book_owner, book_user, order_time, return_time, order_status, book_id) values ('$book_name', '$book_owner', '$book_user', '$order_time', '$return_time', '$order_status', '$book_id')";
+        $sql="insert into orderlist (book_name, book_owner, book_user, order_time, order_status, book_id) values ('$book_name', '$book_owner', '$book_user', '$order_time', '$order_status', '$book_id')";
         echo $sql;
             if(mysqli_query($link, $sql))
         {
