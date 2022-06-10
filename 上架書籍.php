@@ -91,10 +91,10 @@
 
                             <!-- 書籍簡介 -->
                             <div class="col-6">
-                                上傳書籍封面&nbsp&nbsp&nbsp<input type="file" name="book-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=" " required />
+                                請拍照上傳書籍現況封面&nbsp&nbsp&nbsp<input type="file" name="book-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=" " required />
                             </div>
                             <div class="col-8">
-                                <textarea name="book-introduction" id="book-introduction" placeholder="簡單介紹一下書吧！" rows="6"></textarea>
+                                <textarea name="book-introduction" id="book-introduction" placeholder="備註" rows="6"></textarea>
                             </div>
                             <input type="hidden" value="none" name="book_user">
                             <!-- 上架按鈕 -->
