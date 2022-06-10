@@ -80,7 +80,7 @@ function renew(index){
 
                 <!-- Header -->
                 <header id="header">
-                    <h1>歡迎使用書籍共享平台
+                    <h1>歡迎使用<br>書籍共享平台
                     </h1><div class='icons'>
                     <h3 align="right"><br><br>立即註冊開始使用！</h3>
                             已經有帳號？
@@ -155,7 +155,7 @@ function renew(index){
                             答案
                             <input type="text" name="safe_a3" required>
 						</div>
-                        
+                        <br><br><br><br>
 						<?php
                         if (isset($_GET['register'])) {
                             if ($_GET['register'] == "exist") {
@@ -165,6 +165,7 @@ function renew(index){
                         } ?>
 						<input type="submit" class="input_btn" value="送出"><br>
 					</form>
+                    <br><br>
 					</span>
                 </section>
             </div>
