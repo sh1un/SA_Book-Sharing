@@ -93,6 +93,33 @@
                             <div class="col-6">
                                 請拍照上傳書籍現況封面&nbsp&nbsp&nbsp<input type="file" name="book-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=" " required />
                             </div>
+                            <div class="col-6">
+                                設定借閱天數：
+                                <select name="book-category" id="book-category">
+                                    <option value="30">借閱天數</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                若書本有破損，請拍攝破損頁面上傳，以確保雙方權益&nbsp&nbsp&nbsp<input type="file" name="book-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=" " required />
+                            </div>
                             <div class="col-8">
                                 <textarea name="book-introduction" id="book-introduction" placeholder="備註" rows="6"></textarea>
                             </div>
