@@ -7,10 +7,9 @@ $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 
 $ISBN = $_GET['ISBN'];
-@$book_name = $_GET['book_name'];
+$book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
-mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
 
@@ -71,17 +70,17 @@ if (isset($_GET['f'])) {
                 <header id="header">
                     <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
-                        if (isset($_SESSION['name'])) {
-                            $name = $_SESSION['name'];
-                            $account = $_SESSION['account'];
-                            $con = $_SESSION['con'];
-                            echo "<ul class='icons'>
+                    if (isset($_SESSION['name'])) {
+                        $name = $_SESSION['name'];
+                        $account = $_SESSION['account'];
+                        $con = $_SESSION['con'];
+                        echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
-                        } else {
-                            header("location:index.php?log=no");
-                        }
-                        ?>
+                    } else {
+                        header("location:index.php?log=no");
+                    }
+                    ?>
                 </header>
 
                 <!-- Content -->
@@ -122,6 +121,26 @@ if (isset($_GET['f'])) {
 
 
                 </section>
+                <section>
+                    <div class="rate_box">
+                        <?php
+
+                        //rate
+                        $rate_sql = "select * from evaluation where ISBN = $ISBN";
+                        $rate_rs = mysqli_query($link, $rate_sql);
+                        while ($rate = mysqli_fetch_assoc($rate_rs)) {
+                            //評論者
+                            $rater_sql = "select name from account where account = $rate[account]";
+                            $rater_rs = mysqli_query($link, $rater_sql);
+                            $rater = mysqli_fetch_row($rater_rs);
+?>
+                            <div class="rate_item">
+                                    <?php echo $rate['rate_content'] ?>
+                            </div>
+                        <?php  }
+                        ?>
+                    </div>
+                </section>
             </div>
         </div>
         <?php include "index_bar.html" ?>
@@ -137,6 +156,19 @@ if (isset($_GET['f'])) {
 
 </body>
 
->>>>>>> main
-
 </html>
+
+<style>
+    .rate_box {
+        margin: 100px;
+    }
+
+    .rate_item {
+        flex: 5;
+    }
+    .rater{
+        height: 70px;
+        width:80px;
+        border-radius: 100%;
+    }
+</style>
