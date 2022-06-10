@@ -17,7 +17,6 @@
         mysqli_query($link, "SET NAMES 'UTF8'");
         mysqli_select_db($link, "sa");
         
-        $rs = mysqli_query($link, $sql);
     } else {
         header("location:index.php?log=no");
     }
@@ -89,25 +88,40 @@
     
 
     if($record['order_check']+1 == 2){
+        $return_time = date("Y-m-d H:m:s",strtotime("+$borrow_day day"));//根據分享者設定的借閱天數，會在借到書的當下+上借閱天數，就會得到最慢還書時間
         $sql2="UPDATE orderlist SET order_status = '待還書' WHERE order_id='$order_id'";
         $update_book_info_user_sql="UPDATE book_info SET book_user = '$book_user' WHERE book_id='$book_id'";
+        $update_return_time_sql="UPDATE orderlist SET return_time = '$return_time' WHERE book_id='$book_id'";
         
+        mysqli_query($link, $update_return_time_sql);
         mysqli_query($link, $sql2);
         mysqli_query($link, $owner_check_clear_sql);
         mysqli_query($link, $user_check_clear_sql);
         
     }
 
-    $return_time = date("Y-m-d H:m:s",strtotime("+$borrow_day day"));
+    
+
+    if($book_owner==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為分享者，以及是否為待借書狀態，是的話將他點數+5
+        $lend_point_sql="UPDATE `account` SET point=point+5 WHERE account = '$account'";
+
+        mysqli_query($link, $lend_point_sql);
+
+        $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉location
+        echo "<script>alert('感謝您的分享，您已獲得5point！'); location.href='order.php'</script>";
+        
+    }
+
+    
     if($record_book_user['book_user']==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為租借者，以及是否為待借書狀態，是的話將他點數-5
         $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'";
         $update_book_info_user_sql="UPDATE book_info SET book_user = '$account' WHERE book_id='$book_id'";
-        $update_return_time_sql="UPDATE orderlist SET return_time = '$return_time' WHERE book_id='$book_id'";
+        
         mysqli_query($link, $borrow_point_sql);
         mysqli_query($link, $update_book_info_user_sql);
-        mysqli_query($link, $update_return_time_sql);
+        
         $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
-        echo "<script>alert('借書成功，扣除5point，最慢還書日期:$return_time'); location.href='order.php'</script>";
+        echo "<script>alert('借書成功，已扣除5point，可借閱天數為 $borrow_day 天，在雙方確認借書後，請務必至訂單列表確認「最慢還書日期」'); location.href='order.php'</script>";
         
     }
     elseif($record['order_check']+1 == 4){
@@ -122,10 +136,6 @@
         mysqli_query($link, $owner_check_clear_sql);
         mysqli_query($link, $user_check_clear_sql);
     }
-?>
-
-<?php
-    if($record['order_check'+1])
 ?>
 
 <?php

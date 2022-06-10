@@ -24,9 +24,7 @@ date_default_timezone_set('Asia/Taipei');
 
     if(mysqli_query($link,$sql))
     {  
-        $login_sql = "UPDATE `account` SET point=point+5 WHERE account = '$_SESSION[account]'";
-        mysqli_query($link, $login_sql);
-        echo "<script>alert('上架成功，獲得5point'); location.href='已上架書籍.php'</script>";
+        echo "<script>alert('上架成功'); location.href='已上架書籍.php'</script>";
         
     }else{
         header('location:已上架書籍.php?sorf=上架失敗');
