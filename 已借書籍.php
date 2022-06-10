@@ -5,6 +5,7 @@ if (!(isset($_SESSION['name']))) {
     $name = $_SESSION['name'];
     $account = $_SESSION['account'];
     $link = mysqli_connect("localhost", "root");
+
     mysqli_query($link, "SET NAMES 'UTF8'");
 
     mysqli_select_db($link, "sa");
@@ -59,11 +60,19 @@ if (!(isset($_SESSION['name']))) {
                     </header>
                     <div class="posts">
                         <?php
+                        
+
                         while ($rslt =  mysqli_fetch_assoc($rs)) {
                             $bookowner_account =  $rslt['book_owner'];
                             $sql2 = "select * from account where account = '$bookowner_account'";
                             $reslt = mysqli_query($link, $sql2); //擁有書者的名字
                             $rslt2 =  mysqli_fetch_assoc($reslt);
+                            
+                            $book_info_book_id = $rslt['book_id'];
+                            $fetch_orderlist_sql = "SELECT * FROM orderlist WHERE book_id = '$book_info_book_id'";
+                            $orderlist_rs = mysqli_query($link,$fetch_orderlist_sql);
+                            $orderlist_rs_assoc = mysqli_fetch_assoc($orderlist_rs);
+
                         ?>
                             <article>
                             <div class="img_box">
@@ -75,13 +84,9 @@ if (!(isset($_SESSION['name']))) {
                                         } else {
                                             echo "租借中";
                                         }
-                                        ?><br>捐借人：<?php echo $rslt2['name'] ?>
-                                    <br>租借人：<?php echo $name ?>
-                                    <br>上架時間：<?php echo $rslt['up_date'] ?>
-                                    <br>作者：<?php echo $rslt['book_author'] ?>
-                                    <br>出版社：<?php echo $rslt['public'] ?>
-                                    <br>出版日期：<?php echo $rslt['public_date'] ?>
-                                    <br>類別：<?php echo $rslt['book_category'] ?>
+                                        ?><br>捐借人：<?php echo $rslt2['account'] ?>
+                                    <br>租借人：<?php echo $account ?>
+                                    <br>最慢還書日期：<?php echo $orderlist_rs_assoc['return_time'] ?>
                                 </p>
 
                                 <ul class="actions">

@@ -25,6 +25,7 @@
 <?php
     $order_id = $_GET['order_id'];
     $method = $_GET['method'];
+    $book_id = $_GET['book_id'];
 ?>
     <form action='' method='post'>
         <input type='hidden' name='order_id' value="<?php echo $order_id; ?>">
@@ -79,15 +80,18 @@
 
     if($record['order_check']+1 == 2){
         $sql2="UPDATE orderlist SET order_status = '待還書' WHERE order_id='$order_id'";
-        
+        $update_book_info_user_sql="UPDATE book_info SET book_user = '$book_user' WHERE book_id='$book_id'";
         
         mysqli_query($link, $sql2);
         mysqli_query($link, $owner_check_clear_sql);
         mysqli_query($link, $user_check_clear_sql);
+        
     }
     if($record_book_user['book_user']==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為租借者，以及是否為待借書狀態，是的話將他點數-5
-        $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'"; 
+        $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'";
+        $update_book_info_user_sql="UPDATE book_info SET book_user = '$account' WHERE book_id='$book_id'";
         mysqli_query($link, $borrow_point_sql);
+        mysqli_query($link, $update_book_info_user_sql);
         $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
         echo "<script>alert('借書成功，扣除5point，最慢還書日期:$return_time'); location.href='order.php'</script>";
         
