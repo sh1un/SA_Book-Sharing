@@ -1,16 +1,40 @@
 <?php
-$colname_rs = $_POST["query"];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
-
 mysqli_select_db($link, "sa");
 
-$query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by book_name";
+$text = '排序方式';
+if (!(isset($_GET['way']))) {
+    $colname_rs = $_POST["query"];
+    $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by book_name";
+}
 
 
-$query_rs .= " ORDER BY book_name DESC";
+if (isset($_GET['way'])) {
+
+    $colname_rs = $_GET["query"];
+    echo $colname_rs;
+    $text = $_GET['way'];
+    $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by book_name";
+
+    switch ($_GET['way']) {
+        case "最新":
+            $query_rs .= " ORDER BY up_date DESC";
+            break;
+        case "最舊":
+            $query_rs .= " ORDER BY up_date ASC";
+            break;
+        case "最多愛心":
+            $query_rs .= " ORDER BY likes DESC";
+            break;
+        case "名稱":
+            $query_rs .= " ORDER BY book_name DESC";
+            break;
+    }
+
+    
+}
 $rs = mysqli_query($link, $query_rs);
-
 ?>
 
 
@@ -42,19 +66,19 @@ $rs = mysqli_query($link, $query_rs);
                         <a href="index.php" class="logo"><strong>首頁</strong></a>
                     </section>
                     <?php
-                        if (isset($_SESSION['name'])) {
-                            $name = $_SESSION['name'];
-                            $account = $_SESSION['account'];
-                            $con = $_SESSION['con'];
-                            echo "<ul class='icons'>
+                    if (isset($_SESSION['name'])) {
+                        $name = $_SESSION['name'];
+                        $account = $_SESSION['account'];
+                        $con = $_SESSION['con'];
+                        echo "<ul class='icons'>
                                 <li><p>$name ，歡迎光臨 <a href='logout.php' class='button primary small'>登出</span></a></p></li>
                                 </ul>";
-                        } else {
-                            echo "<ul class='icons'>
+                    } else {
+                        echo "<ul class='icons'>
                                 <li><a href='login.php' class='button primary small'>登入</span></a></li>
                                 </ul>";
-                        }
-                        ?>
+                    }
+                    ?>
                 </header>
 
                 <!-- Content -->
@@ -62,14 +86,28 @@ $rs = mysqli_query($link, $query_rs);
 
                     <!-- Content -->
                     <h2 id="content">搜尋結果</h2>
+                    <select name="way" onchange="location=this.value;" required>
+                        <option selected="selected" disabled><?php echo $text;?>
+                        <option value="search.php?query=<?php echo $colname_rs ?>&way=最新">最新
+                        <option value="search.php?query=<?php echo $colname_rs ?>&way=最舊">最舊
+                        <option value="search.php?query=<?php echo $colname_rs ?>&way=最多愛心">最多愛心
+                        <option value="search.php?query=<?php echo $colname_rs ?>&way=名稱">名稱
+                    </select>
+
+                    <input type="hidden" name="query" value=<?php echo $colname_rs; ?>>
+
                     <hr class="major" />
 
                     <!--搜尋書籍關鍵字結果-->
-                    <?php $get="false";?>
+                    <?php $get = "false"; ?>
                     <p align="center"><B>關鍵詞搜索結果如下：</B></p>
-                    <?php while ($row_rs = mysqli_fetch_assoc($rs)){
-                        $get="true";?>
-                        
+
+
+
+
+                    <?php while ($row_rs = mysqli_fetch_assoc($rs)) {
+                        $get = "true"; ?>
+
                         <div class="box box_action">
                             <div class="book_jpg_style123">
                                 <a href="書籍內容.php?book_name=<?php echo $row_rs['book_name'] ?>&ISBN=<?php echo $row_rs['ISBN'] ?>">
@@ -78,12 +116,14 @@ $rs = mysqli_query($link, $query_rs);
                             <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
                             <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
                             <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
+                            <p>上架時間 : <?php echo $row_rs["up_date"]; ?><br></p>
 
                         </div>
-
+                        
                     <?php }
-                    if($get<>"true"){
-                        echo "無搜尋到您想要的書籍，換個關鍵字試試?";}  ?>
+                    if ($get <> "true") {
+                        echo "無搜尋到您想要的書籍，換個關鍵字試試?";
+                    }  ?>
                 </section>
 
             </div>
