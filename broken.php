@@ -165,6 +165,7 @@ $points = $point['point'];
                     <img src="images/<?php echo $book['book_image']; ?>" />
                 </section>
             </div>
+            <?php include "footer.php" ?>
         </div>
         <?php include "index_bar.html" ?>
     </div>
