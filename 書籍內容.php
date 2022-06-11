@@ -99,7 +99,7 @@ if (isset($_GET['f'])) {
                                 <h4>出版日期 : <?php echo $book_info[6]; ?></h4>
                                 <h4>類別 : <?php echo $book_info[7]; ?></h4>
 
-
+                                <input type="hidden" name="ISBN" value="<?php $ISBN; ?>">
                             </header>
 
                             <p>介紹文 : <?php echo $book_info[9]; ?></p>
@@ -133,9 +133,9 @@ if (isset($_GET['f'])) {
                             $rater_sql = "select name from account where account = $rate[account]";
                             $rater_rs = mysqli_query($link, $rater_sql);
                             $rater = mysqli_fetch_row($rater_rs);
-?>
+                        ?>
                             <div class="rate_item">
-                                    <?php echo $rate['rate_content'] ?>
+                                <?php echo $rate['rate_content'] ?>
                             </div>
                         <?php  }
                         ?>
@@ -166,9 +166,10 @@ if (isset($_GET['f'])) {
     .rate_item {
         flex: 5;
     }
-    .rater{
+
+    .rater {
         height: 70px;
-        width:80px;
+        width: 80px;
         border-radius: 100%;
     }
 </style>
