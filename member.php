@@ -24,6 +24,8 @@ $rs = mysqli_query($link, $sql);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/book-list.css" />
+
 </head>
 
 <body class="is-preload">
@@ -37,7 +39,7 @@ $rs = mysqli_query($link, $sql);
 
                 <!-- Header -->
                 <header id="header">
-                    <h2>會員中心</h2>
+                <a href="index.php" class="logo"><strong>首頁</strong></a>
                     <?php
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
@@ -56,7 +58,10 @@ $rs = mysqli_query($link, $sql);
 
                 <!-- Banner -->
 
-                <section id="banner">
+                <section>
+                <header class="major">
+                        <h2 align='center'>我的帳號</h2><br>
+                    </header>
                     <div class="content">
                         <form action="update.php" method="POST">
                             <table>
