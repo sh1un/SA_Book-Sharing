@@ -57,12 +57,19 @@ $rs = mysqli_query($link, $sql);
                             <?php if ($book_info = mysqli_fetch_row($rs)) { ?>
                                 <header>
                                     
-                                    <h1>書名 : <?php echo $book_info[3]; ?><br></h1><input hidden name="book_name" value="<?php echo $book_info[3]; ?>" />
-                                    <img src="images/<?php echo $book_info[8]; ?>" alt="">
-                                    <h4>編號 : <?php echo $book_id; ?></h4><input hidden name="book_id" value="<?php echo $book_id; ?>" />
-                                    <h4>作者 : <?php echo $book_info[4]; ?></h4><input hidden name="book_author" value="<?php echo $book_info[4]; ?>" />
-                                    <h4>擁有者 : <?php echo $book_info[1]; ?></h4><input hidden name="book_owner" value="<?php echo $book_info[1]; ?>" />
-                                    <h4>借閱者 : <?php echo $book_info[2]; ?></h4><input hidden name="book_user" value="<?php echo $book_info[2]; ?>" />
+                            
+                            <div>
+                                <img class="book_jpg_style123" style="width: 300px; height: 400px;" src="images/<?php echo $book_info[8]; ?>" alt="">
+                            </div>
+                            <br><br>
+                            <div>
+                                <h1>書名 : <?php echo $book_info[3]; ?><br></h1><input hidden name="book_name" value="<?php echo $book_info[3]; ?>" />
+                                <h4>編號 : <?php echo $book_id; ?></h4><input hidden name="book_id" value="<?php echo $book_id; ?>" />
+                                <h4>作者 : <?php echo $book_info[4]; ?></h4><input hidden name="book_author" value="<?php echo $book_info[4]; ?>" />
+                                <h4>擁有者 : <?php echo $book_info[1]; ?></h4><input hidden name="book_owner" value="<?php echo $book_info[1]; ?>" />
+                                <h4>借閱者 : <?php echo $book_info[2]; ?></h4><input hidden name="book_user" value="<?php echo $book_info[2]; ?>" />
+                            </div>
+                                    
                                     
                                 </header>
                                 <!--還書日期-->
