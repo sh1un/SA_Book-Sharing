@@ -77,12 +77,13 @@ if (isset($_SESSION['name'])) {
                     </form>
                     <div id="ss">
                         <ul class="pagination">
-                            <li><a href="order.php?filter=iamowner" class="page" onclick="changestyle(this)">我是捐借者</a></li> |
-                            <li><a href="order.php?filter=iamuser" class="page">我是租借者</a></li> |
-                            <li><a href="order.php?filter=tobeborrowed" class="page">待借書</a></li> |
-                            <li><a href="order.php?filter=tobereturn" class="page">待還書</a></li> |
-                            <li><a href="order.php?filter=tobeevaluation" class="page">待評價</a></li> |
-                            <li><a href="order.php?filter=finished" class="page">已完成</a></li>
+                            <li><a href="order.php?filter=iamowner" class="page" onclick="changestyle(this)">&emsp;我是捐借者</a></li>|&nbsp;
+                            <li><a href="order.php?filter=iamuser" class="page">我是租借者</a></li>&nbsp; |&nbsp;
+                            <li><a href="order.php?filter=tobeborrowed" class="page">待借書</a></li>&nbsp; |&nbsp; 
+                            <li><a href="order.php?filter=tobereturn" class="page">待還書</a></li>&nbsp; |&nbsp; 
+                            <li><a href="order.php?filter=tobeevaluation" class="page">待評價</a></li>&nbsp; |&nbsp; 
+                            <li><a href="order.php?filter=finished" class="page">已完成</a></li> &nbsp;|
+                            <li><a href="order.php" class="page">全部</a></li>
                         </ul>
                     </div>
                     <?php $searchtxt='default'; ?>
