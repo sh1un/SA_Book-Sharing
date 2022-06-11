@@ -14,6 +14,11 @@ $rate_rs = mysqli_query($link, $rate_sql);
 //抓書籍資料
 $book_sql = "select * from book_info where book_id = '$_GET[book_id]'";
 $book_rs = mysqli_query($link, $book_sql);
+//從book_info資料表取得資料
+$fetch_book_info_all_sql = "SELECT * FROM book_info WHERE book_id = '$_GET[book_id]'";
+$book_info_rs = mysqli_query($link,$fetch_book_info_all_sql);
+$book_info_array = mysqli_fetch_array($book_info_rs);
+$ISBN = $book_info_array['ISBN'];
 //點數
 $point_sql = "select * from account where account = '$account'";
 $point_rs = mysqli_query($link, $point_sql);
@@ -88,6 +93,7 @@ $points = $point['point'];
                                                 } ?><br></h4>
                                     <input type="hidden" name="book_user" value="<?php echo $account; ?>">
                                     <input type="hidden" name="borrow_day" value="<?php echo $borrow_day; ?>">
+                                    <input type="hidden" name="ISBN" value="<?php echo $ISBN; ?>">
                                     <p>備註 : <?php echo $book['book_introduction']; ?></p>
                                     <input type="hidden" name="status" value="待借書">
                                     <!-- 以下輪播圖 -->
