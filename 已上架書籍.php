@@ -107,6 +107,7 @@ if (isset($_GET['sorf'])) {
                 </section>
 
             </div>
+            <?php include "footer.php" ?>
         </div>
 
         <?php include "index_bar.html" ?>
