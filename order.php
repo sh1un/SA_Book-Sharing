@@ -4,7 +4,7 @@ if (isset($_SESSION['name'])) {
     $account = $_SESSION['account'];
     $account2 = $_SESSION['account'];
     $link = mysqli_connect("localhost", "root");
-    @$book_id = $_GET['book_id'];
+
     mysqli_query($link, "SET NAMES 'UTF8'");
     mysqli_select_db($link, "sa");
     $sql = "select * from book_info where book_owner = '$account'  order by up_date DESC";
@@ -181,7 +181,7 @@ if (isset($_SESSION['name'])) {
                                                 echo "<td><button disabled>操作完成</button></td>";
                                             }
                                             elseif($order_check < 2){
-                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成借書</button></a></td>";
+                                                echo "<td><a href=order_check.php?method=update&order_id=$record[0]&book_id=$book_id><button>完成借書</button></a></td>";
                                             }
                                             elseif($order_check < 4){
                                                 echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成還書</button></a></td>";
