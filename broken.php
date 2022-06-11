@@ -16,7 +16,7 @@ $book_sql = "select * from book_info where book_id = '$_GET[book_id]'";
 $book_rs = mysqli_query($link, $book_sql);
 //從book_info資料表取得資料
 $fetch_book_info_all_sql = "SELECT * FROM book_info WHERE book_id = '$_GET[book_id]'";
-$book_info_rs = mysqli_query($link,$fetch_book_info_all_sql);
+$book_info_rs = mysqli_query($link, $fetch_book_info_all_sql);
 $book_info_array = mysqli_fetch_array($book_info_rs);
 $ISBN = $book_info_array['ISBN'];
 //點數
@@ -63,113 +63,121 @@ $points = $point['point'];
                 </header>
 
                 <!--破損情況-->
-                <section id="banner">
-                    <form action="addorder.php" method="post">
-                        <div class="content">
-
-                            <?php
-                            $book = mysqli_fetch_assoc($book_rs);
-                            //借書跟捐書人的名字
-                            $ownsql = "select * from account where account = '$book[book_owner]'";
-                            $ownrs = mysqli_query($link, $ownsql);
-                            $book_own = mysqli_fetch_assoc($ownrs);
-                            $usesql = "select * from account where account = '$book[book_user]'";
-                            $users = mysqli_query($link, $usesql);
-                            $book_use = mysqli_fetch_assoc($users);
-                            ?>
-                            <article>
-                                <header>
-
-                                    <h2><?php echo $book['book_name']; ?></h2>
-                                    <input type='hidden' name='book_name' value="<?php echo $book['book_name']; ?>">
-                                    <h8>#<?php echo $book['book_id']; ?><br></h8>
-                                    <input type='hidden' name='book_id' value="<?php echo $_GET['book_id']; ?>">
-                                    <h4>擁有者 : <?php echo $book_own['account']; ?><br></h4>
-                                    <input type="hidden" name="book_own" value="<?php echo $book['book_owner']; ?>">
-                                    <h4>租借者 : <?php if ($book['book_user'] == "none") {
-                                                    echo "none";
-                                                } else {
-                                                    echo $book_use['account'];
-                                                } ?><br></h4>
-                                    <input type="hidden" name="book_user" value="<?php echo $account; ?>">
-                                    <input type="hidden" name="borrow_day" value="<?php echo $borrow_day; ?>">
-                                    <input type="hidden" name="ISBN" value="<?php echo $ISBN; ?>">
-                                    <p>備註 : <?php echo $book['book_introduction']; ?></p>
-                                    <input type="hidden" name="status" value="待借書">
-                                    <!-- 以下輪播圖 -->
-                                    <div id="demo" class="carousel slide" data-ride="carousel">
-                                        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                                            <div class="carousel-indicators">
-                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                            </div>
-                                            <div class="carousel-inner">
-                                                <div class="carousel-item active" data-bs-interval="10000">
-                                                    <img src="images/1.jpeg" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5>First slide label</h5>
-                                                        <p>Some representative placeholder content for the first slide.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item" data-bs-interval="2000">
-                                                    <img src="images/1.jpeg" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5>Second slide label</h5>
-                                                        <p>Some representative placeholder content for the second slide.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="images/1.jpeg" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5>Third slide label</h5>
-                                                        <p>Some representative placeholder content for the third slide.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
+                <section>
+                    <header class="major">
+                        <h2>詳細書況</h2>
+                    </header>
+                    <div>
+                        <!-- 以下輪播圖 -->
+                        <div id="demo" class="carousel slide" data-ride="carousel" style='width:500px;'>
+                            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="10000">
+                                        <img src="images/1.jpeg" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>First slide label</h5>
+                                            <p>Some representative placeholder content for the first slide.</p>
                                         </div>
                                     </div>
-                                    <!-- 以上輪播圖 -->
-                                </header>
-                                <?php
-                                while ($rate = mysqli_fetch_assoc($rate_rs)) {
-                                ?>
-
-                                    &nbsp;
-                                    <div style="flex: 1;"><img class="book_image" src="images/<?php echo $rate['brok_img']; ?>" /></div>
-                                    <div style="flex:5;margin-left: 40px; display:flex; flex-direction:column" class="link-top">
-                                        <div style="flex:1">
-                                            <h4><?php echo $rate['account']; ?></h4>
-                                        </div>
-                                        <div style="flex:1">
-                                            <h8><?php echo $rate['rate_content']; ?></h8>
-                                        </div>
-                                        <div style="flex:1">
-                                            <h8>#<?php echo $rate['rate_id']; ?>&nbsp&nbsp&nbsp&nbsp<?php echo $rate['rate_time']; ?></h8>
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                        <img src="images/1.jpeg" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Second slide label</h5>
+                                            <p>Some representative placeholder content for the second slide.</p>
                                         </div>
                                     </div>
-
-
-                                <?php } ?>
-                            </article>
-                            <div class="actions">
-                                <?php if ($points < 5) { ?>
-                                    <input type="submit" value="您的點數<5" disabled>
-                                <?php } else { ?>
-                                    <input type="submit" value="確定借閱"> <?php } ?>
+                                    <div class="carousel-item">
+                                        <img src="images/1.jpeg" class="d-block w-100" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Third slide label</h5>
+                                            <p>Some representative placeholder content for the third slide.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </a>
                             </div>
+
                         </div>
-                    </form>
-                    <img src="images/<?php echo $book['book_image']; ?>" />
+                        <!-- 以上輪播圖 -->
+                        <div style="position: relative; left: 800px; bottom: 400px">
+                            <form action="addorder.php" method="post">
+                                <div class="content" style="width:100%">
+
+                                    <?php
+                                    $book = mysqli_fetch_assoc($book_rs);
+                                    //借書跟捐書人的名字
+                                    $ownsql = "select * from account where account = '$book[book_owner]'";
+                                    $ownrs = mysqli_query($link, $ownsql);
+                                    $book_own = mysqli_fetch_assoc($ownrs);
+                                    $usesql = "select * from account where account = '$book[book_user]'";
+                                    $users = mysqli_query($link, $usesql);
+                                    $book_use = mysqli_fetch_assoc($users);
+                                    ?>
+                                    <article>
+                                        <header>
+
+                                            <h2><?php echo $book['book_name']; ?></h2>
+                                            <input type='hidden' name='book_name' value="<?php echo $book['book_name']; ?>">
+                                            <h8>#<?php echo $book['book_id']; ?><br></h8>
+                                            <input type='hidden' name='book_id' value="<?php echo $_GET['book_id']; ?>">
+                                            <h4>擁有者 : <?php echo $book_own['account']; ?><br></h4>
+                                            <input type="hidden" name="book_own" value="<?php echo $book['book_owner']; ?>">
+                                            <h4>租借者 : <?php if ($book['book_user'] == "none") {
+                                                            echo "none";
+                                                        } else {
+                                                            echo $book_use['account'];
+                                                        } ?><br></h4>
+                                            <input type="hidden" name="book_user" value="<?php echo $account; ?>">
+                                            <input type="hidden" name="borrow_day" value="<?php echo $borrow_day; ?>">
+                                            <input type="hidden" name="ISBN" value="<?php echo $ISBN; ?>">
+                                            <p>備註 : <?php echo $book['book_introduction']; ?></p>
+                                            <input type="hidden" name="status" value="待借書">
+                                        </header>
+                                        <?php
+                                        while ($rate = mysqli_fetch_assoc($rate_rs)) {
+                                        ?>
+
+                                            &nbsp;
+                                            <div style="flex: 1;"><img class="book_image" src="images/<?php echo $rate['brok_img']; ?>" /></div>
+                                            <div style="flex:5;margin-left: 40px; display:flex; flex-direction:column" class="link-top">
+                                                <div style="flex:1">
+                                                    <h4><?php echo $rate['account']; ?></h4>
+                                                </div>
+                                                <div style="flex:1">
+                                                    <h8><?php echo $rate['rate_content']; ?></h8>
+                                                </div>
+                                                <div style="flex:1">
+                                                    <h8>#<?php echo $rate['rate_id']; ?>&nbsp&nbsp&nbsp&nbsp<?php echo $rate['rate_time']; ?></h8>
+                                                </div>
+                                            </div>
+
+
+                                        <?php } ?>
+                                    </article>
+                                    <div class="actions">
+                                        <?php if ($points < 5) { ?>
+                                            <input type="submit" value="您的點數<5" disabled>
+                                        <?php } else { ?>
+                                            <input type="submit" value="確定借閱"> <?php } ?>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </section>
+
             </div>
             <?php include "footer.php" ?>
         </div>
