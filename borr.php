@@ -4,6 +4,7 @@
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $link = mysqli_connect("localhost", "root");
+$order_id = $_POST['order_id'];
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
@@ -23,7 +24,9 @@ if ($_GET['br'] == 'r') {
     VALUES ('$book_id','$account','$rate','$rate_content','$return_time','$brok_img','$book_owner')";
 	//query
 	if (mysqli_query($link, $rate_sql) and mysqli_query($link, $sql)) {
-		header("location:index.php?log=r_success");
+		//header("location:index.php?log=r_success");
+		
+		echo "<script>alert('感謝您的評價！'); location.href='index.php?log=r_success'</script>";
 	} else {
 		header("location:index.php?log=r_fail");
 	}

@@ -4,7 +4,7 @@ if (isset($_SESSION['name'])) {
     $account = $_SESSION['account'];
     $account2 = $_SESSION['account'];
     $link = mysqli_connect("localhost", "root");
-
+    @$book_id = $_GET['book_id'];
     mysqli_query($link, "SET NAMES 'UTF8'");
     mysqli_select_db($link, "sa");
     $sql = "select * from book_info where book_owner = '$account'  order by up_date DESC";
@@ -71,6 +71,9 @@ if (isset($_SESSION['name'])) {
                     ?>
                     <form method="get" action="" id='searchtxt'>
                         <input type="text" name="searchtxt" value="<?php echo $searchtxt; ?>"  placeholder="輸入關鍵字" />
+                    </form>
+                    <form method="get" action="return_check.php">
+                        <input type="hidden" name="book_id" value="<?php echo $book_id;?>">
                     </form>
                     <div id="ss">
                         <ul class="pagination">
@@ -200,7 +203,7 @@ if (isset($_SESSION['name'])) {
                                                 echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成還書</button></a></td>";
                                             }
                                             elseif($order_check < 5){
-                                                echo "<td><a href=return_check.php?method=update&order_id=$record[0]><button>進行評價</button></a></td>";//點擊此按鈕應要進入評價頁面
+                                                echo "<td><a href=return_check.php?order_id=$record[0]&book_id=$book_id><button>進行評價</button></a></td>";//點擊此按鈕應要進入評價頁面
                                             }
                                             else{
                                                 echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=000000000001><button>查看書籍</button></a></td>";//讓使用者可以回到這本書的頁面去看評價

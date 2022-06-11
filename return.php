@@ -2,6 +2,7 @@
 $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $book_id = $_GET['book_id'];
+$order_id = $_GET['order_id'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
@@ -33,8 +34,7 @@ $rs = mysqli_query($link, $sql);
 
                 <!-- Header -->
                 <header id="header">
-                    <h2>我來還書了</h2>
-                    <h3 align='right'><br><br>馬上還書評論書籍！</h3>
+                    <h2>馬上評論書籍！</h2>
                     <?php
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];
@@ -53,6 +53,7 @@ $rs = mysqli_query($link, $sql);
                 <section id="banner">
                     <div class="content">
                         <form action="borr.php?br=r" method="POST">
+                            <input type='hidden' name='order_id' value="<?php echo $order_id; ?>">
                             <?php if ($book_info = mysqli_fetch_row($rs)) { ?>
                                 <header>
                                     
@@ -68,17 +69,7 @@ $rs = mysqli_query($link, $sql);
                                 <div class="col-4 col-12-xsmall">
                                     <h4>還書日期 : <?php echo date("Y/m/d"); ?></h4>
                                 </div>
-                                <!--書籍介紹-->
-                                <p>介紹文 : <?php echo $book_info[9]; ?></p>
-                                <!-- 破損 -->
-                                <div class="col-6">
-                                    破損頁面&nbsp&nbsp&nbsp<input type="file" name="brok_img" accept=".jpg, .png, .img, .jpeg" value=" " />
-                                </div>
                                 <br>
-                                <!--破損詳細-->
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="book-name" id="book-name" value="" placeholder="請詳細說明破損的頁數及其狀況" />
-                                </div><br>
                                 <!--書籍分數-->
                                 <div class="col-8 ppppp">
                                     <p>對書籍持有者ID<<?php echo $book_info[1]; ?>>的評價?</p>
@@ -103,7 +94,7 @@ $rs = mysqli_query($link, $sql);
                                 <br>
                                 <div class="col-12">
                                     <ul class="actions">
-                                        <li><input type="submit" value="還書" class="primary" /></li>
+                                        <li><input type="submit" value="確定評價" class="primary" /></li>
                                         <li><input type="reset" value="重新填寫" /></li>
                                     </ul>
                                 </div>

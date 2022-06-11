@@ -18,7 +18,7 @@
         echo $sql;
             if(mysqli_query($link, $sql))
         {
-            header('location:order.php?method=query');
+            header("location:order.php?method=query&book_id=$book_id");
         }
 
 

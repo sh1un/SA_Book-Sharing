@@ -88,11 +88,7 @@ $points = $point['point'];
                                                 } ?><br></h4>
                                     <input type="hidden" name="book_user" value="<?php echo $account; ?>">
                                     <input type="hidden" name="borrow_day" value="<?php echo $borrow_day; ?>">
-                                    <h4>作者 : <?php echo $book['book_author']; ?><br></h4>
-                                    <h4>出版社 : <?php echo $book['public']; ?><br></h4>
-                                    <h4>出版日期 : <?php echo $book['public_date']; ?><br></h4>
-                                    <h4>類別 : <?php echo $book['book_category']; ?></h4>
-                                    <p>介紹文 : <?php echo $book['book_introduction']; ?></p>
+                                    <p>備註 : <?php echo $book['book_introduction']; ?></p>
                                     <input type="hidden" name="status" value="待借書">
                                     <!-- 以下輪播圖 -->
                                     <div id="demo" class="carousel slide" data-ride="carousel">

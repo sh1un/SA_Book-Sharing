@@ -9,7 +9,7 @@ if (isset($_GET['log'])) {
     if ($_GET['log'] == 'no') {
         echo "<script>alert('請先登入帳號密碼')</script>";
     } else if ($_GET['log'] == 'r_success') {
-        echo "<script>alert('還書成功')</script>";
+        //echo "<script>alert('還書成功')</script>";
     } else if ($_GET['log'] == 'r_fail') {
         echo "<script>alert('還書失敗')</script>";
     } else if ($_GET['log'] == 'b_success') {

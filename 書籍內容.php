@@ -7,7 +7,7 @@ $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 
 $ISBN = $_GET['ISBN'];
-$book_name = $_GET['book_name'];
+//$book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
 
@@ -106,9 +106,9 @@ if (isset($_GET['f'])) {
                             <ul class="actions">
                                 <li>
                                     <?php if ($fav == "Y") {
-                                        echo "<a style='background-color:#f56a6a' href='書籍內容.php?f=N&ISBN=$ISBN&book_name=$book_name' class=button big><font style='color:white'>" . $book_info[11] . "🤍收藏</font>";
+                                        echo "<a style='background-color:#f56a6a' href='書籍內容.php?f=N&ISBN=$ISBN' class=button big><font style='color:white'>" . $book_info[11] . "🤍收藏</font>";
                                     } else {
-                                        echo "<a href='書籍內容.php?f=Y&ISBN=$ISBN&book_name=$book_name' class=button big>" . $book_info[11] . "🤍收藏";
+                                        echo "<a href='書籍內容.php?f=Y&ISBN=$ISBN' class=button big>" . $book_info[11] . "🤍收藏";
                                     } ?></a>
                                     &nbsp&nbsp&nbsp<button class="button big" type="submit">查看所有相同書籍</button>
                                 </li>
