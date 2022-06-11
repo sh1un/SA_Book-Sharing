@@ -103,6 +103,7 @@ $rs = mysqli_query($link, $sql);
                 <?php } ?>
                 </section>
             </div>
+            <?php include "footer.php" ?>
         </div>
         <?php include "index_bar.html" ?>
     </div>
