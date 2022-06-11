@@ -13,7 +13,7 @@ if (!(isset($_GET['way']))) {
 if (isset($_GET['way'])) {
 
     $colname_rs = $_GET["query"];
-    echo $colname_rs;
+    //echo $colname_rs;
     $text = $_GET['way'];
     $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by book_name";
 

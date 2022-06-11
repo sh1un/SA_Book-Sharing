@@ -118,7 +118,11 @@ $book_info = mysqli_fetch_row($rs);
 
                                     <div class="haved_bar_items ">
                                         <!--這邊連到訂單查詢-->
+                                        <?php if ($book_all['book_user'] == "none") {?>
                                         <input type="submit" value="借閱">
+                                        <?php } else{ 
+                                            echo "";
+                                        } ?>
                                     </div>
 
                                 </div>
