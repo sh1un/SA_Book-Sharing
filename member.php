@@ -20,7 +20,7 @@ $rs = mysqli_query($link, $sql);
 <html>
 
 <head>
-    <title>書籍共享平台</title>
+    <title>我的帳號</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />

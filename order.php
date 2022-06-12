@@ -20,7 +20,7 @@ if (isset($_SESSION['name'])) {
 <html>
 
 <head>
-    <title>書籍共享-已上架書籍</title>
+    <title>訂單列表</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />
@@ -215,8 +215,11 @@ if (isset($_SESSION['name'])) {
                                         if($order_check == 5){
                                             echo "<td><button disabled>訂單完成</button></td>";
                                         }
-                                        else{
+                                        else if($order_check < 2){
                                             echo "<td><a href=order_check.php?method=delete&order_id=$record[0]><button>取消訂單</button></a></td>";
+                                        }
+                                        else{
+                                            echo "<td><a href=order_check.php?method=delete&order_id=$record[0]><button disabled>取消訂單</button></a></td>";
                                         }
                                             
                                             

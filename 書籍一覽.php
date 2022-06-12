@@ -17,7 +17,7 @@ $book_info = mysqli_fetch_row($rs);
 ?>
 
 <head>
-    <title>書籍</title>
+    <title>書籍一覽</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />

@@ -19,7 +19,7 @@ if (isset($_SESSION['name'])) {
 <html>
 
 <head>
-    <title>書籍共享-編輯書籍</title>
+    <title>編輯書籍</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />

@@ -1,7 +1,7 @@
 <?php
 //login傳值
 @$account = $_GET['account'];
-$link = mysqli_connect("localhost", "root", "12345678");
+$link = mysqli_connect("localhost", "root");
 mysqli_select_db($link, "sa");
 //sql語法
 $sql_account = "select * from account where account = '$account'";
@@ -18,7 +18,7 @@ $user = mysqli_fetch_assoc($rs);
 <html>
 
 <head>
-    <title>忘記密碼</title> 
+    <title>重設密碼</title> 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />

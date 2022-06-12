@@ -100,7 +100,12 @@
         
     }
 
-    
+    if($method=='delete'){
+        $sql5="DELETE FROM orderlist WHERE order_id = '$order_id'";
+        mysqli_query($link, $sql5);
+        echo "<script>alert('取消訂單成功'); location.href='order.php'</script>";
+    }
+
 
     if($book_owner==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為分享者，以及是否為待借書狀態，是的話將他點數+5
         $lend_point_sql="UPDATE `account` SET point=point+5 WHERE account = '$account'";
@@ -138,13 +143,6 @@
     }
 ?>
 
-<?php
-    if($method=='delete'){
-        $sql5="DELETE FROM orderlist WHERE order_id = '$order_id'";
-        mysqli_query($link, $sql5);
-    }
-
-?>
 <?php
     mysqli_close($link);
     if($location_deny){//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location

@@ -52,7 +52,7 @@ if (isset($_GET['f'])) {
 ?>
 
 <head>
-    <title>書籍共享平台-書籍上架</title>
+    <title>書籍內容</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />

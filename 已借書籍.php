@@ -19,7 +19,7 @@ if (!(isset($_SESSION['name']))) {
 <html>
 
 <head>
-    <title>書籍共享-已借書籍</title>
+    <title>已借書籍</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />
@@ -89,10 +89,6 @@ if (!(isset($_SESSION['name']))) {
                                     <br>租借人：<?php echo $account ?>
                                     <br>最慢還書日期：<?php echo $orderlist_rs_assoc['return_time'] ?>
                                 </p>
-
-                                <ul class="actions">
-                                    <li><a href="return.php?book_id=<?php echo $rslt['book_id'] ?>" class="button">還書</a></li>
-                                </ul>
                             </article>
                         <?php } ?>
 

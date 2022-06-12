@@ -22,7 +22,7 @@ if (isset($_GET['f'])) {
 ?>
 
 <head>
-    <title>收藏書籍</title>
+    <title>已收藏書籍</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />

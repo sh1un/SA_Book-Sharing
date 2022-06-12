@@ -18,7 +18,7 @@ $user = mysqli_fetch_assoc($rs);
 ?>
 
 <head>
-    <title>忘記密碼
+    <title>安全性問題
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />

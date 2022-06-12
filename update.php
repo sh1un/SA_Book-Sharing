@@ -97,7 +97,7 @@ mysqli_select_db($link, "sa");
 
                 <!-- Header -->
                 <header id="header">
-                    <h2>會員中心</h2>
+                    <h2>編輯帳號</h2>
                     <?php
                         if (isset($_SESSION['name'])) {
                             $name = $_SESSION['name'];

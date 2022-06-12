@@ -29,7 +29,7 @@ $points = $point['point'];
 ?>
 
 <head>
-    <title>書籍</title>
+    <title>書籍破損狀況</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />
@@ -143,7 +143,7 @@ $points = $point['point'];
                                                         } else {
                                                             echo $book_use['account'];
                                                         } ?><br></h4>
-                                            <h4>評價 : <?php echo $aver_rate; ?>⭐<br></h4>
+                                            <h4>對分享者的評價 : <?php echo $aver_rate; ?>⭐<br></h4>
                                             <input type="hidden" name="book_user" value="<?php echo $account; ?>">
                                             <input type="hidden" name="borrow_day" value="<?php echo $borrow_day; ?>">
                                             <input type="hidden" name="ISBN" value="<?php echo $ISBN; ?>">
