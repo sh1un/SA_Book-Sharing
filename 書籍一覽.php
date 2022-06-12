@@ -94,7 +94,7 @@ $book_info = mysqli_fetch_row($rs);
                                     <div class="haved_bar_items">
                                         <div>
                                             <p>書名 : <?php echo $book_all["book_name"]; ?><br></p><input type="hidden" name="book_name" value="<?php echo $book_all['book_name']; ?>">
-                                            <p>擁有者 : <?php echo $book_own['name']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_own['account']; ?>">
+                                            <p>擁有者 : <?php echo $book_all['book_owner']; ?><br></p><input type="hidden" name="book_own" value="<?php echo $book_all['book_owner']; ?>">
                                             <p>可借閱天數 : <?php echo $book_all["borrow_day"]; ?><br></p><input type="hidden" name="borrow_day" value="<?php echo $book_all['borrow_day']; ?>">
                                         </div>
                                     </div>
