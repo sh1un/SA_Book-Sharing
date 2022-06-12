@@ -2,7 +2,7 @@
 
 <html>
 <?php
-$book_name = $_POST['book_name'];
+$book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");

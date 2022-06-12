@@ -10,6 +10,7 @@ $ISBN = $_GET['ISBN'];
 //$book_name = $_GET['book_name'];
 
 $link = mysqli_connect("localhost", "root");
+mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
 
@@ -87,7 +88,7 @@ if (isset($_GET['f'])) {
 
                 <section id="banner">
 
-                    <form action="書籍一覽.php" method="post">
+                    <form action="書籍一覽.php" method="GET">
                         <div class="content">
 
                             <header>
