@@ -4,7 +4,9 @@
 <?php
 $book_name = $_POST['book_name'];
 $borrow_day = $_POST['borrow_day'];
+$aver_rate = $_POST['aver_rate'];
 $account = $_SESSION['account'];
+$book_id = $_GET['book_id'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
@@ -63,6 +65,12 @@ $points = $point['point'];
                 </header>
 
                 <!--破損情況-->
+                <?php
+                    //從book_condition資料表取得資料
+                    $fetch_book_condition_all_sql = "SELECT * FROM book_condition WHERE book_id = '$book_id'";
+                    $book_condition_rs = mysqli_query($link, $fetch_book_condition_all_sql);
+                    $book_condition_array = mysqli_fetch_array($book_condition_rs);
+                ?>
                 <section>
                     <header class="major">
                         <h2>詳細書況</h2>
@@ -75,28 +83,24 @@ $points = $point['point'];
                                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-bs-interval="10000">
-                                        <img src="images/1.jpeg" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>First slide label</h5>
-                                            <p>Some representative placeholder content for the first slide.</p>
-                                        </div>
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image1']; ?>" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item" data-bs-interval="2000">
-                                        <img src="images/1.jpeg" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>Second slide label</h5>
-                                            <p>Some representative placeholder content for the second slide.</p>
-                                        </div>
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image2']; ?>" class="d-block w-100" alt="...">  
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="images/1.jpeg" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>Third slide label</h5>
-                                            <p>Some representative placeholder content for the third slide.</p>
-                                        </div>
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image3']; ?>" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image4']; ?>" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image5']; ?>" class="d-block w-100" alt="...">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -139,32 +143,35 @@ $points = $point['point'];
                                                         } else {
                                                             echo $book_use['account'];
                                                         } ?><br></h4>
+                                            <h4>評價 : <?php echo $aver_rate; ?>⭐<br></h4>
                                             <input type="hidden" name="book_user" value="<?php echo $account; ?>">
                                             <input type="hidden" name="borrow_day" value="<?php echo $borrow_day; ?>">
                                             <input type="hidden" name="ISBN" value="<?php echo $ISBN; ?>">
-                                            <p>備註 : <?php echo $book['book_introduction']; ?></p>
+                                            <p>備註 : <?php echo $book_condition_array['note']; ?></p>
                                             <input type="hidden" name="status" value="待借書">
                                         </header>
+
+                                        <!-- 以下為評論，暫時擱棄 -->
                                         <?php
-                                        while ($rate = mysqli_fetch_assoc($rate_rs)) {
+                                        // while ($rate = mysqli_fetch_assoc($rate_rs)) {
                                         ?>
 
-                                            &nbsp;
-                                            <div style="flex: 1;"><img class="book_image" src="images/<?php echo $rate['brok_img']; ?>" /></div>
+                                            <!-- &nbsp;
+                                            <div style="flex: 1;"><img class="book_image" src="images/<?php //echo $rate['brok_img']; ?>" /></div>
                                             <div style="flex:5;margin-left: 40px; display:flex; flex-direction:column" class="link-top">
                                                 <div style="flex:1">
-                                                    <h4><?php echo $rate['account']; ?></h4>
+                                                    <h4><?php //echo $rate['account']; ?></h4>
                                                 </div>
                                                 <div style="flex:1">
-                                                    <h8><?php echo $rate['rate_content']; ?></h8>
+                                                    <h8><?php //echo $rate['rate_content']; ?></h8>
                                                 </div>
                                                 <div style="flex:1">
-                                                    <h8>#<?php echo $rate['rate_id']; ?>&nbsp&nbsp&nbsp&nbsp<?php echo $rate['rate_time']; ?></h8>
+                                                    <h8>#<?php //echo $rate['rate_id']; ?>&nbsp&nbsp&nbsp&nbsp<?php //echo $rate['rate_time']; ?></h8>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
 
-                                        <?php } ?>
+                                        <?php //} ?>
                                     </article>
                                     <div class="actions">
                                         <?php if ($points < 5) { ?>

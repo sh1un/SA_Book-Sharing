@@ -104,9 +104,10 @@ $book_info = mysqli_fetch_row($rs);
                                             $i++;
                                         }
                                         $total_rate /= $i;
-                                        echo "<h5>". round($total_rate,2) ."⭐</h5>";
+                                        $aver_rate = round($total_rate,2);
+                                        echo "<h5>". $aver_rate ."⭐</h5>";
                                         ?>
-                                        
+                                        <input type="hidden" name="aver_rate" value="<?php echo $aver_rate ?>"/>
                                     </div>
                                     <div class="haved_bar_items ">
                                         <h5><?php if ($book_all['book_user'] == "none") {

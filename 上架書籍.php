@@ -117,17 +117,11 @@
                                     <option value="30">30</option>
                                 </select>
                             </div>
-                            <div class="col-6">
-                                若書本有破損，請拍攝破損頁面上傳，以確保雙方權益&nbsp&nbsp&nbsp<input type="file" name="book_condition_image" id="book_condition_image" accept=".jpg, .png, .img, .jpeg" value=" " />
-                            </div>
-                            <div class="col-8">
-                                <textarea name="book-introduction" id="book-introduction" placeholder="備註" rows="6"></textarea>
-                            </div>
                             <input type="hidden" value="none" name="book_user">
                             <!-- 上架按鈕 -->
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" value="上架" class="primary" /></li>
+                                    <li><input type="submit" value="下一步" class="primary" /></li>
                                     <li><input type="reset" value="重新填寫" /></li>
                                 </ul>
                             </div>
