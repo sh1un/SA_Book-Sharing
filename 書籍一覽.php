@@ -75,7 +75,11 @@ $book_info = mysqli_fetch_row($rs);
                             $ownsql = "select * from account where account = '$book_info[1]'";
                             $ownrs = mysqli_query($link, $ownsql);
                             $book_own = mysqli_fetch_assoc($ownrs);
-
+                            $book_id = $book_all['book_id'];
+                            $fetch_orderlist_book_id_sql = "SELECT * FROM orderlist WHERE `orderlist`.`book_id` = '$book_id'";
+                            $orderlist_book_id_rs = mysqli_query($link, $fetch_orderlist_book_id_sql);
+                            $orderlist_book_id_array = mysqli_fetch_array($orderlist_book_id_rs);
+                            
                         ?>
                             <form action="broken.php?book_id=<?php echo $book_all['book_id'] ?>" method="POST">
                                 <div class="box_action haved_bar">
@@ -110,18 +114,34 @@ $book_info = mysqli_fetch_row($rs);
                                         <input type="hidden" name="aver_rate" value="<?php echo $aver_rate ?>"/>
                                     </div>
                                     <div class="haved_bar_items ">
-                                        <h5><?php if ($book_all['book_user'] == "none") {
-                                                echo "<font color = green>●可借閱</font>";
-                                            } else {
+                                        <h5><?php if ($book_all['book_id'] == $orderlist_book_id_array['book_id']) {
+                                                echo "<font color = orange>●已預約</font>";
+                                            }
+                                            elseif($book_all['book_user']=='none'){
+                                             echo "<font color = green>●可借閱</font>";   
+                                            } 
+                                            else {
                                                 echo "<font color = red>●已借閱</font>";
                                             } ?></h5>
                                     </div>
 
                                     <div class="haved_bar_items ">
                                         <!--這邊連到訂單查詢-->
-                                        <?php if ($book_all['book_user'] == "none") {?>
-                                        <input type="submit" value="借閱">
-                                        <?php } else{ 
+                                        <?php 
+                                        if ($book_all['book_id'] == $orderlist_book_id_array['book_id']) {
+                                        ?>
+
+                                        <input type="button" value="預約" disabled>
+                                        <?php 
+
+                                        }
+                                        
+                                        elseif($book_all['book_user']=='none'){
+                                        ?>
+                                        <input type="submit" value="預約">
+                                        <?php
+                                        }
+                                        else{ 
                                             echo "";
                                         } ?>
                                     </div>
