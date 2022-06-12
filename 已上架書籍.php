@@ -30,6 +30,8 @@ if (isset($_GET['sorf'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />
+    
+
 
 </head>
 
@@ -74,8 +76,8 @@ if (isset($_GET['sorf'])) {
                             $rslt2 =  mysqli_fetch_assoc($reslt);
                         ?>
                             <article>
-                                <div class="img_box">
-                                    <img class="img_item" src='images/<?php echo $rslt['book_image']; ?>' alt="" />
+                                <div style="width: 300px; height:200px;border:solid white;">
+                                    <img style="object-fit:contain; width:290px; height:190px;" src='images/<?php echo $rslt['book_image']; ?>' alt="" />
                                 </div>
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 編號 : <?php echo $rslt['book_id'] ?>

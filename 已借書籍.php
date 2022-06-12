@@ -23,6 +23,7 @@ if (!(isset($_SESSION['name']))) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/book-list.css" />
+    
 
 </head>
 
@@ -75,8 +76,8 @@ if (!(isset($_SESSION['name']))) {
 
                         ?>
                             <article>
-                            <div class="img_box">
-                                    <img class="img_item" src='images/<?php echo $rslt['book_image']; ?>' alt="" /></div>
+                            <div style="width: 300px; height:200px;border:solid white;">
+                                    <img style="object-fit:contain; width:290px; height:190px;" src='images/<?php echo $rslt['book_image']; ?>' alt="" /></div>
                                 
                                 <h3><?php echo $rslt['book_name'] ?></h3>
                                 <p>租借情況：<?php if ($rslt['book_user'] == "none") {
@@ -100,10 +101,6 @@ if (!(isset($_SESSION['name']))) {
                 </section>
 
             </div>
-<?php include "footer.php" ?>
-        </div>
-        <?php include "index_bar.html" ?>
-    </div>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -113,5 +110,13 @@ if (!(isset($_SESSION['name']))) {
     <script src="assets/js/main.js"></script>
 
 </body>
+
+<footer>
+    <?php include "footer.php" ?>
+        </div>
+        <?php include "index_bar.html" ?>
+    </div>
+
+</footer>
 
 </html>
