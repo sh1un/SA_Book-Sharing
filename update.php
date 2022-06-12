@@ -132,10 +132,7 @@ mysqli_select_db($link, "sa");
                                     <td>帳號</td>
                                     <td><?php echo $_POST['account']; ?></td>
                                 </tr>
-                                <tr>
-                                    <td>密碼</td>
-                                    <td><input type="text" class="input_box" value=<?php echo $_POST['password']; ?> name="udpassword" required></td>
-                                </tr>
+                                
                                 <tr>
                                     <td>電子信箱</td>
                                     <td><input type="text" class="input_box" value=<?php echo $_POST['email']; ?> name="udemail" required></td>
