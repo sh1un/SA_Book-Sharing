@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
         $book_broken_image_insert_sql = "UPDATE book_condition SET book_broken_image1 = '$record[0]',  book_broken_image2 = '$record[1]',  book_broken_image3 = '$record[2]',  book_broken_image4 = '$record[3]' , book_broken_image5 = '$record[4]', note = '$note' WHERE book_id = $book_id";
         mysqli_query($link,$book_broken_image_insert_sql);
         echo mysqli_query($link,$book_broken_image_insert_sql);
-        echo "<script>alert('書況圖上傳成功'); location.href='已上架書籍.php'</script>";
+        echo "<script>alert('上傳成功！'); location.href='已上架書籍.php'</script>";
     }
     else{
         echo "<script>alert('權限不足'); location.href='index.php'</script>";
