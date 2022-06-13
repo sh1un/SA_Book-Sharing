@@ -97,6 +97,10 @@ if (!(isset($_SESSION['name']))) {
                 </section>
 
             </div>
+            <?php include "footer.php" ?>
+        </div>
+        <?php include "index_bar.html" ?>
+    </div>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -107,12 +111,8 @@ if (!(isset($_SESSION['name']))) {
 
 </body>
 
-<footer>
-    <?php include "footer.php" ?>
-        </div>
-        <?php include "index_bar.html" ?>
-    </div>
 
-</footer>
+    
+
 
 </html>
