@@ -1,9 +1,9 @@
-<footer id="footer" style="background-color: #F5FFFA">
+<footer id="footer" style="background-color: #F5F5F5">
                 <hr>
                 <div class="row">
                     
                     <div class=col-12 style="margin-left: 7%;margin-top: 2%">
-                        <h2 style="color: #B22222">書籍共享平台</h2>
+                        <h2 style="color: black">書籍共享平台</h2>
                     </div>
                     <div class="col-4" style="margin-left: 7%;">
                     <ul class="contact">
