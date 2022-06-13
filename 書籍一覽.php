@@ -113,7 +113,7 @@ $book_info = mysqli_fetch_row($rs);
                                         <input type="hidden" name="aver_rate" value="<?php echo $aver_rate ?>" />
                                     </div>
                                     <div class="haved_bar_items ">
-                                        <h5><?php if (($book_all['book_user'] == 'none') and $orderlist_book_id_array['book_user']==$account and $orderlist_book_id_array['book_id']==$book_all['book_id']) {
+                                        <h5><?php if (($book_all['book_user'] == 'none') and $book_all['book_user']==$account and $orderlist_book_id_array['book_id']==$book_all['book_id']) {
                                                 echo "<font color = orange>●已預約</font>";
                                             } else if ($book_all['book_user'] == 'none') {
                                                 echo "<font color = green>●可借閱</font>";
@@ -125,7 +125,7 @@ $book_info = mysqli_fetch_row($rs);
                                     <div class="haved_bar_items ">
                                         <!--這邊連到訂單查詢-->
                                         <?php
-                                        if (($book_all['book_user'] == 'none') and $orderlist_book_id_array['book_user']==$account and $orderlist_book_id_array['book_id']==$book_all['book_id']) {
+                                        if (($book_all['book_user'] == 'none') and $book_all['book_user']==$account and $orderlist_book_id_array['book_id']==$book_all['book_id']) {
                                         ?>
 
                                             <input type="button" value="預約" disabled>
