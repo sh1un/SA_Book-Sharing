@@ -73,7 +73,7 @@ if (isset($_SESSION['name'])) {
                                 <tr>
                                     <td width="550px">更換圖片：</td>
                                     <td><input type="file" name="udbook-image" id="book-image" accept=".jpg, .png, .img, .jpeg" value=""/>
-                                    <input type="hidden" value=<?php echo $rs['book_image']; ?> name="book_image">
+                                    <input type="hidden" value=<?php echo $rs['book_image']; ?> name="book-image">
                                     <img class="img_item" src='images/<?php echo $rs['book_image']; ?>' alt="" /></div></td>
                                 </tr>
                                 <tr>

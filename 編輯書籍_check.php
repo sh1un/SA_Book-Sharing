@@ -12,6 +12,7 @@ mysqli_select_db($link, "sa");
     $udpublic_date = $_POST['udpublic-date'];
     $udbook_category = $_POST['udbook-category'];
     $udISBN = $_POST['udISBN'];
+    $udbook_image = $_POST['udbook-image'];
     if(!empty($udbook_image)){
         $udbook_image = $_POST['udbook-image'];
     }else{
@@ -31,6 +32,7 @@ mysqli_select_db($link, "sa");
 
     if(mysqli_query($link,$sql))
     {
+        echo $sql;
         header('location:已上架書籍.php?sorf=修改成功');
     }else{
         header('location:已上架書籍.php?sorf=修改失敗');
