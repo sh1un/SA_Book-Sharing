@@ -88,19 +88,19 @@ $points = $point['point'];
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-bs-interval="10000">
-                                        <img src="images/<?php echo $book_condition_array['book_broken_image1']; ?>" class="d-block w-100" alt="書況圖1">
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image1']; ?>" style='height:500px' class="d-block w-100" alt="書況圖1">
                                     </div>
                                     <div class="carousel-item" data-bs-interval="2000">
-                                        <img src="images/<?php echo $book_condition_array['book_broken_image2']; ?>" class="d-block w-100" alt="書況圖2">  
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image2']; ?>" style='height:500px' class="d-block w-100" alt="書況圖2">  
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="images/<?php echo $book_condition_array['book_broken_image3']; ?>" class="d-block w-100" alt="書況圖3">
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image3']; ?>" style='height:500px' class="d-block w-100" alt="書況圖3">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="images/<?php echo $book_condition_array['book_broken_image4']; ?>" class="d-block w-100" alt="書況圖4">
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image4']; ?>" style='height:500px' class="d-block w-100" alt="書況圖4">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="images/<?php echo $book_condition_array['book_broken_image5']; ?>" class="d-block w-100" alt="書況圖5">
+                                        <img src="images/<?php echo $book_condition_array['book_broken_image5']; ?>" style='height:500px' class="d-block w-100" alt="書況圖5">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
