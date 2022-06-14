@@ -52,7 +52,7 @@
                         <div class="row gtr-uniform">
                             
                             <div class="col-6">
-                                若書本有破損，請拍攝破損頁面上傳，以確保雙方權益(最多五張)&nbsp&nbsp&nbsp<input type="file" name="book_broken_image[]" id="book_broken_image" multiple="multiple" accept=".jpg, .png, .img, .jpeg" required/>
+                                請上傳五張書況圖：封面、封底、書衣、書背、書腰&nbsp&nbsp&nbsp<input type="file" name="book_broken_image[]" id="book_broken_image" multiple="multiple" accept=".jpg, .png, .img, .jpeg" required/>
                             </div>
                             <div class="col-8">
                                 <textarea name="note" id="note" placeholder="備註:" rows="6"></textarea>
