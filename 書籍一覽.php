@@ -133,8 +133,18 @@ $book_info = mysqli_fetch_row($rs);
                                         <?php 
                                         if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
                                         ?>
+                                            <?php
+                                            if(!empty($orderlist_book_id_array['book_id'])){
+                                            ?>
+                                                <input type="button" value="預約" disabled>
+                                                
+                                            <?php
 
-                                        <input type="button" value="預約" disabled>
+                                            }
+                                            ?>
+                                        
+
+                                        
                                         <?php 
 
                                         }
