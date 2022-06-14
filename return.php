@@ -3,12 +3,14 @@ $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $book_id = $_GET['book_id'];
 $order_id = $_GET['order_id'];
+$order_day = $_GET['order_day'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");
 $sql = "select * from book_info where book_user = '$account' and book_id = '$book_id'";
 $rs = mysqli_query($link, $sql);
+
 ?>
 
 
@@ -54,7 +56,11 @@ $rs = mysqli_query($link, $sql);
                     <div class="content">
                         <form action="borr.php?br=r" method="POST">
                             <input type='hidden' name='order_id' value="<?php echo $order_id; ?>">
-                            <?php if ($book_info = mysqli_fetch_row($rs)) { ?>
+                            <?php if ($book_info = mysqli_fetch_row($rs)) { 
+                                $theDate = new DateTime($order_day);
+                                $stringDate = $theDate->format('Y/m/d');
+                                $latest_return_day = date("Y/m/d",strtotime("$book_info[13] day",strtotime($stringDate)));
+                               ?>
                                 <header>
                                     
                             
@@ -75,6 +81,9 @@ $rs = mysqli_query($link, $sql);
                                 <!--還書日期-->
                                 <div class="col-4 col-12-xsmall">
                                     <h4>還書日期 : <?php echo date("Y/m/d"); ?></h4>
+                                </div>
+                                <div class="col-4 col-12-xsmall">
+                                    <h4>最晚還書日期：<?php echo $latest_return_day; ?></h4>
                                 </div>
                                 <br>
                                 <!--書籍分數-->

@@ -17,18 +17,18 @@ if ($_GET['br'] == 'r') {
 	
 	$rate = $_POST['rate'];
 	$rate_content = $_POST['rate_content'];
-	$brok_img = $_POST['brok_img'];
+	//$brok_img = $_POST['brok_img']; 已經不用ㄌ
 	$book_owner = $_POST['book_owner'];
 
-	$rate_sql = "INSERT INTO `evaluation`(`book_id`,`account`,`rate`, `rate_content`, `rate_time`, `brok_img`, `owner_account`) 
-    VALUES ('$book_id','$account','$rate','$rate_content','$return_time','$brok_img','$book_owner')";
+	$rate_sql = "INSERT INTO `evaluation`(`book_id`,`account`,`rate`, `rate_content`, `rate_time`, `owner_account`) 
+    VALUES ('$book_id','$account','$rate','$rate_content','$return_time','$book_owner')";
 	//query
 	if (mysqli_query($link, $rate_sql) and mysqli_query($link, $sql)) {
 		//header("location:index.php?log=r_success");
 		
 		echo "<script>alert('感謝您的評價！'); location.href='index.php?log=r_success'</script>";
 	} else {
-		header("location:index.php?log=r_fail");
+		header("<script>alert('評價失敗！');location.href='index.php?log=r_fail'</script>");
 	}
 } else {
 	$book_id = $_SESSION['book_id'];

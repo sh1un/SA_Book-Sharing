@@ -204,7 +204,7 @@ if (isset($_SESSION['name'])) {
                                                 echo "<td><a href=order_check.php?method=update&order_id=$record[0]><button>完成還書</button></a></td>";
                                             }
                                             elseif($order_check < 5){
-                                                echo "<td><a href=return_check.php?order_id=$record[0]&book_id=$book_id><button>進行評價</button></a></td>";//點擊此按鈕應要進入評價頁面
+                                                echo "<td><a href=return_check.php?order_id=$record[0]&book_id=$book_id&order_day=$record[4]><button>進行評價</button></a></td>";//點擊此按鈕應要進入評價頁面
                                             }
                                             else{
                                                 echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=000000000001><button>查看書籍</button></a></td>";//讓使用者可以回到這本書的頁面去看評價

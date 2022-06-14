@@ -18,6 +18,7 @@
     $order_id = $_GET['order_id'];
     @$method = $_GET['method'];
     $book_id = $_GET['book_id'];
+    $order_day = $_GET['order_day'];
 ?>
     <form action='' method='post'>
         <input type='hidden' name='order_id' value="<?php echo $order_id; ?>">
@@ -69,7 +70,7 @@
 
 ?>
 <?php
-    header("location:return.php?book_id=$book_id&order_id=$order_id");
+    header("location:return.php?book_id=$book_id&order_id=$order_id&order_day=$order_day");
     $sql4="UPDATE orderlist SET order_status = '已完成' WHERE order_id='$order_id'";
     mysqli_query($link, $sql4);
     mysqli_close($link);
