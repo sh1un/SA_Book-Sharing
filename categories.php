@@ -114,6 +114,7 @@ $query_rs = mysqli_query($link, $query_sql);
 									出版社 : <?php echo $rslt['public']; ?><br>
 									類別：<?php echo $rslt['book_category']; ?><br>
 									上架時間 : <?php echo $rslt['up_date']; ?><br>
+									收藏數：<?php echo $rslt['likes']; ?>🤍<br><br>
 									<?php echo $rslt['book_introduction']; ?></p>
 									<ul class="actions">
 										<li><a href="書籍內容.php?ISBN=<?php echo $rslt['ISBN'] ?>" class="button big">書籍資訊</a>
