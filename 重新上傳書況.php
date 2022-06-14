@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>上傳書況</title>
+    <title>重新上傳書況</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -46,7 +46,7 @@
 
                     <hr class="major" />
                     <!--書籍資訊填寫表單-->
-                    <h2 id="elements">上傳書況</h2>
+                    <h2 id="elements">重新上傳書況</h2>
 
                     <form method="post" action="上傳書況_check.php?book_id=<?php echo $book_id ?>" enctype='multipart/form-data'>
                         <div class="row gtr-uniform">
@@ -54,6 +54,7 @@
                             <div class="col-6">
                                 請上傳五張書況圖：封面、封底、書衣、書脊、內頁側面&nbsp&nbsp&nbsp<input type="file" name="book_broken_image[]" id="book_broken_image" multiple="multiple" accept=".jpg, .png, .img, .jpeg" required/>
                             </div>
+                            
                             <div class="col-8">
                                 <img src="images/書的結構.png" style="width:200px ;">
                             </div>
