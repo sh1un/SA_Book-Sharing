@@ -8,7 +8,7 @@
     $book_id = $_POST['book_id'];
     $ISBN = $_POST['ISBN'];
 
-    $link = mysqli_connect("localhost", "root");
+    $link = mysqli_connect("localhost", "root" ,"12345678");
     mysqli_query($link, "SET NAMES 'UTF8'");
     mysqli_select_db($link, "sa");
 

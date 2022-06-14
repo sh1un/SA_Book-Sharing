@@ -4,7 +4,7 @@
     if (isset($_SESSION['name'])) {
         $name = $_SESSION['name'];
         $account = $_SESSION['account'];
-        $link = mysqli_connect("localhost", "root");
+        $link = mysqli_connect("localhost", "root" ,"12345678");
         
         mysqli_query($link, "SET NAMES 'UTF8'");
         mysqli_select_db($link, "sa");

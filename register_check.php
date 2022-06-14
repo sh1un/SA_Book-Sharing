@@ -15,7 +15,7 @@ $safe_a2 = $_POST['safe_a2'];
 $safe_q3 = $_POST['safe_q3'];
 $safe_a3 = $_POST['safe_a3'];
 
-$link = mysqli_connect("localhost", "root");
+$link = mysqli_connect("localhost", "root" ,"12345678");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
 mysqli_select_db($link, "sa");

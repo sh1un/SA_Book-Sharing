@@ -2,7 +2,7 @@
 //login傳值
 @$account = $_POST['account'];
 @$email = $_POST['email'];
-$link = mysqli_connect("localhost", "root");
+$link = mysqli_connect("localhost", "root" ,"12345678");
 mysqli_select_db($link, "sa");
 //sql語法
 $sql_account = "select * from account where account = '$account' and email = '$email'";

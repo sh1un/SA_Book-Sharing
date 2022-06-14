@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set('Asia/Taipei');
     $book_broken_image_count = count($_FILES['book_broken_image']['name']);
 
-    $link = mysqli_connect("localhost", "root");
+    $link = mysqli_connect("localhost", "root","12345678");
     
     mysqli_query($link, "SET NAMES 'UTF8'");
 	mysqli_select_db($link, "sa");
