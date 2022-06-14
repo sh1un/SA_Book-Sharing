@@ -100,35 +100,6 @@
         
     }
 
-    if($method=='delete'){
-        $sql5="DELETE FROM orderlist WHERE order_id = '$order_id'";
-        mysqli_query($link, $sql5);
-        echo "<script>alert('取消訂單成功'); location.href='order.php'</script>";
-    }
-
-
-    if($book_owner==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為分享者，以及是否為待借書狀態，是的話將他點數+5
-        $lend_point_sql="UPDATE `account` SET point=point+5 WHERE account = '$account'";
-
-        mysqli_query($link, $lend_point_sql);
-
-        $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉location
-        echo "<script>alert('感謝您的分享，您已獲得5point！'); location.href='order.php'</script>";
-        
-    }
-
-    
-    if($record_book_user['book_user']==$account && $record['order_check'] <= 1){//判斷按下此按鈕的人是否為租借者，以及是否為待借書狀態，是的話將他點數-5
-        $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'";
-        $update_book_info_user_sql="UPDATE book_info SET book_user = '$account' WHERE book_id='$book_id'";
-        
-        mysqli_query($link, $borrow_point_sql);
-        mysqli_query($link, $update_book_info_user_sql);
-        
-        $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
-        echo "<script>alert('借書成功，已扣除5point，可借閱天數為 $borrow_day 天，在雙方確認借書後，請務必至訂單列表確認「最慢還書日期」'); location.href='order.php'</script>";
-        
-    }
     elseif($record['order_check']+1 == 4){
         $sql3="UPDATE orderlist SET order_status = '待評價' WHERE order_id='$order_id'";
         mysqli_query($link, $sql3);
@@ -138,11 +109,63 @@
     elseif($record['order_check']+1 == 5){
         $sql4="UPDATE orderlist SET order_status = '已完成' WHERE order_id='$order_id'";
         $clear_book_user_sql = "UPDATE book_info SET book_user = 'none' WHERE `book_info`.`book_id` = '$book_id'";
+        
         mysqli_query($link, $sql4);
-        mysqli_query($link, $clear_book_user_sql);
+        mysqli_query($link, $clear_book_user_sql);  
         mysqli_query($link, $owner_check_clear_sql);
         mysqli_query($link, $user_check_clear_sql);
     }
+
+    if($method=='delete'){
+        $sql5="DELETE FROM orderlist WHERE order_id = '$order_id'";
+        mysqli_query($link, $sql5);
+        echo "<script>alert('取消訂單成功'); location.href='order.php'</script>";
+    }
+
+    //判斷按下此按鈕的人是否為分享者
+    if($book_owner==$account){
+        if($record['order_check'] <= 1){//是否為待借書狀態，是的話將他點數+5
+            $lend_point_sql="UPDATE `account` SET point=point+5 WHERE account = '$account'";
+
+            mysqli_query($link, $lend_point_sql);
+    
+            $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉location
+            echo "<script>alert('感謝您的分享，您已獲得5point！'); location.href='order.php'</script>";    
+        }
+        elseif($record['order_check'] <= 3){//是否為還書狀態，是的話JS跳出以下訊息
+            $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
+            echo "<script>alert('完成操作，雙方確認還書後，租借者請記得評價哦！'); location.href='order.php'</script>";
+        }
+        
+    }
+
+    //判斷按下此按鈕的人是否為租借者
+    if($record_book_user['book_user']==$account){
+        if($record['order_check'] <= 1){//是否為待借書狀態，是的話將他點數-5
+            $borrow_point_sql="UPDATE `account` SET point=point-5 WHERE account = '$account'";
+            $update_book_info_user_sql="UPDATE book_info SET book_user = '$account' WHERE book_id='$book_id'";
+            
+            mysqli_query($link, $borrow_point_sql);
+            mysqli_query($link, $update_book_info_user_sql);
+            
+            $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
+            echo "<script>alert('借書成功，已扣除5point，可借閱天數為 $borrow_day 天，在雙方確認借書後，請務必至訂單列表確認「最慢還書日期」'); location.href='order.php'</script>";
+        }
+        elseif($record['order_check'] <= 3){//是否為還書狀態，是的話JS跳出以下訊息
+            $location_deny=true;//用來防止83行，header("location:order.php?"); 擋掉借書扣除5points的location
+            echo "<script>alert('完成操作，雙方確認還書後，租借者請記得評價哦！'); location.href='order.php'</script>";
+        }
+    }
+
+?>
+
+
+<?php
+    if($record['order_check']+1 == 5){
+        $clear_book_id_sql = "UPDATE orderlist SET book_id = 0  WHERE order_id = '$order_id'";
+        mysqli_query($link, $clear_book_id_sql);  
+    }
+
 ?>
 
 <?php

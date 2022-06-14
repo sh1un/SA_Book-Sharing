@@ -175,6 +175,7 @@ if (isset($_SESSION['name'])) {
                                             $order_check = $check_rs_array['order_check'];
                                             $book_name = $check_rs_array['book_name'];
                                             $book_id = $check_rs_array['book_id'];
+                                            $ISBN = $check_rs_array['ISBN'];
 
                                         if($book_owner == $account){
                                             if($owner_check == 1){
@@ -207,7 +208,7 @@ if (isset($_SESSION['name'])) {
                                                 echo "<td><a href=return_check.php?order_id=$record[0]&book_id=$book_id&order_day=$record[4]><button>進行評價</button></a></td>";//點擊此按鈕應要進入評價頁面
                                             }
                                             else{
-                                                echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=000000000001><button>查看書籍</button></a></td>";//讓使用者可以回到這本書的頁面去看評價
+                                                echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=$ISBN><button>查看書籍</button></a></td>";//讓使用者可以回到這本書的頁面去看評價
                                             }
                                         }
                                             

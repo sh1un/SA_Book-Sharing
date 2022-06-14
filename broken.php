@@ -177,7 +177,7 @@ $points = $point['point'];
                                         <?php if ($points < 5) { ?>
                                             <input type="submit" value="您的點數<5" disabled>
                                         <?php } else { ?>
-                                            <input type="submit" value="確定借閱"> <?php } ?>
+                                            <input type="submit" onclick="window.alert('預約成功');" value="確定借閱"> <?php } ?>
                                     </div>
                                 </div>
                             </form>
