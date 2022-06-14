@@ -137,7 +137,9 @@
     }
     elseif($record['order_check']+1 == 5){
         $sql4="UPDATE orderlist SET order_status = '已完成' WHERE order_id='$order_id'";
+        $clear_book_user_sql = "UPDATE book_info SET book_user = 'none' WHERE `book_info`.`book_id` = '$book_id'";
         mysqli_query($link, $sql4);
+        mysqli_query($link, $clear_book_user_sql);
         mysqli_query($link, $owner_check_clear_sql);
         mysqli_query($link, $user_check_clear_sql);
     }

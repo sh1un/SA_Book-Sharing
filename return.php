@@ -3,7 +3,6 @@ $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $book_id = $_GET['book_id'];
 $order_id = $_GET['order_id'];
-$order_day = $_GET['order_day'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 
@@ -86,9 +85,10 @@ $rs = mysqli_query($link, $sql);
                                     <h4>最晚還書日期：<?php echo $latest_return_day; ?></h4>
                                 </div>
                                 <br>
+                                <br>
                                 <!--書籍分數-->
                                 <div class="col-8 ppppp">
-                                    <p>對書籍持有者ID<<?php echo $book_info[1]; ?>>的評價?</p>
+                                    <p><h2><b>對書籍持有者ID<<?php echo $book_info[1]; ?>>的評價?</b></h2></p>
                                     <input class="likepp" type="radio" name="rate" id="item01" value=1/>
                                     <label for="item01">極差</label>
                                     <input class="likepp" type="radio" name="rate" id="item02" value=2/>
@@ -104,6 +104,7 @@ $rs = mysqli_query($link, $sql);
 
 
                                 <!--書籍評論-->
+                                <p><h2><b>對於這本書的體驗如何</b></h2></p>
                                 <div class="col-8">
                                     <textarea name="rate_content" id="rate_content" placeholder="對於這本書的體驗如何?" rows="6"></textarea>
                                 </div>
