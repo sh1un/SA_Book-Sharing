@@ -7,7 +7,7 @@ $borrow_day = $_POST['borrow_day'];
 $aver_rate = $_POST['aver_rate'];
 $account = $_SESSION['account'];
 $book_id = $_GET['book_id'];
-$link = mysqli_connect("localhost", "root" ,"12345678");
+$link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 mysqli_select_db($link, "sa");
 //抓評論資料
