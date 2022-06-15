@@ -148,7 +148,7 @@ if (isset($_SESSION['name'])) {
                                     {
                                         $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or order_time like '$searchtxt' or return_time like '$searchtxt' and (book_owner like '$account' or book_user like '$account') ";
                                     }
-                                    echo $sql;
+                                    
                                     $rs=mysqli_query($link,$sql);
                                     while($record=mysqli_fetch_row($rs))
                                     {
