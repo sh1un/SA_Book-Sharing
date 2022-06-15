@@ -3,6 +3,7 @@ $name = $_SESSION['name'];
 $account = $_SESSION['account'];
 $book_id = $_GET['book_id'];
 $order_id = $_GET['order_id'];
+$order_day = $_GET['order_day'];
 $link = mysqli_connect("localhost", "root");
 mysqli_query($link, "SET NAMES 'UTF8'");
 

@@ -171,7 +171,7 @@ $book_info = mysqli_fetch_row($rs);
 
 
 
-
+            <?php include "footer.php" ?>
         </div>
         <?php include "index_bar.html" ?>
     </div>

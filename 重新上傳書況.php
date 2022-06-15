@@ -48,7 +48,7 @@
                     <!--書籍資訊填寫表單-->
                     <h2 id="elements">重新上傳書況</h2>
 
-                    <form method="post" action="上傳書況_check.php?book_id=<?php echo $book_id ?>" enctype='multipart/form-data'>
+                    <form method="post" action="重新上傳書況_check.php?book_id=<?php echo $book_id ?>" enctype='multipart/form-data'>
                         <div class="row gtr-uniform">
                             
                             <div class="col-6">

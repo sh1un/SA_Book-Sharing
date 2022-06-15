@@ -52,7 +52,7 @@
                         <div class="row gtr-uniform">
                             
                             <div class="col-6">
-                                請上傳五張書況圖：封面、封底、書衣、書脊、內頁側面&nbsp&nbsp&nbsp<input type="file" name="book_broken_image[]" id="book_broken_image" multiple="multiple" accept=".jpg, .png, .img, .jpeg" required/>
+                                請上傳五張書況圖：書名頁、封底、書衣、書脊、內頁側面&nbsp&nbsp&nbsp<input type="file" name="book_broken_image[]" id="book_broken_image" multiple="multiple" accept=".jpg, .png, .img, .jpeg" required/>
                             </div>
                             <div class="col-8">
                                 <img src="images/書的結構.png" style="width:200px ;">
