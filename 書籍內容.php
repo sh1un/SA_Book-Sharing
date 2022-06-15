@@ -128,8 +128,10 @@ if (isset($_GET['f'])) {
                     //rate
                     $rate_sql = "select * from evaluation where ISBN = $ISBN";
                     $rate_rs = mysqli_query($link, $rate_sql);
+                    if(!(mysqli_fetch_assoc($rate_rs)))echo "<div style= text-align:center>"."暫時沒評論"."</div>";
                     while ($rate = mysqli_fetch_assoc($rate_rs)) {
                         //評論者
+                        
                         $ra = $rate['account'];
                         $rater_sql = "SELECT * FROM account WHERE account = '$ra'";
                         $rater_rs = mysqli_query($link, $rater_sql);
@@ -138,11 +140,13 @@ if (isset($_GET['f'])) {
                         <div class="rate_item">
                             <img style="width:60px;height:60px; margin:10px" src="images/頭貼.png">
                             <div>
-                                <?php echo "<h4>".$rater['name']."&nbsp&nbsp&nbsp&nbsp".$rate['rate_time']."</h4>" ?>
+                                <?php echo "<h4>" . $rater['name'] . "&nbsp&nbsp&nbsp&nbsp" . $rate['rate_time'] . "</h4>" ?>
                                 <?php echo $rate['rate_content'] ?>
                             </div>
                         </div>
                     <?php  }
+                        
+                    
                     ?>
                 </section>
             </div>
