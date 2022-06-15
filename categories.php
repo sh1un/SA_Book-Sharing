@@ -134,6 +134,7 @@ $query_rs = mysqli_query($link, $query_sql);
 
 				
 			</div>
+			<?php include "footer.php" ?>
 		</div>
 
 		<!-- Sidebar -->
