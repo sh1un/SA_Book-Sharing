@@ -92,7 +92,7 @@ if (isset($_GET['log'])) {
 
                         <?php
                         $i = 0;
-                        while ($rslt =  mysqli_fetch_assoc($rs) and $i < 4) {
+                        while ($rslt =  mysqli_fetch_assoc($rs) and $i < 8) {
                         ?>
                             <article>
                                 <span><img  class="book_image" src="images/<?php echo $rslt['book_image']; ?>" alt="" /></span>
