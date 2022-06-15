@@ -86,7 +86,7 @@ if (isset($_SESSION['name'])) {
                             <li><a href="order.php" class="page">全部</a></li>
                         </ul>
                     </div>
-                    <?php $searchtxt='default'; ?>
+                    
                     <br>
                     <div class="posts">
                         <table>
@@ -146,11 +146,10 @@ if (isset($_SESSION['name'])) {
                                     }
                                     else
                                     {
-                                        $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or order_time like '$searchtxt' or return_time like '$searchtxt' or book_owner like '$account' or book_user like '$account' ";
+                                        $sql="select * from orderlist where order_id like '%$searchtxt%' or book_name like '%$searchtxt%' or order_time like '$searchtxt' or return_time like '$searchtxt' and (book_owner like '$account' or book_user like '$account') ";
                                     }
-                                    
+                                    echo $sql;
                                     $rs=mysqli_query($link,$sql);
-                                    
                                     while($record=mysqli_fetch_row($rs))
                                     {
                                         echo 
