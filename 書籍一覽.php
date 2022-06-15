@@ -79,7 +79,7 @@ $book_info = mysqli_fetch_row($rs);
                             $fetch_orderlist_book_id_sql = "SELECT * FROM orderlist WHERE `orderlist`.`book_id` = '$book_id'";
                             $orderlist_book_id_rs = mysqli_query($link, $fetch_orderlist_book_id_sql);
                             $orderlist_book_id_array = mysqli_fetch_array($orderlist_book_id_rs);
-                            
+
                         ?>
                             <form action="broken.php?book_id=<?php echo $book_all['book_id'] ?>" method="POST">
                                 <div class="box_action haved_bar">
@@ -102,59 +102,54 @@ $book_info = mysqli_fetch_row($rs);
                                         <?php $rates_sql = "select rate from evaluation where owner_account = '$book_all[book_owner]'";
                                         $total_rate = 0;
                                         $i = 1;
-                                        $rate_rs=mysqli_query($link, $rates_sql);
-                                       while ($rate = mysqli_fetch_row($rate_rs)) {
+                                        $rate_rs = mysqli_query($link, $rates_sql);
+                                        while ($rate = mysqli_fetch_row($rate_rs)) {
                                             $total_rate += $rate[0];
                                             $i++;
                                         }
                                         $total_rate /= $i;
-                                        $aver_rate = round($total_rate,2);
-                                        echo "<h5>". $aver_rate ."⭐</h5>";
+                                        $aver_rate = round($total_rate, 2);
+                                        echo "<h5>" . $aver_rate . "⭐</h5>";
                                         ?>
-                                        <input type="hidden" name="aver_rate" value="<?php echo $aver_rate ?>"/>
+                                        <input type="hidden" name="aver_rate" value="<?php echo $aver_rate ?>" />
                                     </div>
                                     <div class="haved_bar_items ">
-                                        <h5><?php 
-                                            if(!empty($orderlist_book_id_array['book_id'])){
-                                            if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
-                                                
+                                        <h5><?php
+                                            if (!empty($orderlist_book_id_array['book_id'])) {
+                                                if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
+
                                                     echo "<font color = orange>●已預約</font>";
                                                 }
-                                                
-                                            }
-                                            elseif($book_all['book_user']=='none'){
-                                             echo "<font color = green>●可借閱</font>";   
-                                            } 
-                                            else {
+                                             elseif ($book_all['book_user'] == 'none') {
+                                                echo "<font color = green>●可借閱</font>";
+                                            } else {
                                                 echo "<font color = red>●已借閱</font>";
-                                            } ?></h5>
+                                            } 
+                                            }?></h5>
                                     </div>
 
                                     <div class="haved_bar_items ">
                                         <!--這邊連到訂單查詢-->
-                                        <?php 
-                                        if(!empty($orderlist_book_id_array['book_id'])){
-                                        if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
+                                        <?php
+                                        if (!empty($orderlist_book_id_array['book_id'])) {
+                                            if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
                                         ?>
                                                 <input type="button" value="預約" disabled>
-                                                
+
                                             <?php
 
                                             }
                                             ?>
-                                        
 
-                                        
-                                        <?php 
 
-                                        }
-                                        
-                                        elseif($book_all['book_user']=='none'){
-                                        ?>
-                                        <input type="submit" value="預約">
+
                                         <?php
-                                        }
-                                        else{ 
+
+                                        } elseif ($book_all['book_user'] == 'none') {
+                                        ?>
+                                            <input type="submit" value="預約">
+                                        <?php
+                                        } else {
                                             echo "";
                                         } ?>
                                     </div>
