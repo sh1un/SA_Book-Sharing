@@ -123,27 +123,30 @@ if (isset($_GET['f'])) {
 
                 </section>
                 <section>
-                    <div class="rate_box">
-                        <?php
+                    <?php
 
-                        //rate
-                        $rate_sql = "select * from evaluation where ISBN = $ISBN";
-                        $rate_rs = mysqli_query($link, $rate_sql);
-                        while ($rate = mysqli_fetch_assoc($rate_rs)) {
-                            //評論者
-                            $rater_sql = "select name from account where account = $rate[account]";
-                            $rater_rs = mysqli_query($link, $rater_sql);
-                            $rater = mysqli_fetch_row($rater_rs);
-                        ?>
-                            <div class="rate_item">
+                    //rate
+                    $rate_sql = "select * from evaluation where ISBN = $ISBN";
+                    $rate_rs = mysqli_query($link, $rate_sql);
+                    while ($rate = mysqli_fetch_assoc($rate_rs)) {
+                        //評論者
+                        $ra = $rate['account'];
+                        $rater_sql = "SELECT * FROM account WHERE account = '$ra'";
+                        $rater_rs = mysqli_query($link, $rater_sql);
+                        $rater = mysqli_fetch_assoc($rater_rs);
+                    ?>
+                        <div class="rate_item">
+                            <img style="width:60px;height:60px; margin:10px" src="images/頭貼.png">
+                            <div>
+                                <?php echo "<h4>".$rater['name']."&nbsp&nbsp&nbsp&nbsp".$rate['rate_time']."</h4>" ?>
                                 <?php echo $rate['rate_content'] ?>
                             </div>
-                        <?php  }
-                        ?>
-                    </div>
+                        </div>
+                    <?php  }
+                    ?>
                 </section>
             </div>
-    <?php include "footer.php" ?>
+            <?php include "footer.php" ?>
         </div>
         <?php include "index_bar.html" ?>
 
@@ -161,17 +164,9 @@ if (isset($_GET['f'])) {
 </html>
 
 <style>
-    .rate_box {
-        margin: 100px;
-    }
-
     .rate_item {
+        height: 150px;
         flex: 5;
-    }
-
-    .rater {
-        height: 70px;
-        width: 80px;
-        border-radius: 100%;
+        display: flex;
     }
 </style>
