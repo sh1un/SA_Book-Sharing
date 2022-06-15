@@ -6,7 +6,7 @@ mysqli_select_db($link, "sa");
 $text = '排序方式';
 if (!(isset($_GET['way']))) {
     $colname_rs = $_POST["query"];
-    $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by book_name";
+    $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by ISBN";
 }
 
 
@@ -15,7 +15,7 @@ if (isset($_GET['way'])) {
     $colname_rs = $_GET["query"];
     //echo $colname_rs;
     $text = $_GET['way'];
-    $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by book_name";
+    $query_rs = "SELECT * FROM book_info WHERE book_name LIKE '%$colname_rs%' or book_author LIKE '%$colname_rs%' or public LIKE '%$colname_rs%' group by ISBN";
 
     switch ($_GET['way']) {
         case "最新":
@@ -113,10 +113,11 @@ $rs = mysqli_query($link, $query_rs);
                                 <a href="書籍內容.php?book_name=<?php echo $row_rs['book_name'] ?>&ISBN=<?php echo $row_rs['ISBN'] ?>">
                                     <img class="book_image" src="images/<?php echo $row_rs['book_image']; ?>" /></a>
                             </div>
-                            <p>書名 : <?php echo $row_rs["book_name"]; ?><br></p>
-                            <p>作者 : <?php echo $row_rs["book_author"]; ?><br></p>
-                            <p>類別 : <?php echo $row_rs["book_category"]; ?><br></p>
-                            <p>上架時間 : <?php echo $row_rs["up_date"]; ?><br></p>
+                            <p>書名 : <?php echo $row_rs["book_name"]; ?><br>
+                            作者 : <?php echo $row_rs["book_author"]; ?><br>
+                            收藏數 : <?php echo $row_rs["likes"]; ?>🤍<br>
+                            類別 : <?php echo $row_rs["book_category"]; ?><br>
+                            上架時間 : <?php echo $row_rs["up_date"]; ?><br></p>
 
                         </div>
                         
