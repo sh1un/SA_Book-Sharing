@@ -115,17 +115,14 @@ $book_info = mysqli_fetch_row($rs);
                                     </div>
                                     <div class="haved_bar_items ">
                                         <h5><?php
-                                            if (!empty($orderlist_book_id_array['book_id'])) {
-                                                if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
-
-                                                    echo "<font color = orange>●已預約</font>";
-                                                }
-                                             elseif ($book_all['book_user'] == 'none') {
+                                            if (($book_all['book_id'] == $orderlist_book_id_array['book_id']) && ($book_all['book_user'] == 'none')) {
+                                                echo "<font color = orange>●已預約</font>";
+                                            } elseif (empty($orderlist_book_id_array['book_id']) && $book_all['book_user'] == 'none') {
                                                 echo "<font color = green>●可借閱</font>";
                                             } else {
                                                 echo "<font color = red>●已借閱</font>";
-                                            } 
-                                            }?></h5>
+                                            }
+                                            ?></h5>
                                     </div>
 
                                     <div class="haved_bar_items ">
