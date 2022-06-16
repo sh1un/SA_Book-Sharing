@@ -2989,6 +2989,7 @@ button:disabled,
     padding: 0 6em 0.1em 6em;
     margin: 0 auto;
     max-width: 110em;
+    min-height: 100%;
 }
 
 #main>.inner>section {
