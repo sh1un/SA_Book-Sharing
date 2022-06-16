@@ -75,14 +75,15 @@ if (isset($_SESSION['name'])) {
                     <form method="get" action="return_check.php">
                         <input type="hidden" name="book_id" value="<?php echo $book_id;?>">
                     </form>
+                    
                     <div id="ss">
                         <ul class="pagination">
-                            <li><a href="order.php?filter=iamowner" class="page" onclick="changestyle(this)">&emsp;我是捐借者</a></li>|&nbsp;
-                            <li><a href="order.php?filter=iamuser" class="page">我是租借者</a></li>&nbsp; |&nbsp;
-                            <li><a href="order.php?filter=tobeborrowed" class="page">待借書</a></li>&nbsp; |&nbsp; 
-                            <li><a href="order.php?filter=tobereturn" class="page">待還書</a></li>&nbsp; |&nbsp; 
-                            <li><a href="order.php?filter=tobeevaluation" class="page">待評價</a></li>&nbsp; |&nbsp; 
-                            <li><a href="order.php?filter=finished" class="page">已完成</a></li> &nbsp;|
+                            <li><a href="order.php?filter=iamowner&#target1" id = "target1" class="page">我是捐借者</a></li>|&nbsp;
+                            <li><a href="order.php?filter=iamuser&#target2" id = "target2" class="page">我是租借者</a></li>&nbsp; |&nbsp;
+                            <li><a href="order.php?filter=tobeborrowed&#target3" id = "target3" class="page">待借書</a></li>&nbsp; |&nbsp; 
+                            <li><a href="order.php?filter=tobereturn&#target4" id = "target4" class="page">待還書</a></li>&nbsp; |&nbsp; 
+                            <li><a href="order.php?filter=tobeevaluation&#target5" id = "target5" class="page">待評價</a></li>&nbsp; |&nbsp; 
+                            <li><a href="order.php?filter=finished&#target6" id = "target6" class="page">已完成</a></li> &nbsp;|
                             <li><a href="order.php" class="page">全部</a></li>
                         </ul>
                     </div>
@@ -253,13 +254,7 @@ if (isset($_SESSION['name'])) {
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        function changestyle(obj){
-        //obj.className='current';
-        // document.getElementById('ss').className="page active";
-        obj.className="page active";
-        }
-    </script>
+    
 </body>
 
 </html>

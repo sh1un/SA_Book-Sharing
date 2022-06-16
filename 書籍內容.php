@@ -88,7 +88,7 @@ if (isset($_GET['f'])) {
 
                 <section id="banner">
 
-                    <form action="書籍一覽.php" method="GET">
+                    <form action="書籍一覽.php" style="flex:3" method="GET">
                         <div class="content">
 
                             <header>
@@ -118,8 +118,9 @@ if (isset($_GET['f'])) {
 
                         </div>
                     </form>
-                    <img style="margin:0 0 30% 0" src="images/<?php echo $book_info[8]; ?>" alt="">
-
+                    <div style="flex:2">
+                        <img style="margin:0 0 30% 0; height:360px;width:240px; " src="images/<?php echo $book_info[8]; ?>" alt="">
+                    </div>
 
                 </section>
                 <section>
@@ -128,10 +129,10 @@ if (isset($_GET['f'])) {
                     //rate
                     $rate_sql = "select * from evaluation where ISBN = $ISBN";
                     $rate_rs = mysqli_query($link, $rate_sql);
-                    if(!(mysqli_fetch_assoc($rate_rs)))echo "<div style= text-align:center>"."暫時沒評論"."</div>";
+                    if (!(mysqli_fetch_assoc($rate_rs))) echo "<div style= text-align:center>" . "暫時沒評論" . "</div>";
                     while ($rate = mysqli_fetch_assoc($rate_rs)) {
                         //評論者
-                        
+
                         $ra = $rate['account'];
                         $rater_sql = "SELECT * FROM account WHERE account = '$ra'";
                         $rater_rs = mysqli_query($link, $rater_sql);
@@ -145,8 +146,8 @@ if (isset($_GET['f'])) {
                             </div>
                         </div>
                     <?php  }
-                        
-                    
+
+
                     ?>
                 </section>
             </div>
