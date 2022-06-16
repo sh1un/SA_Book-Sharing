@@ -2195,7 +2195,7 @@ ul.pagination li>.page {
     text-align: center;
 }
 
-ul.pagination li>.page.active {
+ul.pagination li>.page:target {
     background-color: #f56a6a;
     color: #ffffff !important;
 }
