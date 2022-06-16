@@ -13,6 +13,13 @@ $rs = mysqli_query($link, $sql);
 
 ?>
 
+<?php
+//從book_info資料表取得資料
+    $fetch_book_info_all_sql = "SELECT * FROM book_info WHERE book_id = '$book_id'";
+    $book_info_rs = mysqli_query($link,$fetch_book_info_all_sql);
+    $book_info_array = mysqli_fetch_array($book_info_rs);
+    $ISBN = $book_info_array['ISBN'];
+?>
 
 
 <!DOCTYPE HTML>
@@ -56,6 +63,7 @@ $rs = mysqli_query($link, $sql);
                     <div class="content">
                         <form action="borr.php?br=r" method="POST">
                             <input type='hidden' name='order_id' value="<?php echo $order_id; ?>">
+                            <input type='hidden' name='ISBN' value="<?php echo $ISBN; ?>">
                             <?php if ($book_info = mysqli_fetch_row($rs)) { 
                                 $theDate = new DateTime($order_day);
                                 $stringDate = $theDate->format('Y/m/d');
