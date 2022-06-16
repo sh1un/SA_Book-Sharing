@@ -142,7 +142,7 @@ $book_info = mysqli_fetch_row($rs);
 
                                         <?php
 
-                                        } elseif ($book_all['book_user'] == 'none') {
+                                        } elseif ($book_all['book_user'] == 'none'  && ($book_all['book_owner'] != $account)) {
                                         ?>
                                             <input type="submit" value="預約">
                                         <?php
