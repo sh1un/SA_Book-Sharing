@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 date_default_timezone_set('Asia/Taipei');
     $book_broken_image_count = count($_FILES['book_broken_image']['name']);
 
@@ -26,15 +28,17 @@ if(isset($_POST['submit'])){
         $record = [];
         for($i=0;$i<$book_broken_image_count;$i++){
             $record[$i] = $_FILES['book_broken_image']['name'][$i];
-            echo $record[$i];
+            // echo $record[$i];
 
         }
-        $book_broken_image_insert_sql = "UPDATE book_condition SET book_broken_image1 = '$record[0]',  book_broken_image2 = '$record[1]',  book_broken_image3 = '$record[2]',  book_broken_image4 = '$record[3]' , book_broken_image5 = '$record[4]', note = '$note' WHERE book_id = $book_id";
-        if(empty($record[4])){
-            $delete_broken_image = "DELETE FROM book_condition WHERE book_id = $book_id ";
-            echo "<script>alert('請上傳完整五張書況圖！')</script>";
-            header("location:重新上傳書況.php?book_id=$book_id");}
+        if(count($record)!=5){
+        ?>
+            <script>alert('請重新上傳完整五張照片！'); window.location.href='重新上傳書況.php?book_id=<?php echo $book_id; ?>'</script>
+        <?php   
+        }
+        
         else{
+            $book_broken_image_insert_sql = "UPDATE book_condition SET book_broken_image1 = '$record[0]',  book_broken_image2 = '$record[1]',  book_broken_image3 = '$record[2]',  book_broken_image4 = '$record[3]' , book_broken_image5 = '$record[4]', note = '$note' WHERE book_id = $book_id";
             mysqli_query($link,$book_broken_image_insert_sql);
         echo mysqli_query($link,$book_broken_image_insert_sql);
         echo "<script>alert('上傳成功！'); location.href='已上架書籍.php'</script>";
