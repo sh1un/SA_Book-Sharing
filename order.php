@@ -67,7 +67,8 @@ if (isset($_SESSION['name'])) {
                         @$searchtxt = $_GET["searchtxt"];
                         @$iamowner = $_GET["iamowner"];
                         @$iamuser = $_GET["iamuser"];
-                        @$filter = $_GET["filter"]
+                        @$filter = $_GET["filter"];
+                        @$target = $_GET["target"];
                     ?>
                     <form method="get" action="" id='searchtxt'>
                         <input type="text" name="searchtxt" value="<?php echo $searchtxt; ?>"  placeholder="輸入關鍵字" />
@@ -110,7 +111,8 @@ if (isset($_SESSION['name'])) {
                                     $link = mysqli_connect("localhost", "root");
                                     mysqli_query($link, "SET NAMES 'UTF8'");
                                     mysqli_select_db($link, "sa");
-                                    if(empty($searchtxt))
+                                    
+                                    if($searchtxt==' ')
                                     {
                                         $sql="select * from orderlist where book_owner like '$account' or book_user like '$account' ";
                                     }
@@ -191,7 +193,7 @@ if (isset($_SESSION['name'])) {
                                                 echo "<td><button disabled>等待評價</button></td>";
                                             }
                                             else{
-                                                echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=000000000001><button>查看書籍</button></a></td>";
+                                                echo "<td><a href=書籍內容.php?book_name=$book_name&ISBN=$ISBN><button>查看書籍</button></a></td>";
                                             }
                                         }
                                         elseif($book_user == $account){
