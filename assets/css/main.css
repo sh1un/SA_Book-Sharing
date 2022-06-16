@@ -2200,8 +2200,8 @@ ul.pagination li>.page.active {
     color: #ffffff !important;
 }
 
-ul.pagination li>.page.active:hover {
-    background-color: #f67878;
+ul.pagination li>.page:hover {
+    background-color: #fecaca;
 }
 
 ul.pagination li>.page.active:active {
