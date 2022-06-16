@@ -41,12 +41,11 @@
                 <section>
 
                     <!-- Content -->
-                    <h2 id="content">輕鬆分享書籍！</h2>
-                    <p>簡單幾個步驟，就能將您的愛書分享出去！讓其他人看看您的推薦吧！</p>
+                    <h2 id="content">重新上傳書況</h2>
 
                     <hr class="major" />
                     <!--書籍資訊填寫表單-->
-                    <h2 id="elements">重新上傳書況</h2>
+
 
                     <form method="post" action="重新上傳書況_check.php?book_id=<?php echo $book_id ?>" enctype='multipart/form-data'>
                         <div class="row gtr-uniform">
@@ -64,7 +63,7 @@
                             <!-- 上架按鈕 -->
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" name="submit" value="上架" class="primary" /></li>
+                                    <li><input type="submit" name="submit" value="上傳" class="primary" /></li>
                                     <li><input type="reset" value="重新填寫" /></li>
                                 </ul>
                             </div>
